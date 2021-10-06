@@ -1,9 +1,9 @@
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-Assets/AssetStoreTools*
+3OclockHorror/[Ll]ibrary/
+3OclockHorror/[Tt]emp/
+3OclockHorror/[Oo]bj/
+3OclockHorror/[Bb]uild/
+3OclockHorror/[Bb]uilds/
+3OclockHorror/Assets/AssetStoreTools*
 
 # Visual Studio cache directory
 .vs/

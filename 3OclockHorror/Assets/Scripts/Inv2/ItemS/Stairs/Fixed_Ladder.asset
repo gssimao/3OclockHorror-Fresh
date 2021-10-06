@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b7b1b1f884a194aa7346db28610f54, type: 3}
+  m_Name: Fixed_Ladder
+  m_EditorClassIdentifier: 
+  ItemName: Ladder
+  Icon: {fileID: 21300000, guid: ae499501e755b7347b4ba16d0759aaf8, type: 3}
+  desc: A ladder which can be used to reach the third floor.
+  rand: 0
+  Key: {fileID: 0}
+  Amulet: {fileID: 0}
+  myInv: {fileID: 0}
+  Note: 0
+  RusselNote: 0
+  isRead: 0
+  nextNote: {fileID: 0}
+  text: A ladder which can be used to reach the third floor.
+  key: 0
+  myDoor: {fileID: 0}
+  photo: 0
+  date: 
+  numeral: 
