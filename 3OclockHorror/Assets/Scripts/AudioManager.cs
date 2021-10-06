@@ -158,7 +158,8 @@ public class AudioManager : MonoBehaviour
     {
         foreach(Sound s in sounds)
         {
-            s.volume = val;
+            s.source.volume = val;
         }
+        
     }
 }

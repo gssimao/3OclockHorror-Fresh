@@ -8,7 +8,7 @@ public class volumeHolder : MonoBehaviour
     public AudioMixer audioMixer;
     public static volumeHolder instance;
     [SerializeField]
-    float volume = 0;
+    float volume = 1;
     [SerializeField]
     AudioManager manager;
 
@@ -34,14 +34,11 @@ public class volumeHolder : MonoBehaviour
     public void OnSliderValueChanged(float value)
     {
         volume = value;
-        //audioMixer.SetFloat("GameVolume", value);
        setVolume();
     }
 
     public void setVolume()
     {
-        float value = 0;
-        //audioMixer.SetFloat("GameVolume", value);
         manager = FindObjectOfType<AudioManager>();
         manager.updateVolume(volume);
     }
