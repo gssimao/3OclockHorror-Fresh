@@ -8,6 +8,11 @@ public class EscCntrl : MonoBehaviour
     [SerializeField]
     Animator Fade;
     Scene currentScene;
+    AudioManager manager;
+    private void Awake()
+    {
+        manager = FindObjectOfType<AudioManager>();
+    }
     public void ReloadGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // loads current scene
@@ -15,6 +20,7 @@ public class EscCntrl : MonoBehaviour
 
     public void MainMenu()
     {
+        manager.StopAll();
         ChangeScene();
     }
     public void ChangeScene()

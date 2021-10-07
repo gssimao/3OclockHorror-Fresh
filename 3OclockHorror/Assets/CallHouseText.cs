@@ -9,19 +9,20 @@ public class CallHouseText : MonoBehaviour
     private Queue<string> messageQueue;
     private Writer textWriter;
     public Text TextUi;
-    public AudioSource typewriter;
-    public AudioSource DoneWriting;
+    //public AudioSource typewriter;
+    //public AudioSource DoneWriting;
     private Writer.TextWriterSingle textWriterSingle;
     public Image blackTop;
     public Image mouse;
     public Button Button;
     public bool destroyBlackTop = false;
     private bool AutoplayText = true;
-    float AutoPlayTime = 10f;
+    float AutoPlayTime = 18f;
     private static float desirableWaitTime = 10f;
-
+    private AudioManager manager;
     private void Awake()
     {
+        manager = FindObjectOfType<AudioManager>();
         messageQueue = new Queue<string>();
         Color newColor = blackTop.color;
         newColor.a = 0;                 // changing Alpha to zero
@@ -83,7 +84,7 @@ public class CallHouseText : MonoBehaviour
 
         blackTop.gameObject.SetActive(true);
         Button.interactable = true;
-        Debug.Log("this is message count " + messageQueue.Count);
+        //Debug.Log("this is message count " + messageQueue.Count);
         if (messageQueue.Count == 0)
         {
             messageQueue.Clear();
@@ -122,11 +123,13 @@ public class CallHouseText : MonoBehaviour
     }
     private void StartTypingSound()
     {
-        typewriter.Play();
+        manager.Play("TypeWriter", false);
+        //typewriter.Play();
     }
     private void StopTypingSound()
     {
-        typewriter.Stop();
+        manager.Stop("TypeWriter");
+        //typewriter.Stop();
         //DoneWriting.PlayOneShot(DoneWriting.clip); // this is the Ding sound when the typewriter is done writting
     }
     public void ChangeAutoPlayText( bool change)

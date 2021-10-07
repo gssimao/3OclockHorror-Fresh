@@ -23,7 +23,6 @@ public class Tooltip : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(player.transform.position, transform.position); //Get the position of player
-        Debug.Log(dist);
         if (dist <= .3f)
         {
             TooltipText.text = Message;

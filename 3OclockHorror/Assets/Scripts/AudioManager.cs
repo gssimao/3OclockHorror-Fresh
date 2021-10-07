@@ -39,15 +39,17 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.loop = s.loop;
-
+            s.source.pitch = s.pitch;
             s.source.outputAudioMixerGroup = mixerGroup;
         }
-	}
 
-    void Update()
+    }
+
+  /*  void Update()
     {
         //doFade();
-    }
+        
+    }*/
 
     public void Play(string sound, bool isRandom) 
 	{
@@ -150,7 +152,9 @@ public class AudioManager : MonoBehaviour
     {
         foreach(Sound s in sounds)
         {
-            s.source.Stop();
+            string name = s.name;
+            Stop(name);
+            //s.source.Stop();
         }
     }
 
@@ -158,8 +162,18 @@ public class AudioManager : MonoBehaviour
     {
         foreach(Sound s in sounds)
         {
+            s.volume = val;
             s.source.volume = val;
         }
         
+    }
+    public void updatePitch(float val)
+    {
+        foreach (Sound s in sounds)
+        {
+            s.pitch = val;
+            s.source.pitch = val;
+        }
+
     }
 }
