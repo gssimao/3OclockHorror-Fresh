@@ -21,7 +21,10 @@ public class DeleteAfterInteract : MonoBehaviour
 
         SpriteRenderer ImageTutorial = gameObject.GetComponent<SpriteRenderer>();
         Color newColor = ImageTutorial.color;
-        newColor.a = 0; // changing Alpha to zero
+        if(!UseWASD)
+        {
+            newColor.a = 0; // changing Alpha to zero
+        }
         ImageTutorial.color = newColor;
     }
 

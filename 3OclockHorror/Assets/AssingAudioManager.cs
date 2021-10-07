@@ -18,7 +18,7 @@ public class AssingAudioManager : MonoBehaviour
         Debug.Log(method.GetPersistentTarget(0));*/
         if(method.GetPersistentTarget(0) == null)
         {
-
+            method.GetPersistentTarget(0);
         }
     }
 }

@@ -2232,7 +2232,14 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: TypeWriter
-    clip: {fileID: 8300000, guid: 1551826e515eb04458051be5e36d38e4, type: 3}
+    clip: {fileID: 8300000, guid: b61b8367d87b3ae4d8bdf8379b63a0d5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: FinalRoom
+    clip: {fileID: 8300000, guid: 692c8ed467b9eff479102587f459f7c3, type: 3}
     volume: 1
     pitch: 1
     loop: 1

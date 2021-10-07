@@ -967,6 +967,20 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: TypeWriter
+    clip: {fileID: 8300000, guid: b61b8367d87b3ae4d8bdf8379b63a0d5, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: FinalRoom
+    clip: {fileID: 8300000, guid: 692c8ed467b9eff479102587f459f7c3, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   fadingSounds: []
 --- !u!4 &18820553
 Transform:
@@ -1038,10 +1052,6 @@ MonoBehaviour:
   TooltipText: {fileID: 1659172460}
   player: {fileID: 638425222}
   cnvGroup: {fileID: 36532282}
-  masterSwitch: 1
-  startupMessage: 
-  timer: 0
-  alottedTime: 2.5
 --- !u!114 &36532279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,7 +2053,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159730165}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 704bcccd67ff1ca4d8a82fc979895248, type: 3}
@@ -2145,8 +2155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextUi: {fileID: 1581852650}
-  typewriter: {fileID: 2074547930}
-  DoneWriting: {fileID: 159730167}
   blackTop: {fileID: 2074547928}
   mouse: {fileID: 1761840617}
   Button: {fileID: 1987015458}
@@ -3468,7 +3476,7 @@ RectTransform:
   m_Children:
   - {fileID: 1880800493}
   m_Father: {fileID: 1595402983}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15866,8 +15874,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1409563522}
+  m_Children: []
   m_Father: {fileID: 1125768053}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15908,6 +15915,7 @@ MonoBehaviour:
   TimerText: {fileID: 1886536824}
   timeractive: 0
   JumpscareCanvas: {fileID: 0}
+  broken: {fileID: 0}
   solved: 0
   timercheck: 0
   lost: 0
@@ -16216,9 +16224,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: -0.026324319}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.7587156
 --- !u!1 &1384614716
 GameObject:
   m_ObjectHideFlags: 0
@@ -16689,16 +16697,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409563521}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.8196495}
+  m_LocalScale: {x: 0.0042970343, y: 0.0042970353, z: 0.042970352}
   m_Children: []
-  m_Father: {fileID: 1353230631}
+  m_Father: {fileID: 1595402983}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.39769047, y: 0.37619758}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1409563523
@@ -16720,7 +16728,7 @@ MonoBehaviour:
     - I remember the front door was locked. The key, I found in one of the corpses
       in the front of the house.
   CallHouse: {fileID: 159730165}
-  instaPlay: 0
+  instaPlay: 1
   playOnlyOnce: 1
   destroyMessage: 1
   StatueRoomMessageTriger: 0
@@ -17793,7 +17801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543141981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.95, y: -2.72, z: 0}
+  m_LocalPosition: {x: -1.05, y: -3.13, z: -0.74}
   m_LocalScale: {x: 0.7929186, y: 0.7929186, z: 0.7929186}
   m_Children: []
   m_Father: {fileID: 814380893}
@@ -18824,6 +18832,7 @@ Transform:
   m_LocalPosition: {x: -0.07, y: -2.54, z: -5.1}
   m_LocalScale: {x: 1.44339, y: 1.44339, z: 1.44339}
   m_Children:
+  - {fileID: 1409563522}
   - {fileID: 255354257}
   m_Father: {fileID: 1370340544}
   m_RootOrder: 0
