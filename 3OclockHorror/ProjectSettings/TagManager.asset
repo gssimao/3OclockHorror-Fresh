@@ -15,7 +15,11 @@ TagManager:
   - Beartrap
   - Interactible
   - Message
+<<<<<<< Updated upstream
   - RedBookLine
+=======
+  - TutorialMessage
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

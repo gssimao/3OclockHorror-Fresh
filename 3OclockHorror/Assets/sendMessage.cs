@@ -26,6 +26,22 @@ public class sendMessage : MonoBehaviour
         }
     }
 
+    /*        
+       float timer = 5f;
+        public bool useTimer = false;
+        private void Update() // bad prototype for using time to trigger a message
+        {
+            if(useTimer)
+            {
+                timer -= Time.deltaTime;
+                if(timer <= 0 )
+                {
+                    TriggerMessage();
+                    useTimer = false;
+                }
+            }
+        }*/
+
     public void TriggerMessage()
     {
         CallHouse.GetComponent<CallHouseText>().SetActivateAndGrabString(message);

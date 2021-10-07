@@ -80,18 +80,31 @@ public class CallHouseText : MonoBehaviour
 
     public void SetActivateAndGrabString(Message dialogue)
     {
+
         blackTop.gameObject.SetActive(true);
         Button.interactable = true;
-        messageQueue.Clear();
-
-        foreach (string message in dialogue.messagesToWrite) // loading the messages
+        Debug.Log("this is message count " + messageQueue.Count);
+        if (messageQueue.Count == 0)
         {
-            messageQueue.Enqueue(message);
-        }
+            messageQueue.Clear();
 
-        ShowNewMessage(); // calling to print the first message
-        LeanTween.alpha(blackTop.rectTransform, 1f, .7f);
-        mouse.gameObject.SetActive(true);
+            foreach (string message in dialogue.messagesToWrite) // loading the messages
+            {
+                messageQueue.Enqueue(message);
+            }
+            ShowNewMessage(); // calling to print the first message
+            LeanTween.alpha(blackTop.rectTransform, 1f, .7f);
+            mouse.gameObject.SetActive(true);
+        }
+        else
+        {
+
+            foreach (string message in dialogue.messagesToWrite) // loading the messages
+            {
+                messageQueue.Enqueue(message);
+            }
+        }
+        
     }
     private void CompleteAndTurnOff()
     {
@@ -120,4 +133,6 @@ public class CallHouseText : MonoBehaviour
     {
         AutoplayText = change;
     }
+
+
 }

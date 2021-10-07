@@ -42,4 +42,5 @@ public class OptionsMenu : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
     }
+
 }
