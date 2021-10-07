@@ -133,6 +133,9 @@ public class drawingPuzzle : MonoBehaviour
                 createALine(selected, obj2);
                 selected.GetComponent<DrawPoint>().connections.Add(obj2);
                 obj2.GetComponent<DrawPoint>().connections.Add(selected);
+
+                selecteddp.isOn = true;
+                obj2dp.isOn = true;
             }
             else
             {
@@ -164,7 +167,7 @@ public class drawingPuzzle : MonoBehaviour
         float newposY = objB.transform.position.y + (objA.transform.position.y - objB.transform.position.y) / 2;
         angleBar.transform.position = new Vector3(newposX, newposY, 0);
         /***/
-        /*set parent to objB*/
+        /*set parent to Line Parent*/
         angleBar.transform.SetParent(LineParent.transform, true);
     }
 
@@ -304,174 +307,77 @@ public class drawingPuzzle : MonoBehaviour
 
     public bool compareBoards(DrawingHolder main, DrawingHolder answer)
     {
-        bool rtrn = true;
-
         //Left left
         int i = 0;
-        foreach(DrawPoint point in main.leftLeft)
+        foreach (DrawPoint point in main.leftLeft)
         {
-            if (point.connections.Count != answer.leftLeft[i].connections.Count)
+            if (point.isOn != answer.leftLeft[i].isOn)
             {
-                if (answer.debug)
-                {
-                    Debug.Log("Point " + point.name + "in left-left did not contain the same number of connections as " + answer.leftLeft[i].name + " from " + answer.name);
-                }
-
-                rtrn = false;
+                return false;
             }
-            else {
-                foreach (GameObject connection in point.connections)
-                {
-                    if (!answer.leftLeft[i].connections.Contains(connection))
-                    {
-                        if (answer.debug)
-                        {
-                            Debug.Log("Point " + point.name + "in left-left did not contain the same connections as " + answer.leftLeft[i].name + " from " + answer.name);
-                        }
-                        rtrn = false;
-                    }
-                }
+            if (answer.leftLeft[i].ISCAP && point.connections.Count == 0)
+            {
+                return false;
             }
-
             i++;
         }
 
-        if (rtrn)
+        i = 0;
+        foreach (DrawPoint point in main.midLeft)
         {
-            //Mid left
-            i = 0;
-            foreach (DrawPoint point in main.midLeft)
+            if (point.isOn != answer.midLeft[i].isOn)
             {
-                if (point.connections.Count != answer.midLeft[i].connections.Count)
-                {
-                    if (answer.debug)
-                    {
-                        Debug.Log("Point " + point.name + "in mid-left did not contain the same number of connections as " + answer.midLeft[i].name + " from " + answer.name);
-                    }
-
-                    rtrn = false;
-                }
-                else
-                {
-                    foreach (GameObject connection in point.connections)
-                    {
-                        if (!answer.midLeft[i].connections.Contains(connection))
-                        {
-                            if (answer.debug)
-                            {
-                                Debug.Log("Point " + point.name + "in mid-left did not contain the same connections as " + answer.midLeft[i].name + " from " + answer.name);
-                            }
-                            rtrn = false;
-                        }
-                    }
-                }
-
-                i++;
+                return false;
             }
+            if (answer.midLeft[i].ISCAP && point.connections.Count == 0)
+            {
+                return false;
+            }
+            i++;
         }
 
-        if (rtrn)
+        i = 0;
+        foreach (DrawPoint point in main.mid)
         {
-            //Mid
-            i = 0;
-            foreach (DrawPoint point in main.mid)
+            if (point.isOn != answer.mid[i].isOn)
             {
-                if (point.connections.Count != answer.mid[i].connections.Count)
-                {
-                    if (answer.debug)
-                    {
-                        Debug.Log("Point " + point.name + "in mid-mid did not contain the same number of connections as " + answer.mid[i].name + " from " + answer.name);
-                    }
-
-                    rtrn = false;
-                }
-                else
-                {
-                    foreach (GameObject connection in point.connections)
-                    {
-                        if (!answer.mid[i].connections.Contains(connection))
-                        {
-                            if (answer.debug)
-                            {
-                                Debug.Log("Point " + point.name + "in mid did not contain the same connections as " + answer.mid[i].name + " from " + answer.name);
-                            }
-                            rtrn = false;
-                        }
-                    }
-                }
-
-                i++;
+                return false;
             }
+            if (answer.mid[i].ISCAP && point.connections.Count == 0)
+            {
+                return false;
+            }
+            i++;
         }
 
-        if (rtrn)
+        i = 0;
+        foreach (DrawPoint point in main.midRight)
         {
-            //Mid right
-            i = 0;
-            foreach (DrawPoint point in main.midRight)
+            if (point.isOn != answer.midRight[i].isOn)
             {
-                if (point.connections.Count != answer.midRight[i].connections.Count)
-                {
-                    if (answer.debug)
-                    {
-                        Debug.Log("Point " + point.name + "in mid-right did not contain the same number of connections as " + answer.midRight[i].name + " from " + answer.name);
-                    }
-
-                    rtrn = false;
-                }
-                else
-                {
-                    foreach (GameObject connection in point.connections)
-                    {
-                        if (!answer.midRight[i].connections.Contains(connection))
-                        {
-                            if (answer.debug)
-                            {
-                                Debug.Log("Point " + point.name + "in mid-right did not contain the same connections as " + answer.midRight[i].name + " from " + answer.name);
-                            }
-                            rtrn = false;
-                        }
-                    }
-                }
-
-                i++;
+                return false;
             }
+            if (answer.midRight[i].ISCAP && point.connections.Count == 0)
+            {
+                return false;
+            }
+            i++;
         }
 
-        if (rtrn)
+        i = 0;
+        foreach (DrawPoint point in main.rightRight)
         {
-            //Right right
-            i = 0;
-            foreach (DrawPoint point in main.rightRight)
+            if (point.isOn != answer.rightRight[i].isOn)
             {
-                if (point.connections.Count != answer.rightRight[i].connections.Count)
-                {
-                        if (answer.debug)
-                        {
-                            Debug.Log("Point " + point.name + "in right-right did not contain the same number of connections as " + answer.rightRight[i].name + " from " + answer.name);
-                        }
-
-                    rtrn = false;
-                }
-                else
-                {
-                    foreach (GameObject connection in point.connections)
-                    {
-                        if (!answer.rightRight[i].connections.Contains(connection))
-                        {
-                            if (answer.debug)
-                            {
-                                Debug.Log("Point " + point.name + "in right-right did not contain the same connections as " + answer.rightRight[i].name + " from " + answer.name);
-                            }
-                            rtrn = false;
-                        }
-                    }
-                }
-
-                i++;
+                return false;
             }
+            if (answer.rightRight[i].ISCAP && point.connections.Count == 0)
+            {
+                return false;
+            }
+            i++;
         }
 
-        return rtrn;
+        return true;
     }
 }

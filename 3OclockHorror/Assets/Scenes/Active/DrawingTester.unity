@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &24593273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +268,7 @@ MonoBehaviour:
   connections:
   - {fileID: 822042845}
   - {fileID: 776431505}
+  isOn: 0
 --- !u!114 &27895442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &63549442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &90865766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +501,7 @@ GameObject:
   - component: {fileID: 92579427}
   - component: {fileID: 92579426}
   - component: {fileID: 92579425}
+  - component: {fileID: 92579428}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -537,6 +542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &92579426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +581,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92579423}
   m_CullTransparentMesh: 0
+--- !u!58 &92579428
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92579423}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &100376656
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +609,7 @@ GameObject:
   - component: {fileID: 100376660}
   - component: {fileID: 100376659}
   - component: {fileID: 100376658}
+  - component: {fileID: 100376661}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -627,6 +650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &100376659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +689,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100376656}
   m_CullTransparentMesh: 0
+--- !u!58 &100376661
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100376656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &129106988
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &129106991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,6 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &149084623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,9 +1041,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 940401731}
-  - {fileID: 966172811}
+  connections: []
+  isOn: 1
 --- !u!114 &239131429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,6 +1133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &249824659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1327,7 @@ MonoBehaviour:
   PuzzleCntrl: {fileID: 0}
   connections:
   - {fileID: 1141578905}
+  isOn: 0
 --- !u!114 &324618203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,6 +1418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &339365173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,11 +1489,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 1194094467}
-  - {fileID: 776431505}
-  - {fileID: 1500732922}
-  - {fileID: 1713285941}
+  connections: []
+  isOn: 1
 --- !u!114 &357772494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1605,8 +1646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 531173104}
+  connections: []
+  isOn: 1
 --- !u!114 &451624153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,6 +1757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &482194879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,6 +1849,7 @@ MonoBehaviour:
   PuzzleCntrl: {fileID: 0}
   connections:
   - {fileID: 531173104}
+  isOn: 0
 --- !u!114 &489820261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,6 +1940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &503763331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1987,6 +2031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &514864323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,6 +2082,7 @@ GameObject:
   - component: {fileID: 531173108}
   - component: {fileID: 531173107}
   - component: {fileID: 531173106}
+  - component: {fileID: 531173109}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -2077,6 +2123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &531173107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2115,6 +2162,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531173104}
   m_CullTransparentMesh: 0
+--- !u!58 &531173109
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531173104}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &560956822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,6 +2384,7 @@ MonoBehaviour:
   - {fileID: 1094199816}
   - {fileID: 940401731}
   - {fileID: 100376656}
+  isOn: 0
 --- !u!114 &577565712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,8 +2455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 531173104}
+  connections: []
+  isOn: 1
 --- !u!114 &579563674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2502,6 +2566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &580887765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,6 +2657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &586808252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2684,6 +2750,7 @@ MonoBehaviour:
   connections:
   - {fileID: 100376656}
   - {fileID: 1141578905}
+  isOn: 0
 --- !u!114 &592453710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2774,6 +2841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &632837632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2864,6 +2932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &646242015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2934,9 +3003,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 1887114422}
-  - {fileID: 971714256}
+  connections: []
+  isOn: 1
 --- !u!114 &657217571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3026,9 +3094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 1887114422}
-  - {fileID: 971714256}
+  connections: []
+  isOn: 1
 --- !u!114 &686563472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,6 +3186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &721079525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,6 +3298,7 @@ MonoBehaviour:
   connections:
   - {fileID: 940401731}
   - {fileID: 1713285941}
+  isOn: 0
 --- !u!114 &722323715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3320,6 +3389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &742092650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3410,6 +3480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &743916374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3481,6 +3552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &745321984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3654,6 +3726,7 @@ MonoBehaviour:
   PuzzleCntrl: {fileID: 0}
   connections:
   - {fileID: 531173104}
+  isOn: 0
 --- !u!114 &748374135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3913,6 +3986,7 @@ MonoBehaviour:
   - {fileID: 1356606257}
   - {fileID: 823286060}
   - {fileID: 63549441}
+  debug: 0
 --- !u!114 &776208750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3963,6 +4037,7 @@ GameObject:
   - component: {fileID: 776431509}
   - component: {fileID: 776431508}
   - component: {fileID: 776431507}
+  - component: {fileID: 776431510}
   m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
@@ -4003,6 +4078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &776431508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4041,6 +4117,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776431505}
   m_CullTransparentMesh: 0
+--- !u!58 &776431510
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776431505}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &819837057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,6 +4185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &819837060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4143,6 +4236,7 @@ GameObject:
   - component: {fileID: 822042849}
   - component: {fileID: 822042848}
   - component: {fileID: 822042847}
+  - component: {fileID: 822042850}
   m_Layer: 5
   m_Name: Image (5)
   m_TagString: Untagged
@@ -4183,6 +4277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &822042848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4221,6 +4316,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822042845}
   m_CullTransparentMesh: 0
+--- !u!58 &822042850
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822042845}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &823286058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,6 +4384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &823286061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4363,6 +4475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &851819895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4580,6 +4693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &863004394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4865,6 +4979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &921960379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4955,6 +5070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &929724245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5005,6 +5121,7 @@ GameObject:
   - component: {fileID: 940401735}
   - component: {fileID: 940401734}
   - component: {fileID: 940401733}
+  - component: {fileID: 940401736}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -5045,6 +5162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &940401734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5083,6 +5201,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940401731}
   m_CullTransparentMesh: 0
+--- !u!58 &940401736
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940401731}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &945165119
 GameObject:
   m_ObjectHideFlags: 0
@@ -5135,6 +5269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &945165122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5185,6 +5320,7 @@ GameObject:
   - component: {fileID: 966172815}
   - component: {fileID: 966172814}
   - component: {fileID: 966172813}
+  - component: {fileID: 966172816}
   m_Layer: 5
   m_Name: Image (4)
   m_TagString: Untagged
@@ -5225,6 +5361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &966172814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5263,6 +5400,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966172811}
   m_CullTransparentMesh: 0
+--- !u!58 &966172816
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966172811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &971714256
 GameObject:
   m_ObjectHideFlags: 0
@@ -5275,6 +5428,7 @@ GameObject:
   - component: {fileID: 971714260}
   - component: {fileID: 971714259}
   - component: {fileID: 971714258}
+  - component: {fileID: 971714261}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -5315,6 +5469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &971714259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5353,6 +5508,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971714256}
   m_CullTransparentMesh: 0
+--- !u!58 &971714261
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971714256}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &997607894
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,6 +5576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &997607897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5455,6 +5627,7 @@ GameObject:
   - component: {fileID: 1005938559}
   - component: {fileID: 1005938558}
   - component: {fileID: 1005938557}
+  - component: {fileID: 1005938560}
   m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
@@ -5495,6 +5668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &1005938558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5533,6 +5707,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005938555}
   m_CullTransparentMesh: 0
+--- !u!58 &1005938560
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005938555}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &1026188517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5653,6 +5843,7 @@ MonoBehaviour:
   connections:
   - {fileID: 1500732922}
   - {fileID: 1194094467}
+  isOn: 0
 --- !u!114 &1048679212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5703,6 +5894,7 @@ GameObject:
   - component: {fileID: 1094199820}
   - component: {fileID: 1094199819}
   - component: {fileID: 1094199818}
+  - component: {fileID: 1094199821}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -5743,6 +5935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &1094199819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5781,6 +5974,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094199816}
   m_CullTransparentMesh: 0
+--- !u!58 &1094199821
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094199816}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &1141578905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5793,6 +6002,7 @@ GameObject:
   - component: {fileID: 1141578909}
   - component: {fileID: 1141578908}
   - component: {fileID: 1141578907}
+  - component: {fileID: 1141578910}
   m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
@@ -5833,6 +6043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &1141578908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5871,6 +6082,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141578905}
   m_CullTransparentMesh: 0
+--- !u!58 &1141578910
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141578905}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &1149352228
 GameObject:
   m_ObjectHideFlags: 0
@@ -6168,6 +6395,7 @@ GameObject:
   - component: {fileID: 1194094471}
   - component: {fileID: 1194094470}
   - component: {fileID: 1194094469}
+  - component: {fileID: 1194094472}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -6208,6 +6436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &1194094470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6246,6 +6475,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194094467}
   m_CullTransparentMesh: 0
+--- !u!58 &1194094472
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194094467}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &1197631925
 GameObject:
   m_ObjectHideFlags: 0
@@ -6298,6 +6543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1197631928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6500,6 +6746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1228294055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6609,6 +6856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1243408067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6725,6 +6973,7 @@ GameObject:
   - component: {fileID: 1259768872}
   - component: {fileID: 1259768871}
   - component: {fileID: 1259768870}
+  - component: {fileID: 1259768873}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -6765,6 +7014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &1259768871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6803,6 +7053,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259768868}
   m_CullTransparentMesh: 0
+--- !u!58 &1259768873
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259768868}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &1315142485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6879,6 +7145,7 @@ MonoBehaviour:
   - {fileID: 1447028314}
   - {fileID: 586808251}
   - {fileID: 851819894}
+  debug: 0
 --- !u!114 &1315142488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6969,6 +7236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1356606258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7059,6 +7327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1357192231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7415,6 +7684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1424522698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7634,6 +7904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1447028315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7748,6 +8019,7 @@ MonoBehaviour:
   - {fileID: 239131428}
   - {fileID: 129106990}
   - {fileID: 646242014}
+  debug: 0
 --- !u!114 &1447086192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7838,6 +8110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1467204412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7888,6 +8161,7 @@ GameObject:
   - component: {fileID: 1500732926}
   - component: {fileID: 1500732925}
   - component: {fileID: 1500732924}
+  - component: {fileID: 1500732927}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -7928,6 +8202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &1500732925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7966,6 +8241,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500732922}
   m_CullTransparentMesh: 0
+--- !u!58 &1500732927
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500732922}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &1520355138
 GameObject:
   m_ObjectHideFlags: 0
@@ -8271,8 +8562,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 531173104}
+  connections: []
+  isOn: 1
 --- !u!114 &1666435404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8382,6 +8673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1669179660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8472,6 +8764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1685678934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8717,6 +9010,7 @@ GameObject:
   - component: {fileID: 1713285945}
   - component: {fileID: 1713285944}
   - component: {fileID: 1713285943}
+  - component: {fileID: 1713285946}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -8757,6 +9051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &1713285944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8795,6 +9090,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713285941}
   m_CullTransparentMesh: 0
+--- !u!58 &1713285946
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713285941}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &1724415017
 GameObject:
   m_ObjectHideFlags: 0
@@ -8849,6 +9160,7 @@ MonoBehaviour:
   connections:
   - {fileID: 1094199816}
   - {fileID: 1713285941}
+  isOn: 0
 --- !u!114 &1724415020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8939,6 +9251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1768896788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9029,6 +9342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1787915402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9167,12 +9481,21 @@ MonoBehaviour:
   mainBoard: {fileID: 1799682953}
   answerOne: {fileID: 1447086191}
   answerTwo: {fileID: 1813683383}
+  answerThree: {fileID: 0}
+  answerFour: {fileID: 0}
+  anxBoard: {fileID: 0}
+  anxiety: {fileID: 0}
+  abanBoard: {fileID: 0}
+  abnEffect: {fileID: 0}
+  profBoard: {fileID: 0}
+  profEffect: {fileID: 0}
   LineParent: {fileID: 862734702}
   lineConnection: {fileID: 2105728063}
   sym1: {fileID: 0}
   sym2: {fileID: 0}
   sym3: {fileID: 0}
   sym4: {fileID: 0}
+  taskList: {fileID: 0}
 --- !u!114 &1799682953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9206,6 +9529,7 @@ MonoBehaviour:
   - {fileID: 971714258}
   - {fileID: 100376658}
   - {fileID: 1005938557}
+  debug: 0
 --- !u!1 &1799773449
 GameObject:
   m_ObjectHideFlags: 0
@@ -9258,6 +9582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1799773452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9391,8 +9716,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 531173104}
+  connections: []
+  isOn: 1
 --- !u!114 &1802835752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9502,6 +9827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1811845322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9616,6 +9942,7 @@ MonoBehaviour:
   - {fileID: 339365172}
   - {fileID: 2126803824}
   - {fileID: 742092649}
+  debug: 0
 --- !u!114 &1813683384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9732,6 +10059,7 @@ GameObject:
   - component: {fileID: 1887114426}
   - component: {fileID: 1887114425}
   - component: {fileID: 1887114424}
+  - component: {fileID: 1887114427}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -9772,6 +10100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 1799682952}
   connections: []
+  isOn: 0
 --- !u!114 &1887114425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9810,6 +10139,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887114422}
   m_CullTransparentMesh: 0
+--- !u!58 &1887114427
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887114422}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 15
 --- !u!1 &1918605535
 GameObject:
   m_ObjectHideFlags: 0
@@ -9862,6 +10207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1918605538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9952,6 +10298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1920178578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10042,6 +10389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1927480575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10189,6 +10537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &1967249571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10278,9 +10627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
-  connections:
-  - {fileID: 940401731}
-  - {fileID: 966172811}
+  connections: []
+  isOn: 1
 --- !u!114 &1978368822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10608,6 +10956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuzzleCntrl: {fileID: 0}
   connections: []
+  isOn: 0
 --- !u!114 &2054143438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10723,9 +11072,12 @@ GameObject:
   - component: {fileID: 2105728064}
   - component: {fileID: 2105728066}
   - component: {fileID: 2105728065}
+  - component: {fileID: 2105728067}
+  - component: {fileID: 2105728068}
+  - component: {fileID: 2105728069}
   m_Layer: 5
   m_Name: LinePrefab
-  m_TagString: Untagged
+  m_TagString: RedBookLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10787,6 +11139,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105728063}
   m_CullTransparentMesh: 0
+--- !u!61 &2105728067
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105728063}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &2105728068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105728063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21a8dc00e4b35c459a110fcae4947a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &2105728069
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105728063}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2126803822
 GameObject:
   m_ObjectHideFlags: 0
@@ -10841,6 +11252,7 @@ MonoBehaviour:
   connections:
   - {fileID: 1713285941}
   - {fileID: 822042845}
+  isOn: 0
 --- !u!114 &2126803825
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,17 +12,16 @@ public class DrawPoint : MonoBehaviour, IPointerClickHandler
 
     Image sr;
 
+    //[HideInInspector]
+    public bool isOn;
+    public bool ISCAP;
+
     // Start is called before the first frame update
     void Start()
     {
         sr = this.gameObject.GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Left)
@@ -37,5 +36,14 @@ public class DrawPoint : MonoBehaviour, IPointerClickHandler
                 PuzzleCntrl.DrawLine(gameObject);
             }
         }
-    }   
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Triggered: " + this.name + " in " + this.transform.parent.name);
+        if (collision.tag == "RedBookLine")
+        {
+            isOn = true;
+        }
+    }
 }

@@ -15,6 +15,7 @@ TagManager:
   - Beartrap
   - Interactible
   - Message
+  - RedBookLine
   layers:
   - Default
   - TransparentFX

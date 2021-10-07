@@ -20,22 +20,27 @@ public class DrawingHolder : MonoBehaviour
         foreach(DrawPoint point in leftLeft)
         {
             point.connections.Clear();
+            point.isOn = false;
         }
         foreach (DrawPoint point in midLeft)
         {
             point.connections.Clear();
+            point.isOn = false;
         }
         foreach (DrawPoint point in mid)
         {
             point.connections.Clear();
+            point.isOn = false;
         }
         foreach (DrawPoint point in midRight)
         {
             point.connections.Clear();
+            point.isOn = false;
         }
         foreach (DrawPoint point in rightRight)
         {
             point.connections.Clear();
+            point.isOn = false;
         }
     }
 }
