@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
 	{
 		if (!isTutorial)
 		{
-			if (instance != null && instance != null)
+			if (instance != null)
 			{
 				Destroy(gameObject); //Is there a manager? If yes then I'm gone
 			}
@@ -153,7 +153,9 @@ public class AudioManager : MonoBehaviour
         foreach(Sound s in sounds)
         {
             string name = s.name;
+            
             Stop(name);
+            Debug.Log("Stopping sound: " + name);
             //s.source.Stop();
         }
     }
