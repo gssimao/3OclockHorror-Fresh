@@ -122,7 +122,7 @@ public class TableManager : MonoBehaviour
     public int[] coin3Pos = new int[] { 2, 2 };
     public int[] coin4Pos = new int[] { 3, 2 };
 
-    public float coinMoveSpeed = .7f; 
+    public float coinMoveSpeed = .4f; 
 
     public GameObject coin1;
     public GameObject coin2;
@@ -135,6 +135,7 @@ public class TableManager : MonoBehaviour
     public GameObject blackaqr1;
     public GameObject blackaqr2;
     public GameObject blackaqr3;
+    private float ExecutionTime = .1f;
 
     UniversalControls uControls;
 
@@ -213,17 +214,17 @@ public class TableManager : MonoBehaviour
         coin2Pos = new int[] { 2, 1 };
         coin3Pos = new int[] { 2, 2 };
         coin4Pos = new int[] { 2, 3 };
-        LeanTween.moveLocalY(coin1, coinPositionV[coin1Pos[0]], .1f);
-        LeanTween.moveLocalX(coin1, coinPositionH[coin1Pos[1]], .1f);
+        LeanTween.moveLocalY(coin1, coinPositionV[coin1Pos[0]], ExecutionTime);
+        LeanTween.moveLocalX(coin1, coinPositionH[coin1Pos[1]], ExecutionTime);
 
-        LeanTween.moveLocalY(coin2, coinPositionV[coin2Pos[0]], .1f);
-        LeanTween.moveLocalX(coin2, coinPositionH[coin2Pos[1]], .1f);
+        LeanTween.moveLocalY(coin2, coinPositionV[coin2Pos[0]], ExecutionTime);
+        LeanTween.moveLocalX(coin2, coinPositionH[coin2Pos[1]], ExecutionTime);
 
-        LeanTween.moveLocalY(coin3, coinPositionV[coin3Pos[0]], .1f);
-        LeanTween.moveLocalX(coin3, coinPositionH[coin3Pos[1]], .1f);
+        LeanTween.moveLocalY(coin3, coinPositionV[coin3Pos[0]], ExecutionTime);
+        LeanTween.moveLocalX(coin3, coinPositionH[coin3Pos[1]], ExecutionTime);
 
-        LeanTween.moveLocalY(coin4, coinPositionV[coin4Pos[0]], .1f);
-        LeanTween.moveLocalX(coin4, coinPositionH[coin4Pos[1]], .1f);
+        LeanTween.moveLocalY(coin4, coinPositionV[coin4Pos[0]], ExecutionTime);
+        LeanTween.moveLocalX(coin4, coinPositionH[coin4Pos[1]], ExecutionTime);
         setPosition();
     }
 
@@ -253,7 +254,7 @@ public class TableManager : MonoBehaviour
                 //check for the right answer
                 if (checkAnswer(allCoinsPos, puzzleAnswer))
                 {
-                    UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
+                   // UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
                     plyInv.AddItem(brokenLadder);
                     taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
 
@@ -281,7 +282,7 @@ public class TableManager : MonoBehaviour
                 //check for the right answer
                 if (checkAnswer(allCoinsPos, puzzleAnswer))
                 {
-                    UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
+                    //UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
                     plyInv.AddItem(brokenLadder);
                     taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
                 }
