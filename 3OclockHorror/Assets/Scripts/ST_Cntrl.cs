@@ -25,7 +25,7 @@ public class ST_Cntrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager != null)
+        if (manager != null && !manager.halt)
         {
             if (player.myRoom != null && player.myRoom.getName() == "Outside")
             {

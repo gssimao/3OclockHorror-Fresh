@@ -19,10 +19,10 @@ public class AudioManager : MonoBehaviour
 
     public List<Sound> fadingSounds = new List<Sound>();
 
+    public bool halt = false;
+
 	void Awake()
 	{
-		if (!isTutorial)
-		{
 			if (instance != null)
 			{
 				Destroy(gameObject); //Is there a manager? If yes then I'm gone
@@ -32,7 +32,8 @@ public class AudioManager : MonoBehaviour
 				instance = this;  //There isnt a manager? I'm it
 				DontDestroyOnLoad(gameObject);
 			}
-		}
+
+        Debug.Log("hello");
 
         foreach (Sound s in sounds) //Init each sound - give it a source and init that source to make it playable
         {
@@ -53,33 +54,38 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string sound, bool isRandom) 
 	{
-		Sound s = Array.Find(sounds, item => item.name == sound); //Find the sound we want to play, ensure it's not null
-		if (s == null)
-		{
-			Debug.LogWarning("Sound: " + name + " not found!");
-			return;
-		}
-
-
-		if (!s.source.isPlaying) //Check if the sound is playing - if not, have at it.s
-		{
-            if (!isRandom)
+        if (sound == "Clock Tick")
+        {
+            Debug.Log("Playing clock tick");
+        }
+            Sound s = Array.Find(sounds, item => item.name == sound); //Find the sound we want to play, ensure it's not null
+            if (s == null)
             {
-                s.source.volume = s.volume; //Set the volume and pitch to the one contained by the sound
-
-                s.source.pitch = s.pitch;
+                Debug.LogWarning("Sound: " + name + " not found!");
+                return;
             }
 
-            else if (isRandom)
+
+            if (!s.source.isPlaying) //Check if the sound is playing - if not, have at it.s
             {
-                s.source.volume = Random.Range(s.volume - 0.05f, s.volume + 0.05f); //Random Volume
+                if (!isRandom)
+                {
+                    s.source.volume = s.volume; //Set the volume and pitch to the one contained by the sound
 
-                s.source.pitch = Random.Range(0.9f, 1.1f); // Random Pitch
+                    s.source.pitch = s.pitch;
+                }
+
+                else if (isRandom)
+                {
+                    s.source.volume = Random.Range(s.volume - 0.05f, s.volume + 0.05f); //Random Volume
+
+                    s.source.pitch = Random.Range(0.9f, 1.1f); // Random Pitch
+                }
+
+                s.source.Play();
+
             }
-
-            s.source.Play();
-
-		}
+        
 	}
 
 	public void Stop(string sound)
@@ -153,11 +159,20 @@ public class AudioManager : MonoBehaviour
         foreach(Sound s in sounds)
         {
             string name = s.name;
-            
+
             Stop(name);
-            Debug.Log("Stopping sound: " + name);
             //s.source.Stop();
         }
+
+        Debug.Log("all Stopped");
+        halt = true;
+        StartCoroutine("ReleaseHalt");
+    }
+
+    IEnumerator ReleaseHalt()
+    {
+        yield return new WaitForEndOfFrame();
+        halt = false;
     }
 
     public void updateVolume(float val)

@@ -20,7 +20,9 @@ public class EscCntrl : MonoBehaviour
 
     public void MainMenu()
     {
+        manager = FindObjectOfType<AudioManager>();
         manager.StopAll();
+        Debug.Log("Main menu time");
         ChangeScene();
     }
     public void ChangeScene()

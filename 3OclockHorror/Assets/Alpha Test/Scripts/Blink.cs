@@ -11,10 +11,13 @@ public class Blink : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        Color newColor = image.color;
-        newColor.a = 0; // changing Alpha to zero
-        image.color = newColor;
-        FadeStart();
+        if(image != null)
+        {
+            Color newColor = image.color;
+            newColor.a = 0; // changing Alpha to zero
+            image.color = newColor;
+            FadeStart();
+        }
     }
 
     // Update is called once per frame
