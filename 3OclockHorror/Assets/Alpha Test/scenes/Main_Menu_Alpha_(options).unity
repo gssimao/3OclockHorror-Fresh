@@ -2246,6 +2246,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   fadingSounds: []
+  halt: 0
 --- !u!4 &540872598
 Transform:
   m_ObjectHideFlags: 0
