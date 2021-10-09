@@ -16,7 +16,7 @@ public class ContainerControl : MonoBehaviour
     float interactDist;
     bool active; //Am I the active workbench inventory?
     [SerializeField]
-    List<Item> Items;
+    public List<Item> Items;
     [SerializeField]
     GameObject tooltip;
     public invInput Listener;

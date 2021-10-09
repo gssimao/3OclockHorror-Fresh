@@ -97,6 +97,7 @@ public class Inventory : MonoBehaviour, IItemContainer
 
     public void AddStartingItem(Item item)
     {
+        Debug.Log("Added a photo");
         items.Add(item);
     }
 

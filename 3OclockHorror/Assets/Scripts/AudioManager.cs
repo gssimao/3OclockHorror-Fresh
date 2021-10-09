@@ -54,10 +54,7 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string sound, bool isRandom) 
 	{
-        if (sound == "Clock Tick")
-        {
-            Debug.Log("Playing clock tick");
-        }
+        
             Sound s = Array.Find(sounds, item => item.name == sound); //Find the sound we want to play, ensure it's not null
             if (s == null)
             {

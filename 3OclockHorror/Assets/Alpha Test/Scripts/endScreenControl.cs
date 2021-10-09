@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class endScreenControl : MonoBehaviour
 {
-    public endScreenControl instance;
+    public static endScreenControl instance;
     public string endMessage;
     public int endingCondition = 0;
     // Start is called before the first frame update
     void Start()
     {
-        if (instance != null && instance != null)
+        if (instance != null)
         {
             Destroy(gameObject); //Is there a manager? If yes then I'm gone
         }

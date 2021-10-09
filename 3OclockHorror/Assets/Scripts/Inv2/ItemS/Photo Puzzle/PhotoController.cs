@@ -7,12 +7,12 @@ public class PhotoController : MonoBehaviour
     [SerializeField]
     List<Item> Photos;
     [SerializeField]
-    List<Inventory> AllowedInvs;
+    List<ContainerControl> AllowedInvs;
     [SerializeField]
     List<LPhotoCntrl> LPhotos;
     [Space]
     [SerializeField]
-    Inventory DiningRoom;
+    ContainerControl DiningRoom;
 
     int dateSelector;
     List<string> SelectedDate;
@@ -72,9 +72,9 @@ public class PhotoController : MonoBehaviour
             int rand = Random.Range(0, Photos.Count);
             Item photo = Photos[rand];
             rand = Random.Range(0, AllowedInvs.Count);
-            Inventory selectedInv = AllowedInvs[rand];
+            ContainerControl selectedInv = AllowedInvs[rand];
 
-            selectedInv.AddStartingItem(photo);
+            selectedInv.Items.Add(photo);
             AllowedInvs.Remove(selectedInv);
             Photos.Remove(photo);
 
@@ -114,7 +114,7 @@ public class PhotoController : MonoBehaviour
     {
         int rand = Random.Range(0, Photos.Count);
         Item photo = Photos[rand];
-        DiningRoom.AddStartingItem(photo);
+        DiningRoom.Items.Add(photo);
         Photos.Remove(photo);
 
         padlock.Photo1 = photo;
