@@ -9,21 +9,43 @@ public class EscCntrl : MonoBehaviour
     Animator Fade;
     Scene currentScene;
     AudioManager manager;
+    private bool endingTriggered = false;
+    public sendMessage CantScapeMessage;
     private void Awake()
     {
         manager = FindObjectOfType<AudioManager>();
     }
     public void ReloadGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // loads current scene
+        if (!endingTriggered)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // loads current scene
+        else
+        {
+            this.gameObject.SetActive(false);
+            CantScapeMessage.TriggerCreepyFont();
+        }
     }
 
     public void MainMenu()
     {
+<<<<<<< Updated upstream
         manager = FindObjectOfType<AudioManager>();
         manager.StopAll();
         Debug.Log("Main menu time");
         ChangeScene();
+=======
+        if(!endingTriggered)
+        {
+            manager.StopAll();
+            ChangeScene();
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
+            CantScapeMessage.TriggerCreepyFont();
+        }
+
+>>>>>>> Stashed changes
     }
     public void ChangeScene()
     {
@@ -48,5 +70,9 @@ public class EscCntrl : MonoBehaviour
         }
 
         SceneManager.UnloadSceneAsync(currentScene);
+    }
+    public void EndingComplete(bool complete)
+    {
+        endingTriggered = complete;
     }
 }

@@ -250,21 +250,21 @@ public class WatcherAI : MonoBehaviour
         {
             playingMessage = true;
             sendMessage3 = false;
-            message3.TriggerMessage();
+            message3.TriggerCreepyFont();
         }
         if (sendMessage2)
         {
             playingMessage = true;
             sendMessage2 = false;
             sendMessage3 = true;
-            message2.TriggerMessage();
+            message2.TriggerCreepyFont();
         }
         if (sendMessage1 && playingMessage == false)
         {
             playingMessage = true;
             sendMessage1 = false;
             sendMessage2 = true;
-            message1.TriggerMessage();
+            message1.TriggerCreepyFont();
         }
     }
 

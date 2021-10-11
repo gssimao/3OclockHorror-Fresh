@@ -85,12 +85,14 @@ public class HuntCheckSolved : MonoBehaviour
         }
         GameObject.Find("SolvedText").SetActive(false);
         GameObject.Find("BeartrapPuzzle").SetActive(false);
+
     }
 
     public void checkAnswer()
     {
         if (Gear1.GetComponent<GearRotation>().movement == answer1 && Gear2.GetComponent<GearRotation>().movement == answer2 && Gear3.GetComponent<GearRotation>().movement == answer3 && !lost)
         {
+
             timer = 15f;
             ExitButton.gameObject.SetActive(true);
             solved = true;
@@ -133,7 +135,8 @@ public class HuntCheckSolved : MonoBehaviour
         {
             TrapCtrl.DeactivateTraps();
         }
-        RestartingPuzzle();
+        if(!isTutorial)
+            RestartingPuzzle();
         GameObject.Find("BeartrapPuzzle").SetActive(false);
 
     }
@@ -183,20 +186,24 @@ public class HuntCheckSolved : MonoBehaviour
         Text1.text = showanswer1.ToString();
         Text2.text = showanswer2.ToString();
         Text3.text = showanswer3.ToString();
-        if (timer < 1)
+        if (timer < 1 && !isTutorial)
         {
             timer = 15f;
         }
-        if (TrapCtrl.triggered == 0)
+        if (TrapCtrl.triggered == 0 && !isTutorial)
         {
             timer = 15.0f;
         }
         TrapCtrl.triggered++;
-        ExitButton.gameObject.SetActive(false);
+        if(!isTutorial)
+            ExitButton.gameObject.SetActive(false);
         //TimerText = GameObject.Find("Timer").Text;
     }
     void Update()
     {
+        if (isTutorial)
+            timer = 0;
+
         if (!lost && !solved && timercheck && timeractive)
         {
             solved = false;
@@ -212,9 +219,11 @@ public class HuntCheckSolved : MonoBehaviour
                     SoundTrack.CheckFloor();
                 }
                 ExitButton.gameObject.SetActive(true);
-                lost = true;
+                if(!isTutorial)
+                    lost = true;
                 //TrapCtrl.DeactivateTraps();
-                JumpscareCanvas.SetActive(true);
+                if (!isTutorial)
+                    JumpscareCanvas.SetActive(true);
                 Player.transform.position = TP.transform.position;
                 playermovement.myRoom = basement;
                 playermovement.enabled = true;

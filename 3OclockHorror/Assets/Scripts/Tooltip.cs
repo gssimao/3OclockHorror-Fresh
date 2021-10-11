@@ -17,6 +17,7 @@ public class Tooltip : MonoBehaviour
     void Start()
     {
         cnvGroup.alpha = 0;
+       
     }
 
     // Update is called once per frame
@@ -25,12 +26,14 @@ public class Tooltip : MonoBehaviour
         float dist = Vector3.Distance(player.transform.position, transform.position); //Get the position of player
         if (dist <= .3f)
         {
-            TooltipText.text = Message;
+            //Debug.Log(dist + "<= .3f");
+            TooltipText.text = "";
             //timer = 1;
             cnvGroup.alpha = 0;
         }
         if (dist >= .3f)
         {
+            //Debug.Log(dist + ">= .3f");
             TooltipText.text = Message;
             //timer = 1;
             cnvGroup.alpha = 1;

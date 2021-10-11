@@ -7,6 +7,7 @@ public class OptionsMenu : MonoBehaviour
 {
     Resolution[] resolutions;
     public Dropdown resolutionDropDown;
+    public GameObject SnowParticles;
     private void Start()
     {
         resolutions = Screen.resolutions;
@@ -26,9 +27,15 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropDown.AddOptions(options);
         resolutionDropDown.value = currentResolutionIndex;
         resolutionDropDown.RefreshShownValue();
+        SetQuality(0);
     }
     public void SetQuality(int qualityIndex)
     {
+        if (qualityIndex == 0)
+            SnowParticles.SetActive(false);
+        else
+            SnowParticles.SetActive(true);
+
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 

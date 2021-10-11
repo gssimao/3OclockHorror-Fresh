@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class volumeHolder : MonoBehaviour
 {
-    public AudioMixer audioMixer;
+    //public AudioMixer audioMixer;
     public static volumeHolder instance;
     [SerializeField]
     float volume = 1;

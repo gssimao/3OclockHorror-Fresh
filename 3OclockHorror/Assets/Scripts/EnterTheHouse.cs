@@ -61,7 +61,8 @@ public class EnterTheHouse : MonoBehaviour
                 }
                 else if(!plyinv.ContainsItem(key))
                 {
-                    KeyPopUp.SetActive(true);
+                    if(KeyPopUp != null)
+                        KeyPopUp.SetActive(true);
                 }
                 if (EntrancePuzzle.solved && plyinv.ContainsItem(key))
                 {

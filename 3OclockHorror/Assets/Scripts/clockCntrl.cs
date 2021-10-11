@@ -13,6 +13,8 @@ public class clockCntrl : MonoBehaviour
     public PlayerMovement player;
     public SanityManager sanity;
     private float sanityWait = 10;
+    public bool stopTime = false;
+    public bool stopTutorialNotes = false;
     AudioManager manager;
 
     [SerializeField]
@@ -74,7 +76,8 @@ public class clockCntrl : MonoBehaviour
         {
             if (!profane)
             {
-                Clock += Time.deltaTime;
+                if(!stopTime)
+                    Clock += Time.deltaTime;
             }
             else
             {
@@ -137,12 +140,15 @@ public class clockCntrl : MonoBehaviour
             //Check for each hour, play clock sound each time.
             if (Clock >= 0 && Clock <= 1  && manager != null && hourIsPlaying == false)
             {
-                Debug.Log("got here 1111");
+                //Debug.Log("got here 1111");
                 hourIsPlaying = true;
                 manager.Play("Clock 5", false);
                 clipLength = 20 + Clock;                //clipLength was added so that Clock Tick would not play while these bells are playing.
-
-                Message5pm.TriggerMessage();
+                if(!stopTutorialNotes)
+                {
+                    Message5pm.TriggerMessage();
+                }
+                    
                 //popup.UpdateTooltipMessage("5PM: 10 hours remain.");
             }
             else if (Clock >= 240 && Clock <= 242 && manager != null && hourIsPlaying == false)
@@ -150,7 +156,8 @@ public class clockCntrl : MonoBehaviour
                 hourIsPlaying = true;
                 manager.Play("Clock 6", false);
                 clipLength = 23 + Clock;
-                Message6pm.TriggerMessage();
+                if (!stopTutorialNotes)
+                    Message6pm.TriggerMessage();
                 // popup.UpdateTooltipMessage("6PM: 9 hours remain.");
             }
             else if (Clock >= 480 && Clock <= 482 && manager != null && hourIsPlaying == false)
@@ -158,7 +165,8 @@ public class clockCntrl : MonoBehaviour
                 hourIsPlaying = true;
                 manager.Play("Clock 7", false);
                 clipLength = 26 + Clock;
-                Message7pm.TriggerMessage();
+                if (!stopTutorialNotes)
+                    Message7pm.TriggerMessage();
                 //popup.UpdateTooltipMessage("7PM: 8 hours remain.");
             }
             else if (Clock >= 720 && Clock <= 722 && manager != null && hourIsPlaying == false)
@@ -166,7 +174,8 @@ public class clockCntrl : MonoBehaviour
                 hourIsPlaying = true;
                 manager.Play("Clock 8", false);
                 clipLength = 29 + Clock;
-                Message8pm.TriggerMessage();
+                if (!stopTutorialNotes)
+                    Message8pm.TriggerMessage();
                 //popup.UpdateTooltipMessage("8PM: 7 hours remain.");
             }
             else if (Clock >= 960 && Clock <= 962 && manager != null && hourIsPlaying == false)
@@ -182,7 +191,8 @@ public class clockCntrl : MonoBehaviour
                 hourIsPlaying = true;
                 manager.Play("Clock 10", false);
                 clipLength = 35 + Clock;
-                Message10pm.TriggerMessage();
+                if (!stopTutorialNotes)
+                    Message10pm.TriggerMessage();
                 //popup.UpdateTooltipMessage("10PM: 5 hours remain.");
             }
             else if (Clock >= 1440 && Clock <= 1442 && manager != null && hourIsPlaying == false)
@@ -261,5 +271,17 @@ public class clockCntrl : MonoBehaviour
         WatcherTime = Time.realtimeSinceStartup;
         CreepTime = Time.realtimeSinceStartup;
         TrapTime = Time.realtimeSinceStartup;
+    }
+    public float Gettime()
+    {
+        return Clock;
+    }
+    public void StopTime(bool state)
+    {
+        stopTime = state;
+    }
+    public void StopTutorialNotes(bool state)
+    {
+        stopTutorialNotes = state;
     }
 }

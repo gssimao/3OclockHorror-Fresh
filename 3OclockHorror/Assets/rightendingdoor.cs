@@ -28,6 +28,8 @@ public class rightendingdoor : MonoBehaviour
 
     public Animator Fade;
 
+    public EscCntrl escMenu;
+
     [SerializeField]
     TaskListTracker tasklist;
     bool taskGiven = false;
@@ -75,7 +77,10 @@ public class rightendingdoor : MonoBehaviour
 
                 if (player != null && !locked) //Make sure it's not null, check if door is locked
                 {
-                    CameraCrossfade(player.gameObject, tpPoint, player, room);
+                    CameraCrossfade(player.gameObject, tpPoint, player, room); // teleport player
+                    //Turn on all the watchers
+                    //Watcherbundle.SetActive(true);
+                    escMenu.EndingComplete(true);
                     if (manager != null)
                     {
                         manager.Play("Door Open", true);
@@ -89,10 +94,10 @@ public class rightendingdoor : MonoBehaviour
     {
         if (pInv != null && MyKey != null)
         {
-            if (pInv.ContainsItem(MyKey))
+            if (pInv.ContainsItem(MyKey)) // check if we have the key
             {
                 locked = false;
-                foreach (symbolUpdater sym in symbols)
+                foreach (symbolUpdater sym in symbols)// check if all the symbols were turned on
                 {
                     if (!sym.active)
                     {
@@ -104,7 +109,7 @@ public class rightendingdoor : MonoBehaviour
             if (locked)
             {
                 //toolTipScript.UpdateTooltipMessage("The handle won't budge - there appears to be a cross shaped slot.");
-                MessageRedBookHint.TriggerMessage();
+                MessageRedBookHint.PlayOnlyOnceTrigger();
                 if (manager != null)
                 {
                     manager.Play("Locked Door", false);
@@ -113,8 +118,8 @@ public class rightendingdoor : MonoBehaviour
         }
         else
         {
-            Tooltip.Message = "This door is locked.";
-            Debug.LogError("Door is locked but there is no key or inv set");
+            //Tooltip.Message = "This door is locked.";
+          //  Debug.LogError("Door is locked but there is no key or inv set");
         }
     }
 

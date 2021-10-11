@@ -8,6 +8,8 @@ public class DiamondCntrl : MonoBehaviour
     GameObject player;
     [SerializeField]
     GameObject EndCanv;
+    [SerializeField]
+    public endScreenControl endController;
 
     public invInput Listener;
     bool diamondTaken = false;
@@ -15,12 +17,25 @@ public class DiamondCntrl : MonoBehaviour
     UniversalControls uControls;
     private void Awake()
     {
+        endController = GameObject.Find("EndScreenController").GetComponent<endScreenControl>();
         uControls = new UniversalControls();
         uControls.Enable();
-    }
+        
+}
     private void OnDisable()
     {
         uControls.Disable();
+    }
+    public void triggerEnding1()
+    {
+        endController.TriggerEnding(1);
+        endController.PassEndingTime(player.GetComponent<clockCntrl>().Gettime());
+        player.GetComponent<clockCntrl>().StopTime(false);// resuming time
+    }
+    public void ResumeTime()
+    {
+        //continue clock
+        player.GetComponent<clockCntrl>().StopTime(false);//called in gameObject endcanvas button
     }
     // Update is called once per frame
     void Update()
@@ -35,6 +50,7 @@ public class DiamondCntrl : MonoBehaviour
                 {
                     diamondTaken = true;
                     EndCanv.SetActive(true);
+                    player.GetComponent<clockCntrl>().StopTime(true);
                 }       
             }
             player.GetComponent<PlayerMovement>().leftSide = true;

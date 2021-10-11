@@ -6,6 +6,7 @@ public class DisableTutorialMessages : MonoBehaviour
 {
 
     GameObject[] tutorialNotes;
+    public GameObject player;
     void Awake()
     {
         tutorialNotes = GameObject.FindGameObjectsWithTag("TutorialMessage");
@@ -17,6 +18,7 @@ public class DisableTutorialMessages : MonoBehaviour
         {
             tutorialNotes[i].gameObject.SetActive(isActive);
         }
+        player.GetComponent<clockCntrl>().StopTutorialNotes(isActive);
 
     }
 

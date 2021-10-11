@@ -15,9 +15,15 @@ public class AltarCntrl : MonoBehaviour
     [SerializeField]
     invInput Listener;
 
+    public endScreenControl endController;
+    public EscCntrl escMenu;
+    public sendMessage RighEndingMessageNoDiamond;
+    public sendMessage RighEndingMessageWithDiamond;
+
     UniversalControls uControls;
     private void Awake()
     {
+        endController = GameObject.Find("EndScreenController").GetComponent<endScreenControl>();
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -25,6 +31,22 @@ public class AltarCntrl : MonoBehaviour
     {
         uControls.Disable();
     }
+
+    public void triggerEnding2()
+    {
+        escMenu.EndingComplete(false);
+        endController.TriggerEnding(2);
+        endController.PassEndingTime(player.GetComponent<clockCntrl>().Gettime()); // storing the game time 
+        player.GetComponent<clockCntrl>().StopTime(false); // resume time in clock script
+    }
+    public void triggerEnding3()
+    {
+        escMenu.EndingComplete(false);
+        endController.TriggerEnding(3);
+        endController.PassEndingTime(player.GetComponent<clockCntrl>().Gettime()); // storing the game time 
+        player.GetComponent<clockCntrl>().StopTime(false); // resume time in clock script
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,11 +60,16 @@ public class AltarCntrl : MonoBehaviour
 
                 if (player.GetComponent<PlayerMovement>().leftSide)
                 {
-                    Diamond.SetActive(true);
+                    
+                    //triggerEnding3();
+                    Diamond.SetActive(true); //calling those canvas
+                    RighEndingMessageWithDiamond.TriggerCreepyFont();
                 }
                 else
                 {
-                    noDiamond.SetActive(true);
+                    //triggerEnding2();
+                    noDiamond.SetActive(true); // calling ending 2
+                    RighEndingMessageNoDiamond.TriggerMessage();
                 }
             }
         }

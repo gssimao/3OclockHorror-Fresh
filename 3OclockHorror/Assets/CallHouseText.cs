@@ -9,6 +9,9 @@ public class CallHouseText : MonoBehaviour
     private Queue<string> messageQueue;
     private Writer textWriter;
     public Text TextUi;
+    public Color textColor;
+    public Font normal;
+    public Font FatherCreepy;
     //public AudioSource typewriter;
     //public AudioSource DoneWriting;
     private Writer.TextWriterSingle textWriterSingle;
@@ -22,6 +25,7 @@ public class CallHouseText : MonoBehaviour
     private AudioManager manager;
     private void Awake()
     {
+        textColor = TextUi.color;
         manager = FindObjectOfType<AudioManager>();
         messageQueue = new Queue<string>();
         Color newColor = blackTop.color;
@@ -60,7 +64,7 @@ public class CallHouseText : MonoBehaviour
         if (textWriterSingle != null && textWriterSingle.isActive())
         {
             // the writer is active and currently writting
-            Debug.Log("Finishing writer");
+            //Debug.Log("Finishing writer");
             textWriterSingle.WriteAndDestroy();
         }
         else
@@ -73,22 +77,33 @@ public class CallHouseText : MonoBehaviour
             {
                 message = messageQueue.Dequeue();
                 StartTypingSound();
+                //TextUi.font = "Newfont";
                 textWriterSingle = Writer.AddWriter_Static(TextUi, message, .05f, true, true, StopTypingSound);
                 Autoplay(true);
             }
         }
     }
 
-    public void SetActivateAndGrabString(Message dialogue)
+    public void SetActivateAndGrabString(Message dialogue, bool usecreepy)
     {
-
+        if(usecreepy)
+        {
+            TextUi.font = FatherCreepy;
+            TextUi.color = Color.red;
+        }
+        else
+        {
+            TextUi.font = normal;
+            TextUi.color = textColor;
+        }
         blackTop.gameObject.SetActive(true);
         Button.interactable = true;
+
         //Debug.Log("this is message count " + messageQueue.Count);
         if (messageQueue.Count == 0)
         {
             messageQueue.Clear();
-
+            
             foreach (string message in dialogue.messagesToWrite) // loading the messages
             {
                 messageQueue.Enqueue(message);

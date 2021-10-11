@@ -26,6 +26,7 @@ public class DeleteAfterInteract : MonoBehaviour
             newColor.a = 0; // changing Alpha to zero
         }
         ImageTutorial.color = newColor;
+        Tooltip.Message = "";
     }
 
     private void OnDisable()

@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //manager.Play("Heavy Wind");
         }
-        Debug.Log("hello");
+        //Debug.Log("hello");
     }
 
     // Update is called once per frame
