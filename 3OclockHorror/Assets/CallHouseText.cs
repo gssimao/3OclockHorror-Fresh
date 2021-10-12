@@ -19,9 +19,9 @@ public class CallHouseText : MonoBehaviour
     public Image mouse;
     public Button Button;
     public bool destroyBlackTop = false;
-    private bool AutoplayText = true;
+    public bool AutoplayText = true;
     float AutoPlayTime = 35f;
-    private static float desirableWaitTime = 10f;
+    private static float desirableWaitTime = 35f;
     private AudioManager manager;
     private void Awake()
     {

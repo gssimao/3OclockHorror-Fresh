@@ -28,12 +28,10 @@ public class EscCntrl : MonoBehaviour
 
     public void MainMenu()
     {
-<<<<<<< Updated upstream
         manager = FindObjectOfType<AudioManager>();
         manager.StopAll();
         Debug.Log("Main menu time");
-        ChangeScene();
-=======
+
         if(!endingTriggered)
         {
             manager.StopAll();
@@ -44,8 +42,6 @@ public class EscCntrl : MonoBehaviour
             this.gameObject.SetActive(false);
             CantScapeMessage.TriggerCreepyFont();
         }
-
->>>>>>> Stashed changes
     }
     public void ChangeScene()
     {

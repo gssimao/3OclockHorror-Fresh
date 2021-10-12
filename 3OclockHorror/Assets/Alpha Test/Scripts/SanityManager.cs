@@ -69,11 +69,12 @@ public class SanityManager : MonoBehaviour
 
         if (effectOn)
         {
+            StartCoroutine(ShakeScrean());
             if (timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime; //countdown to turn off the effect.
             }
-            if (timeLeft <= 0)
+            else if (timeLeft <= 0)
             {
                 turnOffEffect(currentlyPlaying);
             }
@@ -84,6 +85,19 @@ public class SanityManager : MonoBehaviour
             playEffect(effectCue[0]);
             removeEffectCue();
         }
+    }
+    IEnumerator ShakeScrean()
+    {
+        while(effectOn)
+        {
+            Vector3 originalPosition = this.GetComponent<PlayerMovement>().myRoom.GetCameraPoint().position;
+            float x = Random.Range(-.09f, .09f) * .02f;
+            float y = Random.Range(-.9f, .9f) *.02f;
+            Camera.main.transform.position = new Vector3(x+originalPosition.x, y+originalPosition.y, originalPosition.z);
+            yield return null;
+        }
+        Camera.main.transform.position = this.GetComponent<PlayerMovement>().myRoom.GetCameraPoint().position;
+        material.SetFloat("_Flick", 0f);
     }
 
     public void ChangeSanity(float changeValue)
@@ -107,7 +121,7 @@ public class SanityManager : MonoBehaviour
             switch (effectNumber)
             {
                 case 1:
-                    timeLeft = 10.0f;//setting for how long the effect will be active
+                    timeLeft = 8.0f;//setting for how long the effect will be active
                     material.SetFloat("_Flick", 0.4f); // activating the effect // the flick is at (0.4). Currently is can go from 0 to 0.4.
                     currentlyPlaying = 1;
                     break;

@@ -65,6 +65,10 @@ public class room : MonoBehaviour
             Gizmos.DrawWireSphere(Spawn.transform.position, 0.2f);
         }
     }
+    public Transform GetCameraPoint()
+    {
+        return cameraPoint.transform;
+    }
     public void SnowParticleSwitch(string roomName) //this will check if the player is in the same room as the particle effect and if so it will turn the effect on
     {
         Debug.Log("Inside the Snow Particle Switch fuction");

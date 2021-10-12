@@ -280,6 +280,10 @@ public class clockCntrl : MonoBehaviour
     {
         stopTime = state;
     }
+    public void ResumeTime()
+    {
+        stopTime = true;
+    }
     public void StopTutorialNotes(bool state)
     {
         stopTutorialNotes = state;

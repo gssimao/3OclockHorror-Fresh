@@ -5321,10 +5321,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextUi: {fileID: 1020589269}
+  textColor: {r: 0, g: 0, b: 0, a: 0}
+  normal: {fileID: 12800000, guid: 627ea37d68805af40b6a3fb84510d2bc, type: 3}
+  FatherCreepy: {fileID: 12800000, guid: 1ad7c722e437b48409795672b0e98c68, type: 3}
   blackTop: {fileID: 1263046469}
   mouse: {fileID: 1455844975}
   Button: {fileID: 90031765}
   destroyBlackTop: 0
+  AutoplayText: 1
 --- !u!1 &1345135570
 GameObject:
   m_ObjectHideFlags: 0

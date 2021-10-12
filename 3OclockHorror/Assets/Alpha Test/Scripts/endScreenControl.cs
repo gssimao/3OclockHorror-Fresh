@@ -9,9 +9,11 @@ public class endScreenControl : MonoBehaviour
     public string endMessage;
     public int endingCondition = 0;
     public float Finaltime = 0;
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
+        
         if (instance != null)
         {
             Destroy(gameObject);
@@ -25,7 +27,12 @@ public class endScreenControl : MonoBehaviour
     }
     public void TriggerEnding(int condition)
     {
+        if (Player == null)
+        {
+            Player = GameObject.Find("Player2");
+        }
         endingCondition = condition;
+        Finaltime = Player.GetComponent<clockCntrl>().Gettime();
         SceneManager.LoadScene("Ending");
     }
 

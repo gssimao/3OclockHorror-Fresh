@@ -2077,10 +2077,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextUi: {fileID: 1581852650}
+  textColor: {r: 0, g: 0, b: 0, a: 0}
+  normal: {fileID: 12800000, guid: 627ea37d68805af40b6a3fb84510d2bc, type: 3}
+  FatherCreepy: {fileID: 12800000, guid: 1ad7c722e437b48409795672b0e98c68, type: 3}
   blackTop: {fileID: 2074547928}
   mouse: {fileID: 1761840617}
   Button: {fileID: 1987015458}
   destroyBlackTop: 0
+  AutoplayText: 1
 --- !u!1 &163704287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7395,6 +7399,8 @@ MonoBehaviour:
   TrapTime: 1680
   player: {fileID: 638425234}
   sanity: {fileID: 0}
+  stopTime: 0
+  stopTutorialNotes: 0
   Clock: 0
   minuteHand: {fileID: 1331584870}
   hourHand: {fileID: 1331584871}
@@ -12323,6 +12329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fade: {fileID: 1213580888}
+  CantScapeMessage: {fileID: 0}
 --- !u!114 &1104969857
 MonoBehaviour:
   m_ObjectHideFlags: 0

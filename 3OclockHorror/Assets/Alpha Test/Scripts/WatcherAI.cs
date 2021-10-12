@@ -152,7 +152,7 @@ public class WatcherAI : MonoBehaviour
 
             if (distance <= 0.4)
             {
-                if (!WatcherHallway)
+                if (!WatcherHallway) //getting hit by the watcher
                 {
                     sanityManager.ChangeSanity(-2 * Time.deltaTime); // could trigger messega here
                     if(!playingMessage)

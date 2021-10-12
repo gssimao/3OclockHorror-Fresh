@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
 				DontDestroyOnLoad(gameObject);
 			}
 
-        Debug.Log("hello");
+        //Debug.Log("hello");
 
         foreach (Sound s in sounds) //Init each sound - give it a source and init that source to make it playable
         {
@@ -161,7 +161,7 @@ public class AudioManager : MonoBehaviour
             //s.source.Stop();
         }
 
-        Debug.Log("all Stopped");
+        //Debug.Log("all Stopped");
         halt = true;
         StartCoroutine("ReleaseHalt");
     }

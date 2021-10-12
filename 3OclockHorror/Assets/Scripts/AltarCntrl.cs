@@ -60,14 +60,13 @@ public class AltarCntrl : MonoBehaviour
 
                 if (player.GetComponent<PlayerMovement>().leftSide)
                 {
-                    
-                    //triggerEnding3();
+                    player.GetComponent<clockCntrl>().StopTime(true); // stop all time the player beated the game
                     Diamond.SetActive(true); //calling those canvas
                     RighEndingMessageWithDiamond.TriggerCreepyFont();
                 }
                 else
                 {
-                    //triggerEnding2();
+                    player.GetComponent<clockCntrl>().StopTime(true);// stop all time the player beated the game
                     noDiamond.SetActive(true); // calling ending 2
                     RighEndingMessageNoDiamond.TriggerMessage();
                 }

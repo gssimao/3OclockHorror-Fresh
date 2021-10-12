@@ -4,6 +4,7 @@
 3OclockHorror/[Bb]uild/
 3OclockHorror/[Bb]uilds/
 3OclockHorror/Assets/AssetStoreTools*
+Build/
 
 # Visual Studio cache directory
 .vs/
