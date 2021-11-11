@@ -19,6 +19,8 @@ public class clockCntrl : MonoBehaviour
 
     [SerializeField]
     public float Clock = 0;
+    [SerializeField]
+    public float Realtime = 0;
 
     [SerializeField]
     GameObject minuteHand;
@@ -71,7 +73,10 @@ public class clockCntrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(!stopTime)
+        {
+            Realtime += Time.deltaTime;
+        }
         if (player.myRoom != null && player.myRoom.getName() != "Outside")
         {
             if (!profane)
@@ -274,7 +279,7 @@ public class clockCntrl : MonoBehaviour
     }
     public float Gettime()
     {
-        return Clock;
+        return Realtime;
     }
     public void StopTime(bool state)
     {
