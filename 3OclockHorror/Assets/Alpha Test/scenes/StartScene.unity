@@ -3992,7 +3992,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &337821007
@@ -7402,6 +7402,7 @@ MonoBehaviour:
   stopTime: 0
   stopTutorialNotes: 0
   Clock: 0
+  Realtime: 0
   minuteHand: {fileID: 1331584870}
   hourHand: {fileID: 1331584871}
   watcher: {fileID: 0}
@@ -15595,6 +15596,7 @@ GameObject:
   - component: {fileID: 1370340544}
   - component: {fileID: 1370340545}
   - component: {fileID: 1370340546}
+  - component: {fileID: 1370340547}
   m_Layer: 0
   m_Name: FrontDoor
   m_TagString: Interactible
@@ -15646,7 +15648,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370340543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -15655,6 +15657,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.026324319}
   serializedVersion: 2
   m_Radius: 0.7587156
+--- !u!61 &1370340547
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370340543}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.021348327, y: -0.12799978}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3270769, y: 1.2559996}
+  m_EdgeRadius: 0
 --- !u!1 &1384614716
 GameObject:
   m_ObjectHideFlags: 0

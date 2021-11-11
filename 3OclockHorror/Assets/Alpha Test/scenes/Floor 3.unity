@@ -178,6 +178,7 @@ MonoBehaviour:
   tooltip: {fileID: 0}
   Listener: {fileID: 0}
   invCanv: {fileID: 0}
+  cntbackground: {fileID: 0}
 --- !u!114 &1341771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +196,7 @@ MonoBehaviour:
   itemSlots: []
   itemsParent: {fileID: 0}
   PInv: 0
+  taskList: {fileID: 0}
   active: 0
 --- !u!60 &1341772
 PolygonCollider2D:
@@ -322,7 +324,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &14234610
@@ -369,7 +373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &18506728
@@ -447,8 +453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!212 &18506732
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -543,15 +549,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1657989969}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!1 &20986895
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +647,7 @@ MonoBehaviour:
   tooltip: {fileID: 0}
   Listener: {fileID: 0}
   invCanv: {fileID: 0}
+  cntbackground: {fileID: 0}
 --- !u!114 &40569261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,6 +665,7 @@ MonoBehaviour:
   itemSlots: []
   itemsParent: {fileID: 0}
   PInv: 0
+  taskList: {fileID: 0}
   active: 0
 --- !u!60 &40569262
 PolygonCollider2D:
@@ -811,7 +823,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &63895487
@@ -858,7 +872,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &68250095
@@ -905,7 +921,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &69231935
@@ -952,7 +970,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &79741024
@@ -1116,7 +1136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &97566488
@@ -1163,7 +1185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1001 &110148188
@@ -1340,15 +1364,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 317649881}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!212 &127088124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1413,8 +1441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &127088126
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1485,7 +1513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &159660525
@@ -1596,7 +1626,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &173357086
@@ -1643,7 +1675,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &179398054
@@ -1720,7 +1754,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &218918014
@@ -1773,6 +1809,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9a1f4055e5aef4c956f74be1f9f91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floor3Rooms: []
+  floor2Rooms: []
+  floor1Rooms: []
   Rooms:
   - {fileID: 415927360}
   - {fileID: 241857674}
@@ -1788,12 +1827,36 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   sanityManager: {fileID: 0}
   watcherAnim: {fileID: 541735130}
+  circleAnim: {fileID: 0}
   candlesOut: 0
   isPlaying: 0
+  isFarPlaying: 0
+  isClosePlaying: 0
+  isScreamPlaying: 0
   timerLock: 1
+  distance: 0
   plyAngle: 0
+  WatcherHallway: 0
+  abandonment: 0
+  Mask: {fileID: 0}
+  maskStartPosition: {fileID: 0}
   currentRoom: {fileID: 1734360194}
   Candles: []
+  eastHallway: {fileID: 0}
+  startPoint: {fileID: 0}
+  Spawns: []
+  spwnDist: 0
+  roomBFHallway: {fileID: 0}
+  Fade: {fileID: 0}
+  plyAnim: {fileID: 0}
+  watchClip: {fileID: 0}
+  message1: {fileID: 0}
+  message2: {fileID: 0}
+  message3: {fileID: 0}
+  sendMessage1: 1
+  sendMessage2: 0
+  sendMessage3: 0
+  waitTime: 30
 --- !u!212 &218918017
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1904,7 +1967,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &241857672
@@ -1956,11 +2021,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomObject: {fileID: 241857672}
-  watcherSpawn: {fileID: 20986895}
+  watcherSpawn:
+  - {fileID: 0}
   entrancePoint: {fileID: 0}
   cameraPoint: {fileID: 692082933}
   entrance: {fileID: 0}
   roomName: MirrorRoom
+  floorNum: 0
+  SnowParticle: {fileID: 0}
 --- !u!60 &241857676
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2093,7 +2161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &255274422
@@ -2140,7 +2210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &257270274
@@ -2187,7 +2259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &278430318
@@ -2234,7 +2308,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &279296893
@@ -2281,7 +2357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &280525237
@@ -2682,6 +2760,7 @@ MonoBehaviour:
   itemSlots: []
   itemsParent: {fileID: 0}
   PInv: 0
+  taskList: {fileID: 0}
   active: 0
 --- !u!212 &311464270
 SpriteRenderer:
@@ -2778,7 +2857,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &317649881
@@ -2855,7 +2936,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &343368161
@@ -2933,8 +3016,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &343368165
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2978,15 +3061,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1440299296}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!212 &343368167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3113,8 +3200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &358585976
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3158,15 +3245,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 562106600}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!212 &358585978
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3262,7 +3353,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &364016117
@@ -3401,7 +3494,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &414987774
@@ -3448,7 +3543,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &415927358
@@ -3503,11 +3600,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomObject: {fileID: 415927358}
-  watcherSpawn: {fileID: 995763306}
+  watcherSpawn:
+  - {fileID: 0}
   entrancePoint: {fileID: 0}
   cameraPoint: {fileID: 2011462899}
   entrance: {fileID: 0}
   roomName: MasterBedroom
+  floorNum: 0
+  SnowParticle: {fileID: 0}
 --- !u!60 &415927362
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3641,7 +3741,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &423409987
@@ -3688,7 +3790,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &439187943
@@ -3969,8 +4073,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!212 &472059009
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4065,15 +4169,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1612574679}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!1 &477410276
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,6 +4237,7 @@ MonoBehaviour:
   tooltip: {fileID: 0}
   Listener: {fileID: 0}
   invCanv: {fileID: 0}
+  cntbackground: {fileID: 0}
 --- !u!114 &477410279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4146,6 +4255,7 @@ MonoBehaviour:
   itemSlots: []
   itemsParent: {fileID: 0}
   PInv: 0
+  taskList: {fileID: 0}
   active: 0
 --- !u!60 &477410280
 PolygonCollider2D:
@@ -4392,15 +4502,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1766307819}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!4 &499757947
 Transform:
   m_ObjectHideFlags: 0
@@ -4429,8 +4543,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &499757949
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4501,7 +4615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &514817258
@@ -4548,7 +4664,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &537332578
@@ -4595,7 +4713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &539973332
@@ -4642,7 +4762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &541735129
@@ -4791,7 +4913,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &562106600
@@ -4868,7 +4992,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &593944556
@@ -4915,7 +5041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &599899497
@@ -4992,7 +5120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &627670215
@@ -5050,6 +5180,7 @@ MonoBehaviour:
   tooltip: {fileID: 0}
   Listener: {fileID: 0}
   invCanv: {fileID: 0}
+  cntbackground: {fileID: 0}
 --- !u!114 &627670218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5067,6 +5198,7 @@ MonoBehaviour:
   itemSlots: []
   itemsParent: {fileID: 0}
   PInv: 0
+  taskList: {fileID: 0}
   active: 0
 --- !u!60 &627670219
 PolygonCollider2D:
@@ -5194,7 +5326,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &633521559
@@ -5271,7 +5405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &660298478
@@ -5349,6 +5485,7 @@ MonoBehaviour:
   itemSlots: []
   itemsParent: {fileID: 0}
   PInv: 0
+  taskList: {fileID: 0}
   active: 0
 --- !u!60 &660298482
 PolygonCollider2D:
@@ -5476,7 +5613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &692082933
@@ -5553,7 +5692,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &741423590
@@ -5768,15 +5909,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 599899497}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 11400000, guid: e37a3340002e8aa468a3856341885584, type: 2}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!114 &749716157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5790,8 +5935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &749716158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5862,7 +6007,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &783175818
@@ -5939,7 +6086,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &789635636
@@ -6096,7 +6245,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &807807275
@@ -6152,8 +6303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: 
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!114 &807807278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6501,7 +6652,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &821305897
@@ -6636,7 +6789,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &829929607
@@ -6683,7 +6838,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &832290705
@@ -6730,7 +6887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &833589323
@@ -6976,7 +7135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &918482896
@@ -7023,7 +7184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &932196034
@@ -7070,7 +7233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &950772073
@@ -7117,7 +7282,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &957587315
@@ -7164,7 +7331,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &974692179
@@ -7379,7 +7548,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1010640142
@@ -7435,11 +7606,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomObject: {fileID: 1010640142}
-  watcherSpawn: {fileID: 974692179}
+  watcherSpawn:
+  - {fileID: 0}
   entrancePoint: {fileID: 0}
   cameraPoint: {fileID: 57259130}
   entrance: {fileID: 0}
   roomName: Study
+  floorNum: 0
+  SnowParticle: {fileID: 0}
 --- !u!60 &1010640146
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7574,7 +7748,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1045533824
@@ -7621,7 +7797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1050972217
@@ -7668,13 +7846,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4594ceb2298e74ca662811c98b7e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkullCandle: 0
   player: {fileID: 0}
   Light: {fileID: 1050972217}
   Flicker: {fileID: 1905972948}
   lightEffect: {fileID: 280525237}
   LightMask: {fileID: 833589326}
   flame: {fileID: 1050972220}
+  LeaveOn: 0
   interRange: 0.8
+  lightOn: 0
 --- !u!108 &1050972220
 Light:
   m_ObjectHideFlags: 0
@@ -7780,7 +7961,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1116114490
@@ -7827,7 +8010,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1120585464
@@ -7939,15 +8124,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1909547115}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 11400000, guid: e253d80f2ad6c1b488379832746daa70, type: 2}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!212 &1132408747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8012,8 +8201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &1132408749
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8114,7 +8303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1151409955
@@ -8222,8 +8413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &1156895219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8267,15 +8458,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1816974066}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!212 &1156895221
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8371,7 +8566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1209119692
@@ -8418,7 +8615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1225762327
@@ -8465,7 +8664,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1232835434
@@ -8512,7 +8713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1238752443
@@ -8559,7 +8762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1240798838
@@ -8606,7 +8811,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1243981523
@@ -8739,7 +8946,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1324692368
@@ -8786,7 +8995,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1339295733
@@ -8833,7 +9044,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1369414960
@@ -8880,7 +9093,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1380101945
@@ -8927,7 +9142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1384172093
@@ -8974,7 +9191,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1400788506
@@ -9141,7 +9360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1440299296
@@ -9218,7 +9439,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1473324179
@@ -9265,7 +9488,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1482184645
@@ -9312,7 +9537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1483020187
@@ -9563,7 +9790,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1556510467
@@ -9610,7 +9839,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1579718949
@@ -9786,7 +10017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1587514746
@@ -9833,7 +10066,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1594497517
@@ -9880,7 +10115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1595053778
@@ -9927,7 +10164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1602370914
@@ -9974,7 +10213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1611280436
@@ -10021,7 +10262,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1612574679
@@ -10128,7 +10371,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1626619249
@@ -10209,15 +10454,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1617756544}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!114 &1626619253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10231,8 +10480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &1626619254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10355,7 +10604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1655222678
@@ -10402,7 +10653,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1655850387
@@ -10457,11 +10710,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomObject: {fileID: 1655850387}
-  watcherSpawn: {fileID: 467613609}
+  watcherSpawn:
+  - {fileID: 0}
   entrancePoint: {fileID: 0}
   cameraPoint: {fileID: 481659114}
   entrance: {fileID: 0}
   roomName: EastHallway
+  floorNum: 0
+  SnowParticle: {fileID: 0}
 --- !u!60 &1655850390
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -10625,7 +10881,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1715550805
@@ -10672,7 +10930,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1734360193
@@ -10707,11 +10967,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomObject: {fileID: 1734360193}
-  watcherSpawn: {fileID: 1120585464}
+  watcherSpawn:
+  - {fileID: 0}
   entrancePoint: {fileID: 0}
   cameraPoint: {fileID: 1151409955}
   entrance: {fileID: 0}
   roomName: HubRoom
+  floorNum: 0
+  SnowParticle: {fileID: 0}
 --- !u!60 &1734360195
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -10729,7 +10992,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4, y: 3.2}
+    oldSize: {x: 12.8, y: 5.86}
     newSize: {x: 6.4, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -10906,8 +11169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &1734363433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10951,15 +11214,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1867283084}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!212 &1734363435
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11055,7 +11322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1744185446
@@ -11102,7 +11371,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1757164371
@@ -11149,7 +11420,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1766307819
@@ -11237,6 +11510,7 @@ MonoBehaviour:
   tooltip: {fileID: 0}
   Listener: {fileID: 0}
   invCanv: {fileID: 0}
+  cntbackground: {fileID: 0}
 --- !u!114 &1772870076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11254,6 +11528,7 @@ MonoBehaviour:
   itemSlots: []
   itemsParent: {fileID: 0}
   PInv: 0
+  taskList: {fileID: 0}
   active: 0
 --- !u!60 &1772870077
 PolygonCollider2D:
@@ -11384,7 +11659,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   GrandfatherClock: {fileID: 1784482519}
+  playerMove: {fileID: 0}
   soundRange: 3
+  currentRoom: {fileID: 0}
+  playerInRoom: 0
 --- !u!212 &1784482522
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11480,7 +11758,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1805660724
@@ -11527,7 +11807,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1816974066
@@ -11604,7 +11886,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1823413796
@@ -11651,7 +11935,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1867283084
@@ -11815,7 +12101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1880910037
@@ -11862,7 +12150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1905972948
@@ -12041,7 +12331,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1969946062
@@ -12088,7 +12380,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &1972923898
@@ -12121,7 +12415,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!4 &1972923900
@@ -12191,11 +12487,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomObject: {fileID: 1974632993}
-  watcherSpawn: {fileID: 308201946}
+  watcherSpawn:
+  - {fileID: 0}
   entrancePoint: {fileID: 0}
   cameraPoint: {fileID: 783175818}
   entrance: {fileID: 0}
   roomName: UnknownRoom
+  floorNum: 0
+  SnowParticle: {fileID: 0}
 --- !u!60 &1974632997
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -12400,7 +12699,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &2011462899
@@ -12477,7 +12778,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &2049539070
@@ -12558,15 +12861,19 @@ MonoBehaviour:
   entrancePointRoom: {fileID: 1140262547}
   player: {fileID: 0}
   Listener: {fileID: 0}
-  transition: {fileID: 1400788508}
   transitionOnOff: 1
-  blackWallanim: {fileID: 976284321}
-  crossFade: {fileID: 821305897}
-  blackWall: {fileID: 976284319}
+  range: 0.5
   locked: 0
   pInv: {fileID: 0}
   MyKey: {fileID: 0}
   lockCanv: {fileID: 0}
+  taskManager: {fileID: 0}
+  Fade: {fileID: 0}
+  WatchHallwayTrigger: 0
+  watcher: {fileID: 0}
+  WatcherHallway: {fileID: 0}
+  floorChanger: 0
+  destString: 
 --- !u!114 &2049539075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12580,8 +12887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TooltipText: {fileID: 460473766}
-  Message: '''E'''
-  toolSwitch: 0
+  player: {fileID: 0}
+  cnvGroup: {fileID: 0}
 --- !u!61 &2049539076
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12652,7 +12959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &2062587215
@@ -12699,7 +13008,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &2062851908
@@ -12746,7 +13057,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &2071342773
@@ -12793,7 +13106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &2072140669
@@ -12833,6 +13148,7 @@ MonoBehaviour:
   itemSlots: []
   itemsParent: {fileID: 0}
   PInv: 0
+  taskList: {fileID: 0}
   active: 0
 --- !u!114 &2072140671
 MonoBehaviour:
@@ -12855,6 +13171,7 @@ MonoBehaviour:
   tooltip: {fileID: 0}
   Listener: {fileID: 0}
   invCanv: {fileID: 0}
+  cntbackground: {fileID: 0}
 --- !u!60 &2072140672
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -12985,6 +13302,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1358479cf7db6489a7b9dfc64996c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BCMessage1: {fileID: 0}
+  BCMessage2: {fileID: 0}
+  BCMessage3: {fileID: 0}
+  FirstFloor:
+    rows:
+    - row: []
+    - row: []
+  SecondFloor:
+    rows:
+    - row: []
+    - row: []
+  ThirdFloor:
+    rows:
+    - row: []
+    - row: []
   rooms:
     rows:
     - row:
@@ -13002,6 +13334,13 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 1974632995}
       - {fileID: 0}
+  playerTPPoint: {fileID: 0}
+  BCTPPoint: {fileID: 0}
+  BCAnimationCanvas: {fileID: 0}
+  timePasser: {fileID: 0}
+  TimePasserCanv: {fileID: 0}
+  InvCanv: {fileID: 0}
+  InvManager: {fileID: 0}
   player: {fileID: 0}
   anim: {fileID: 2099441841}
   curPoint: {fileID: 1556510469}
@@ -13013,6 +13352,9 @@ MonoBehaviour:
   isWalking: 0
   isRunning: 0
   isPlaying: 0
+  isWanPlaying: 0
+  isChasePlaying: 0
+  Fade: {fileID: 0}
 --- !u!95 &2099441841
 Animator:
   serializedVersion: 3
@@ -13209,7 +13551,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
 --- !u!1 &2125430954
@@ -13315,11 +13659,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomObject: {fileID: 2125430954}
-  watcherSpawn: {fileID: 633521559}
+  watcherSpawn:
+  - {fileID: 0}
   entrancePoint: {fileID: 0}
   cameraPoint: {fileID: 179398054}
   entrance: {fileID: 0}
   roomName: WestHallway
+  floorNum: 0
+  SnowParticle: {fileID: 0}
 --- !u!60 &2125430958
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -13405,6 +13752,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 0.2
+  drawDebug: 0
   connectivityRadius: 1
+  drawConnecRadius: 0
   connections: []
   waypointTag: WaypointF3
