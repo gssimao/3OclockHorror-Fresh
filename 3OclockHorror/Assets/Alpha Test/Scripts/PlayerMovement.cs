@@ -71,8 +71,8 @@ public class PlayerMovement : MonoBehaviour
         //Check if the player can move and is registering input
         if (canMove)
         {
-            movement.x = uControls.Player.MovePlayer.ReadValue<Vector2>().x;//Input.GetAxisRaw("Horizontal");
-            movement.y = uControls.Player.MovePlayer.ReadValue<Vector2>().y;//Input.GetAxisRaw("Vertical");
+            movement.x = uControls.Player.MovePlayer.ReadValue<Vector2>().x; //Input.GetAxisRaw("Horizontal");
+            movement.y = uControls.Player.MovePlayer.ReadValue<Vector2>().y; //Input.GetAxisRaw("Vertical");
         }
         else
         {
@@ -234,33 +234,3 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("walkingBackwards", false);
     }
 }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// new stuff here, testing
-    /*public void GotoNumberX(Vector2 maxValue, bool canMove) // min is current value and max is the value we want to move to
-    {
-        if (canMove)
-        {
-            LeanTween.moveX(this.gameObject, maxValue.x, walkTime).setEaseOutQuad();
-        }
-    }
-    public void GotoNumberY(Vector2 maxValue, bool canMove) // min is current value and max is the value we want to move to
-    {
-        if (canMove)
-        {
-            LeanTween.moveY(this.gameObject, maxValue.y, walkTime).setEaseOutQuad();
-        }
-    }
-    public float CheckSpeed(float countTime)
-    {
-        if (countTime < 0.4f) // the player is clicking fast
-        {
-            walkTime = .2f; // walkTime is the amount of time it takes to move the character.
-        }
-        else // the player is clicking slow
-        {
-            walkTime = .5f;
-        }
-        countTime = 0;
-        return countTime;
-    }
-}*/
