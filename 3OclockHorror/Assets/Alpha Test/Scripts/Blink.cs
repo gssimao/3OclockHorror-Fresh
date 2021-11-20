@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Blink : MonoBehaviour
 {
-    public float LoopTime = 5;
+    public float LoopTime = 3;
     public float AlphaMax = .6f;
     public Image image;
     // Start is called before the first frame update

@@ -69,7 +69,7 @@ public class room : MonoBehaviour
     {
         return cameraPoint.transform;
     }
-    public void SnowParticleSwitch(string roomName) //this will check if the player is in the same room as the particle effect and if so it will turn the effect on
+   /* public void SnowParticleSwitch(string roomName) //this will check if the player is in the same room as the particle effect and if so it will turn the effect on
     {
         Debug.Log("Inside the Snow Particle Switch fuction");
         PlayerMovement player = GetComponent<PlayerMovement>(); //Grab player movement script
@@ -82,5 +82,5 @@ public class room : MonoBehaviour
         {
             SnowParticle.Pause();
         }
-    }
+    }*/
 }

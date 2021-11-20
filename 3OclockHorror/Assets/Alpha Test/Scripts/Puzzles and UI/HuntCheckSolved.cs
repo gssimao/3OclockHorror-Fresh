@@ -98,7 +98,9 @@ public class HuntCheckSolved : MonoBehaviour
             solved = true;
             Solved.SetActive(true);
             GameObject.Find("BeartrapPuzzle").SetActive(false);
-            DisableOldBearTrap.GetComponent<ActivateBeartrap>().ChangeTrigger(false, broken);
+            if(!isTutorial)
+                DisableOldBearTrap.GetComponent<ActivateBeartrap>().ChangeTrigger(false, broken);
+
             if (!isTutorial)
             {
                 manager.Stop("Hunter");
@@ -126,8 +128,11 @@ public class HuntCheckSolved : MonoBehaviour
     {
         solved = false;
         lost = false;
-        timeractive = true;
-        timercheck = true;
+        if(!isTutorial)
+        {
+            timeractive = true;
+            timercheck = true;
+        }
     }
     public void ExitPuzzle()
     {
@@ -190,11 +195,17 @@ public class HuntCheckSolved : MonoBehaviour
         {
             timer = 15f;
         }
-        if (TrapCtrl.triggered == 0 && !isTutorial)
+
+        if(!isTutorial) // i've nested this because this is being called at the tutorial and is currently missing the TrapCtrl.triggered reference
         {
-            timer = 15.0f;
+            if (TrapCtrl.triggered == 0) // the ideal solution is to make the scripts independent later
+            {
+                timer = 15.0f;
+            }
+            TrapCtrl.triggered++;
         }
-        TrapCtrl.triggered++;
+        
+       
         if(!isTutorial)
             ExitButton.gameObject.SetActive(false);
         //TimerText = GameObject.Find("Timer").Text;
