@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/UniversalControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Alpha Test/Input System/UniversalControls.inputactions'
 
 using System;
 using System.Collections;
@@ -352,6 +352,17 @@ public class @UniversalControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d56f97f3-6001-4e73-9455-82afbe439a55"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f4fde8b0-2e55-4257-992f-ab0a7a0c15c5"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -363,8 +374,30 @@ public class @UniversalControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""917669d6-6e9a-468c-9fd7-ff4b45830aac"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CursorPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a43c9bbd-ed94-46b3-b737-99108a5f48f8"",
                     ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OtherSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b8e597c-4373-4dcc-9a61-1c1a06eb6495"",
+                    ""path"": ""<Touchscreen>/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

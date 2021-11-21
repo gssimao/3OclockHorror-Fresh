@@ -116,10 +116,10 @@ public class PlayerMovement : MonoBehaviour
             movement.y = uControls.Player.MovePlayer.ReadValue<Vector2>().y; //Input.GetAxisRaw("Vertical");
 
             //for touch only
-            if (TouchWalkLogic.GetIsTouching())
+           /* if (TouchWalkLogic.GetIsTouching())
             {
                 TouchWalkLogic.ChangeTarget(uControls.Player.TouchPosition.ReadValue<Vector2>());
-            }
+            }*/
             // ^^for touch only
 
         }
