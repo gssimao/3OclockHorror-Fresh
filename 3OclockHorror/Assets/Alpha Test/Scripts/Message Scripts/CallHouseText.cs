@@ -20,7 +20,7 @@ public class CallHouseText : MonoBehaviour
     public Button Button;
     public bool destroyBlackTop = false;
     public bool AutoplayText = true;
-    float AutoPlayTime = 35f;
+    float AutoPlayTime = 25f;
     private static float desirableWaitTime = 35f;
     private AudioManager manager;
     private void Awake()

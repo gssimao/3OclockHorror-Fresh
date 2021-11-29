@@ -24,7 +24,7 @@ public class NotifCntrl : MonoBehaviour
 
     private void OnEnable()
     {
-        LeanTween.moveY(Notification, 100, 1.5f);
+        LeanTween.moveY(Notification, 50, 1.5f);
         if (manager != null)
         {
             //manager.Play("Writing");
@@ -45,7 +45,7 @@ public class NotifCntrl : MonoBehaviour
             x += Time.deltaTime;
             if (x > 4)
             {
-                resetCanvas();
+                LeanTween.moveY(Notification, -50, 1.5f).setOnComplete(resetCanvas);
                 hasPlayed = false;
             }
         }
@@ -57,8 +57,8 @@ public class NotifCntrl : MonoBehaviour
     {
         x = 0;
 
-        Vector3 orgPos = new Vector3(Notification.transform.position.x, -100f, Notification.transform.position.z);
-        Notification.transform.position = orgPos;
+        /*Vector3 orgPos = new Vector3(Notification.transform.position.x, -100f, Notification.transform.position.z);
+        Notification.transform.position = orgPos;*/
 
         notifText.text = defString;
 
