@@ -10,7 +10,7 @@ public class EnterTheHouse : MonoBehaviour
     [SerializeField]
     HuntCheckSolved EntrancePuzzle;
     [SerializeField]
-    Inventory plyinv;
+    public Inventory plyinv;
     Scene currentScene;
     [SerializeField]
     string sceneName; // name of scene to transfer to
@@ -19,12 +19,15 @@ public class EnterTheHouse : MonoBehaviour
     [SerializeField]
     invInput Listener;
     [SerializeField]
-    Item key;
+    public Item key;
     [SerializeField]
     GameObject BTPuzzle;
     [SerializeField]
     GameObject KeyPopUp;
     AudioManager manager;
+    public sendMessage hintMessage;
+    public sendMessage hint2Message;
+    private bool lockSolved = false;
 
     public float dist;
     float range = 0.5f;
@@ -53,25 +56,45 @@ public class EnterTheHouse : MonoBehaviour
         if (dist <= range)
         {
             //Listener.isFocus = false;
-            if (uControls.Player.Interact.triggered)
+            if (uControls.Player.Interact.triggered) // interact with door
             {
-                if (!EntrancePuzzle.solved)
-                {
-                    BTPuzzle.SetActive(true);
-                }
-                else if(!plyinv.ContainsItem(key))
-                {
-                    if(KeyPopUp != null)
-                        KeyPopUp.SetActive(true);
-                }
-                if (EntrancePuzzle.solved && plyinv.ContainsItem(key))
-                {
-                    Enterthehouse();
-                }
+                TryToEnter();
             }
         }
     }
+    public void TryToEnter()
+    {
+        if (!GetlockSolved() && !plyinv.ContainsItem(key)) // not solved and no key show hint1
+        {
+            BTPuzzle.SetActive(true);
+            if (hintMessage != null)
+                hintMessage.TriggerMessage();
+        }
+        else if (!GetlockSolved() && plyinv.ContainsItem(key)) // not solved but has key
+        {
+            BTPuzzle.SetActive(true);
+        }
+        else if (GetlockSolved() && !plyinv.ContainsItem(key)) // solved but no key, show hint2
+        {
+            hint2Message.TriggerMessage();
+            if (KeyPopUp != null) // show image once
+            {
+                KeyPopUp.SetActive(true);
+            }
 
+        }
+        else if (GetlockSolved() && plyinv.ContainsItem(key))
+        {
+            //calling house
+            Enterthehouse();
+        }
+    }
+    private bool GetlockSolved()
+    {
+        if(!lockSolved)
+            lockSolved = EntrancePuzzle.solved;
+        return lockSolved;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;

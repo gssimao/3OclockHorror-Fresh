@@ -36,6 +36,9 @@ public class HuntCheckSolved : MonoBehaviour
     private GameObject DisableOldBearTrap;
     public Sprite broken;
 
+    [SerializeField]
+    Inventory plyinv;
+
     public bool solved = false;
     //public GameObject clock;
     public bool timercheck;
@@ -53,8 +56,9 @@ public class HuntCheckSolved : MonoBehaviour
     [Space]
     [SerializeField]
     bool isTutorial = false;
+
     [SerializeField]
-    Item key;
+    EnterTheHouse enterTheHouse;
     [SerializeField]
     GameObject KeyPopUp;
 
@@ -98,28 +102,27 @@ public class HuntCheckSolved : MonoBehaviour
             solved = true;
             Solved.SetActive(true);
             GameObject.Find("BeartrapPuzzle").SetActive(false);
-            if(!isTutorial)
-                DisableOldBearTrap.GetComponent<ActivateBeartrap>().ChangeTrigger(false, broken);
+            manager.Play("Success", false);
 
             if (!isTutorial)
             {
+                DisableOldBearTrap.GetComponent<ActivateBeartrap>().ChangeTrigger(false, broken);
                 manager.Stop("Hunter");
                 SoundTrack.StopALL = false;
                 SoundTrack.CheckFloor();
             }
-            manager.Play("Success", false);
+            
 
-            if(isTutorial)
+            if (isTutorial)
             {
-                if (!playermovement.plyInv.ContainsItem(key))
+                if (!enterTheHouse.plyinv.ContainsItem(enterTheHouse.key))
                 {
-                    KeyPopUp.SetActive(true);
-                    NeedKeyMessage.TriggerMessage();
+                    if (KeyPopUp != null)
+                        KeyPopUp.SetActive(true);
                 }
                 else
                 {
-                    EnterTheHouse ETC = new EnterTheHouse();
-                    StartCoroutine(ETC.LoadYourAsyncScene());
+                    enterTheHouse.TryToEnter();
                 }
             }
         }

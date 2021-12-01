@@ -2248,12 +2248,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618098489}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.892}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1027.1975, y: 67.30002}
-  m_SizeDelta: {x: 75.63867, y: 96.37576}
+  m_AnchoredPosition: {x: 1023.9, y: 68.100006}
+  m_SizeDelta: {x: 58.44963, y: 74.47418}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180440883
 MonoBehaviour:
@@ -2601,8 +2601,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197211595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.19, y: 1.15, z: 0}
-  m_LocalScale: {x: 1.395, y: 1.395, z: 1.395}
+  m_LocalPosition: {x: -1.84, y: 0.31, z: 0}
+  m_LocalScale: {x: 0.8391518, y: 0.8391518, z: 0.8391518}
   m_Children: []
   m_Father: {fileID: 1887692082}
   m_RootOrder: 0
@@ -3252,105 +3252,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &255354256
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 255354257}
-  - component: {fileID: 255354260}
-  - component: {fileID: 255354259}
-  - component: {fileID: 255354258}
-  m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &255354257
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255354256}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1880800493}
-  m_Father: {fileID: 1595402983}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &255354258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255354256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &255354259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255354256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!223 &255354260
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255354256}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &262226683
 GameObject:
   m_ObjectHideFlags: 0
@@ -6744,11 +6645,11 @@ RectTransform:
   - {fileID: 721093536}
   - {fileID: 2074547931}
   - {fileID: 159730166}
+  - {fileID: 1663663969}
   - {fileID: 1670601051}
   - {fileID: 180440882}
   - {fileID: 1423161620}
   - {fileID: 1277428202}
-  - {fileID: 1663663969}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7627,7 +7528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Journal: {fileID: 1596966458}
   InvCanvas: {fileID: 1316188963}
-  moveSpeed: 1.2
+  moveSpeed: 1.5
   anim: {fileID: 638425229}
   myRoom: {fileID: 796928476}
   rb: {fileID: 638425231}
@@ -14565,7 +14466,7 @@ RectTransform:
   - {fileID: 441875712}
   - {fileID: 1653264187}
   m_Father: {fileID: 618098489}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15448,13 +15349,14 @@ MonoBehaviour:
   timeractive: 0
   JumpscareCanvas: {fileID: 0}
   broken: {fileID: 0}
+  plyinv: {fileID: 271317097}
   solved: 0
   timercheck: 0
   lost: 0
   SoundTrack: {fileID: 0}
   HunterTrapActive: 0
   isTutorial: 1
-  key: {fileID: 11400000, guid: fb520a66c35a1af4db2b23e67ea90306, type: 2}
+  enterTheHouse: {fileID: 1370340545}
   KeyPopUp: {fileID: 1595402982}
 --- !u!1 &1358152821
 GameObject:
@@ -15640,6 +15542,8 @@ Transform:
   m_LocalPosition: {x: 0.814, y: -0.063, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1550808646}
+  - {fileID: 1409563522}
   - {fileID: 1595402983}
   m_Father: {fileID: 796928474}
   m_RootOrder: 1
@@ -15665,6 +15569,8 @@ MonoBehaviour:
   key: {fileID: 11400000, guid: 66f84c16d75a6944f946268d7ec5a146, type: 2}
   BTPuzzle: {fileID: 1125768052}
   KeyPopUp: {fileID: 1595402982}
+  hintMessage: {fileID: 1409563523}
+  hint2Message: {fileID: 1550808647}
   dist: 0
 --- !u!58 &1370340546
 CircleCollider2D:
@@ -16178,16 +16084,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409563521}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.8196495}
-  m_LocalScale: {x: 0.0042970343, y: 0.0042970353, z: 0.042970352}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071063, w: 0.7071073}
+  m_LocalPosition: {x: 0, y: 0, z: -5.8894634}
+  m_LocalScale: {x: 0.004138265, y: 0.0041382657, z: 0.04138266}
   m_Children: []
-  m_Father: {fileID: 1595402983}
-  m_RootOrder: 0
+  m_Father: {fileID: 1370340544}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.39769047, y: 0.37619758}
+  m_AnchoredPosition: {x: -0.057677597, y: -2.7570043}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1409563523
@@ -16209,8 +16115,8 @@ MonoBehaviour:
     - I remember the front door was locked. The key, I found in one of the corpses
       in the front of the house.
   CallHouse: {fileID: 159730165}
-  instaPlay: 1
-  playOnlyOnce: 1
+  instaPlay: 0
+  playOnlyOnce: 0
   destroyMessage: 1
   StatueRoomMessageTriger: 0
 --- !u!1 &1418232538
@@ -16362,7 +16268,7 @@ RectTransform:
   m_LocalScale: {x: 0.9583333, y: 0.9583333, z: 0.9583333}
   m_Children: []
   m_Father: {fileID: 618098489}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17531,6 +17437,64 @@ MonoBehaviour:
   isDone: 0
   enter: 1
   isLetter: 0
+--- !u!1 &1550808645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1550808646}
+  - component: {fileID: 1550808647}
+  m_Layer: 5
+  m_Name: Key Hint 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1550808646
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550808645}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071063, w: 0.7071073}
+  m_LocalPosition: {x: 0, y: 0, z: -5.8894634}
+  m_LocalScale: {x: 0.004138265, y: 0.0041382657, z: 0.04138266}
+  m_Children: []
+  m_Father: {fileID: 1370340544}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.057677597, y: -2.7570043}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1550808647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550808645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e867c642435d2146a5d78ddbbb26f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message:
+    nameID: needkeymessage
+    messagesToWrite:
+    - the front door was locked. The key, I found in one of the corpses in the front
+      of the house.
+  CallHouse: {fileID: 159730165}
+  instaPlay: 0
+  playOnlyOnce: 0
+  destroyMessage: 0
+  StatueRoomMessageTriger: 0
 --- !u!1 &1553416597
 GameObject:
   m_ObjectHideFlags: 0
@@ -18456,15 +18420,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595402982}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1.0000001}
-  m_LocalPosition: {x: -0.07, y: -2.54, z: -5.1}
-  m_LocalScale: {x: 1.44339, y: 1.44339, z: 1.44339}
-  m_Children:
-  - {fileID: 1409563522}
-  - {fileID: 255354257}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071063, w: 0.7071073}
+  m_LocalPosition: {x: -0.42, y: -3.14, z: -5.1000953}
+  m_LocalScale: {x: 0.9630515, y: 0.9630515, z: 0.9630515}
+  m_Children: []
   m_Father: {fileID: 1370340544}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &1595402984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18521,8 +18483,8 @@ SpriteRenderer:
   m_SortingOrder: 45
   m_Sprite: {fileID: 21300000, guid: a54a0594a1dbc204da3c59cedf69b096, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1.59, y: 3.73}
   m_AdaptiveModeThreshold: 0.5
@@ -19245,17 +19207,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663663968}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1583, y: 0.79634285, z: 1.1583}
+  m_LocalScale: {x: 1.1583002, y: 0.79634285, z: 1.1583002}
   m_Children: []
   m_Father: {fileID: 618098489}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 81.99951, y: -62}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 866.92, y: -588.2}
+  m_SizeDelta: {x: 77.27481, y: 77.27481}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1663663970
 MonoBehaviour:
@@ -19339,12 +19301,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 618098489}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.106}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1139.7, y: 74.90001}
-  m_SizeDelta: {x: 81.945755, y: 103.43022}
+  m_AnchoredPosition: {x: 1129.6, y: 73.899994}
+  m_SizeDelta: {x: 63.323425, y: 79.92549}
   m_Pivot: {x: 0.49999997, y: 0.50000006}
 --- !u!114 &1670601052
 MonoBehaviour:
@@ -21411,85 +21373,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22, y: 1.17}
   m_EdgeRadius: 0
---- !u!1 &1880800492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1880800493}
-  - component: {fileID: 1880800495}
-  - component: {fileID: 1880800494}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1880800493
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880800492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 255354257}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 52.8, y: -189.1}
-  m_SizeDelta: {x: 194.0918, y: 46.19359}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1880800494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880800492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: c2b4119846e767d4e89635acf2d06934, type: 3}
-    m_FontSize: 36
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Need a Key
---- !u!222 &1880800495
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880800492}
-  m_CullTransparentMesh: 0
 --- !u!1 &1886536822
 GameObject:
   m_ObjectHideFlags: 0

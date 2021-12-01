@@ -122,7 +122,7 @@ public class TableManager : MonoBehaviour
     public int[] coin3Pos = new int[] { 2, 2 };
     public int[] coin4Pos = new int[] { 3, 2 };
 
-    public float coinMoveSpeed = .4f; 
+    public float MoveSpeed = .4f; 
 
     public GameObject coin1;
     public GameObject coin2;
@@ -135,8 +135,9 @@ public class TableManager : MonoBehaviour
     public GameObject blackaqr1;
     public GameObject blackaqr2;
     public GameObject blackaqr3;
-    private float ExecutionTime = .1f;
+    public float ExecutionTime = .3f;
 
+    private bool LockTableMoviment = false;
     UniversalControls uControls;
 
     public bool fin = false;
@@ -234,63 +235,85 @@ public class TableManager : MonoBehaviour
         {
             if (uControls.UI.Select.triggered/*Input.GetMouseButtonUp(0)*/) //this should turn the big to the left
             {
-
-                //adjusting table before rotating
-                tablePosition++;
-                if (tablePosition > 3)
-                {
-                    tablePosition = 0;
-                }
-
-                //rotating table
-                LeanTween.rotateZ(gameObject, table[tablePosition], .8f);
-
-                //Add coins to a cue to be update
-                coinCue = cueCoinUpdate();
-
-                //update coin position with new position
-                ManagePosition();
-
-                //check for the right answer
-                if (checkAnswer(allCoinsPos, puzzleAnswer))
-                {
-                   // UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
-                    plyInv.AddItem(brokenLadder);
-                    taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
-
-                }
+                TurnLeft();
             }
             if (uControls.UI.OtherSelect.triggered/*Input.GetMouseButtonUp(1)*/) //this should turn the big to the right
             {
-                //adjusting table before rotating
-                tablePosition--;
-                if (tablePosition < 0)
-                {
-                    tablePosition = 3;
-                }
-
-                //rotating table
-                LeanTween.rotateZ(gameObject, table[tablePosition], .8f);
-
-                //Add coins to a cue to be update
-                coinCue = cueCoinUpdate();
-
-                //update coin position with new position
-                ManagePosition();
-
-
-                //check for the right answer
-                if (checkAnswer(allCoinsPos, puzzleAnswer))
-                {
-                    //UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
-                    plyInv.AddItem(brokenLadder);
-                    taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
-                }
+                TurnRight();
             }
         }
 
     }
+    public void UnlockTable()
+    {
+        LockTableMoviment = false;
+    }
 
+    public void TurnLeft()
+    {
+        if(!LockTableMoviment)
+        {
+            //LockTableMoviment = true; //to add a timer to wait for the animation from leantween to play out
+            //adjusting table before rotating
+            tablePosition++;
+            if (tablePosition > 3)
+            {
+                tablePosition = 0;
+            }
+
+            //rotating table
+            LeanTween.rotateZ(gameObject, table[tablePosition], MoveSpeed);
+
+            //Add coins to a cue to be update
+            coinCue = cueCoinUpdate();
+
+            //update coin position with new position
+            ManagePosition();
+
+            //check for the right answer
+            if (checkAnswer(allCoinsPos, puzzleAnswer))
+            {
+                // UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
+                plyInv.AddItem(brokenLadder);
+                taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
+
+            }
+        }
+        
+    }
+
+    public void TurnRight()
+    {
+        if (!LockTableMoviment)
+        {
+            //LockTableMoviment = true; //to add a timer to wait for the animation from leantween to play out
+            //adjusting table before rotating
+            tablePosition--;
+            if (tablePosition < 0)
+            {
+                tablePosition = 3;
+            }
+
+            //rotating table
+            LeanTween.rotateZ(gameObject, table[tablePosition], MoveSpeed);
+
+            //Add coins to a cue to be update
+            coinCue = cueCoinUpdate();
+
+            //update coin position with new position
+            ManagePosition();
+
+
+            //check for the right answer
+            if (checkAnswer(allCoinsPos, puzzleAnswer))
+            {
+                //UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
+                plyInv.AddItem(brokenLadder);
+                taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
+            }
+        }
+        
+    }
     private float ManagePosition() // position
     {
         int newLocation = 0;
@@ -329,7 +352,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin1Pos[1], coin1Pos[0]] = 1;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalY(coin1, coinPositionV[coin1Pos[1]],.7f);
+                        LeanTween.moveLocalY(coin1, coinPositionV[coin1Pos[1]], MoveSpeed);
 
 
 
@@ -364,7 +387,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin2Pos[1], coin2Pos[0]] = 2;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalY(coin2, coinPositionV[coin2Pos[1]], .7f);
+                        LeanTween.moveLocalY(coin2, coinPositionV[coin2Pos[1]], MoveSpeed);
 
                         newLocation = 0;
                         nextLocation = 0;
@@ -398,7 +421,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin3Pos[1], coin3Pos[0]] = 3;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalY(coin3, coinPositionV[coin3Pos[1]], coinMoveSpeed);
+                        LeanTween.moveLocalY(coin3, coinPositionV[coin3Pos[1]], MoveSpeed);
 
                         newLocation = 0;
                         nextLocation = 0;
@@ -432,7 +455,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin4Pos[1], coin4Pos[0]] = 4;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalY(coin4, coinPositionV[coin4Pos[1]], coinMoveSpeed);
+                        LeanTween.moveLocalY(coin4, coinPositionV[coin4Pos[1]], MoveSpeed);
 
                         newLocation = 0;
                         nextLocation = 0;
@@ -477,7 +500,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin1Pos[1], coin1Pos[0]] = 1;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalX(coin1, coinPositionH[coin1Pos[0]], coinMoveSpeed);
+                        LeanTween.moveLocalX(coin1, coinPositionH[coin1Pos[0]], MoveSpeed);
 
 
 
@@ -511,7 +534,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin2Pos[1], coin2Pos[0]] = 2;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalX(coin2, coinPositionH[coin2Pos[0]], coinMoveSpeed);
+                        LeanTween.moveLocalX(coin2, coinPositionH[coin2Pos[0]], MoveSpeed);
 
 
                         newLocation = 0;
@@ -545,7 +568,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin3Pos[1], coin3Pos[0]] = 3;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalX(coin3, coinPositionH[coin3Pos[0]], coinMoveSpeed);
+                        LeanTween.moveLocalX(coin3, coinPositionH[coin3Pos[0]], MoveSpeed);
 
 
                         newLocation = 0;
@@ -579,7 +602,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin4Pos[1], coin4Pos[0]] = 4;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalX(coin4, coinPositionH[coin4Pos[0]], coinMoveSpeed);
+                        LeanTween.moveLocalX(coin4, coinPositionH[coin4Pos[0]], MoveSpeed);
 
 
                         newLocation = 0;
@@ -622,7 +645,7 @@ public class TableManager : MonoBehaviour
                         
                         //Move the coin to the new location
 
-                        LeanTween.moveLocalY(coin1, coinPositionV[coin1Pos[1]], coinMoveSpeed);
+                        LeanTween.moveLocalY(coin1, coinPositionV[coin1Pos[1]], MoveSpeed);
                         
                         newLocation = 0;
                         nextLocation = 0;
@@ -655,7 +678,7 @@ public class TableManager : MonoBehaviour
 
                         //Move the coin to the new location
 
-                        LeanTween.moveLocalY(coin2, coinPositionV[coin2Pos[1]], coinMoveSpeed);
+                        LeanTween.moveLocalY(coin2, coinPositionV[coin2Pos[1]], MoveSpeed);
 
                         newLocation = 0;
                         nextLocation = 0;
@@ -688,7 +711,7 @@ public class TableManager : MonoBehaviour
 
                         //Move the coin to the new location
 
-                        LeanTween.moveLocalY(coin3, coinPositionV[coin3Pos[1]], coinMoveSpeed);
+                        LeanTween.moveLocalY(coin3, coinPositionV[coin3Pos[1]], MoveSpeed);
 
                         newLocation = 0;
                         nextLocation = 0;
@@ -721,7 +744,7 @@ public class TableManager : MonoBehaviour
 
                         //Move the coin to the new location
 
-                        LeanTween.moveLocalY(coin4, coinPositionV[coin4Pos[1]], coinMoveSpeed);
+                        LeanTween.moveLocalY(coin4, coinPositionV[coin4Pos[1]], MoveSpeed);
 
                         newLocation = 0;
                         nextLocation = 0;
@@ -764,7 +787,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin1Pos[1], coin1Pos[0]] = 1;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalX(coin1, coinPositionH[coin1Pos[0]], coinMoveSpeed);
+                        LeanTween.moveLocalX(coin1, coinPositionH[coin1Pos[0]], MoveSpeed);
 
 
 
@@ -798,7 +821,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin2Pos[1], coin2Pos[0]] = 2;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalX(coin2, coinPositionH[coin2Pos[0]], coinMoveSpeed);
+                        LeanTween.moveLocalX(coin2, coinPositionH[coin2Pos[0]], MoveSpeed);
 
 
 
@@ -833,7 +856,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin3Pos[1], coin3Pos[0]] = 3;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalX(coin3, coinPositionH[coin3Pos[0]], coinMoveSpeed);
+                        LeanTween.moveLocalX(coin3, coinPositionH[coin3Pos[0]], MoveSpeed);
 
 
 
@@ -868,7 +891,7 @@ public class TableManager : MonoBehaviour
                         allCoinsPos[coin4Pos[1], coin4Pos[0]] = 4;
 
                         //Move the coin to the new location
-                        LeanTween.moveLocalX(coin4, coinPositionH[coin4Pos[0]], coinMoveSpeed);
+                        LeanTween.moveLocalX(coin4, coinPositionH[coin4Pos[0]], MoveSpeed);
 
 
 

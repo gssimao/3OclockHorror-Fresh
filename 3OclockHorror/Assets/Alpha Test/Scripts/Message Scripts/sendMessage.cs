@@ -18,8 +18,8 @@ public class sendMessage : MonoBehaviour
     {
         if(instaPlay && playOnlyOnce)
         {
-            playOnlyOnce = false;
-            TriggerMessage();
+            PlayOnlyOnceTrigger();
+           // TriggerMessage();
         }
         else if (instaPlay)
         {
