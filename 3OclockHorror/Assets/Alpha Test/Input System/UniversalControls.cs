@@ -397,7 +397,7 @@ public class @UniversalControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8b8e597c-4373-4dcc-9a61-1c1a06eb6495"",
-                    ""path"": ""<Touchscreen>/press"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
