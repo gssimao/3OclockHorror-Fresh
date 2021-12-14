@@ -12,6 +12,7 @@ public class ClimbLadder : MonoBehaviour
     room destRoom;
     [SerializeField]
     invInput Listener;
+    public Camera mainCamera;
 
     public Vector3 posOffset;
 
@@ -29,6 +30,7 @@ public class ClimbLadder : MonoBehaviour
     UniversalControls uControls;
     private void Awake()
     {
+        mainCamera = Camera.main;
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -36,11 +38,7 @@ public class ClimbLadder : MonoBehaviour
     {
         uControls.Disable();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -84,7 +82,7 @@ public class ClimbLadder : MonoBehaviour
         StartCoroutine(ChangeCamera(player, entranceP, play, RoomNum));
     }
 
-    IEnumerator ChangeCamera(GameObject player, GameObject entranceP, PlayerMovement play, room RoomNum)
+    IEnumerator ChangeCamera(GameObject playerObject, GameObject entranceP, PlayerMovement play, room RoomNum)
     {
         if (transitionOnOff)
         {
@@ -95,10 +93,11 @@ public class ClimbLadder : MonoBehaviour
         {
             yield return new WaitForSeconds(transitionTime);
             Fade.SetTrigger("fadeIn");
-            player.transform.position = dest.transform.position;
-            player.GetComponent<PlayerMovement>().changeRoom(destRoom);
+            playerObject.transform.position = dest.transform.position;
+            playerObject.GetComponent<PlayerMovement>().changeRoom(destRoom);
         }
 
         play.myRoom = RoomNum;
+        mainCamera.transform.position = playerObject.GetComponent<PlayerMovement>().GetMyroom().getCameraPoint().transform.position;
     }
 }

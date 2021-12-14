@@ -7,6 +7,7 @@ public class roomCntrl : MonoBehaviour
 {
     public room room1;
     public room room2; //DestRoom
+    public Camera mainCamera;
 
     public GameObject entrancePointRoom;
     public PlayerMovement player;
@@ -48,6 +49,7 @@ public class roomCntrl : MonoBehaviour
 
     private void Awake()
     {
+        mainCamera = Camera.main;
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -75,14 +77,13 @@ public class roomCntrl : MonoBehaviour
                 if (player.myRoom == room1) //Check the room states then update as necessary
                 {
                     CameraCrossfade(player.gameObject, entrancePointRoom, player, room2);
-                    //room2.SnowParticleSwitch(room2.roomName);// turn on or off the snow effect in the room // still testing
-                    //room1.SnowParticleSwitch(room1.roomName);// turn on or off the snow effect in the room // still testing
+
                     if (manager != null)
                     {
                         manager.Play("Door Open", true);
                     }
 
-                    Debug.Log("outside if");
+                    //Debug.Log("outside if");
                     if (floorChanger)
                     {
                         Debug.Log("inside if");
@@ -92,14 +93,13 @@ public class roomCntrl : MonoBehaviour
                 else// player.myRoom == room2
                 {
                     CameraCrossfade(player.gameObject, entrancePointRoom, player, room1);
-                    //room2.SnowParticleSwitch(room2.roomName);// turn on or off the snow effect in the room
-                    //room1.SnowParticleSwitch(room1.roomName);// turn on or off the snow effect in the room
+
                     if (manager != null)
                     {
                         manager.Play("Door Open", true);
                     }
 
-                    Debug.Log("outside if");
+                   // Debug.Log("outside if");
                     if (floorChanger)
                     {
                         Debug.Log("inside if");
@@ -113,45 +113,10 @@ public class roomCntrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dist = Vector3.Distance(player.gameObject.transform.position, this.gameObject.transform.position);
-        if(uControls.Player.Interact.triggered)
+        //dist = Vector3.Distance(player.gameObject.transform.position, this.gameObject.transform.position);
+        if (uControls.Player.Interact.triggered)
         {
             Tooltip.Message = "";
-        }
-        if (dist <= range)
-        {
-            //Listener.isFocus = false;
-            /*if (Input.GetKeyDown("e") && transitionOnOff)
-            {
-                if (locked)
-                {
-                    CheckKey();
-                }
-
-                if (player != null && !locked) //Make sure it's not null, check if door is locked
-                {
-                    if (player.myRoom == room1) //Check the room states then update as necessary
-                    {
-                        CameraCrossfade(player.gameObject, entrancePointRoom, player, room2);
-                        room2.SnowParticleSwitch(room2.roomName);// turn on or off the snow effect in the room // still testing
-                        room1.SnowParticleSwitch(room1.roomName);// turn on or off the snow effect in the room // still testing
-                        if (manager != null)
-                        {
-                            manager.Play("Door Open", true);
-                        }
-                    }
-                    else// player.myRoom == room2
-                    {
-                        CameraCrossfade(player.gameObject, entrancePointRoom, player, room1);
-                        room2.SnowParticleSwitch(room2.roomName);// turn on or off the snow effect in the room
-                        room1.SnowParticleSwitch(room1.roomName);// turn on or off the snow effect in the room
-                        if (manager != null)
-                        {
-                            manager.Play("Door Open", true);
-                        }
-                    }
-                }
-            }*/
         }
 
         if (Fade != null)
@@ -242,12 +207,13 @@ public class roomCntrl : MonoBehaviour
         uControls.Player.Interact.performed -= Interact;
     }
 
-    public void CameraCrossfade(GameObject player, GameObject entranceP, PlayerMovement play, room RoomNum)
+    public void CameraCrossfade(GameObject playerObject, GameObject entranceP, PlayerMovement play, room RoomNum)
     {
-        StartCoroutine(ChangeCamera(player, entranceP, play, RoomNum));
+        StartCoroutine(ChangeCamera(playerObject, entranceP, play, RoomNum));
+       
     }
 
-    IEnumerator ChangeCamera(GameObject player, GameObject entranceP, PlayerMovement play, room RoomNum)
+    IEnumerator ChangeCamera(GameObject playerObject, GameObject entranceP, PlayerMovement play, room RoomNum)
     {
         if (transitionOnOff)
         {
@@ -255,7 +221,8 @@ public class roomCntrl : MonoBehaviour
             Fade.SetTrigger("fadeOut");
         }
 
-        player.transform.position = entranceP.transform.position;
+        playerObject.transform.position = entranceP.transform.position;
+       
 
         if (transitionOnOff)
         {
@@ -265,6 +232,7 @@ public class roomCntrl : MonoBehaviour
 
         play.myRoom = RoomNum;
 
+
         if (WatchHallwayTrigger)
         {
             ActivateHallway(true);
@@ -272,8 +240,11 @@ public class roomCntrl : MonoBehaviour
 
         if (floorChanger)
         {
-            player.GetComponent<PlayerMovement>().playerFloor = destString;
+            playerObject.GetComponent<PlayerMovement>().playerFloor = destString;
+
         }
+        mainCamera.transform.position = player.GetMyroom().getCameraPoint().transform.position;
+
     }
 
     public void CheckKey()

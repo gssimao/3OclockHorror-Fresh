@@ -19,7 +19,6 @@ public class room : MonoBehaviour
     [SerializeField]
     public string roomName; //Name for the room, can serve as a way to sort them
     public int floorNum; //What number of floor the room is on. Basement is zero
-    public ParticleSystem SnowParticle;
     #region Get/Set
 
     public GameObject getRoomObject()
@@ -69,18 +68,4 @@ public class room : MonoBehaviour
     {
         return cameraPoint.transform;
     }
-   /* public void SnowParticleSwitch(string roomName) //this will check if the player is in the same room as the particle effect and if so it will turn the effect on
-    {
-        Debug.Log("Inside the Snow Particle Switch fuction");
-        PlayerMovement player = GetComponent<PlayerMovement>(); //Grab player movement script
-        if (player.myRoom.roomName == roomName)// see if the snowParticle is not empty 
-        {
-            //Debug.Log("playing the particle");
-            SnowParticle.Play();
-        }
-        else
-        {
-            SnowParticle.Pause();
-        }
-    }*/
 }

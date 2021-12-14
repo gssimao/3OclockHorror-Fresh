@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioManager manager;
     public bool isPlaying = false; //for audio
     public string playerFloor = "FirstFloor";
-  
+
     public Inventory plyInv;
 
     //A list of all canvases that should block player movement
@@ -53,13 +53,13 @@ public class PlayerMovement : MonoBehaviour
     {
         manager = FindObjectOfType<AudioManager>();
 
-        #if UNITY_ANDROID
-            Debug.Log("Android");
-        #endif
+#if UNITY_ANDROID
+        Debug.Log("Android");
+#endif
 
-        #if UNITY_IPHONE
+#if UNITY_IPHONE
             Debug.Log("Iphone");
-        #endif
+#endif
 
         //uControls.Player.TouchPress.started += context => StartTouch(context);
 
@@ -116,10 +116,10 @@ public class PlayerMovement : MonoBehaviour
             movement.y = uControls.Player.MovePlayer.ReadValue<Vector2>().y; //Input.GetAxisRaw("Vertical");
 
             //for touch only
-           /* if (TouchWalkLogic.GetIsTouching())
-            {
-                TouchWalkLogic.ChangeTarget(uControls.Player.TouchPosition.ReadValue<Vector2>());
-            }*/
+            /* if (TouchWalkLogic.GetIsTouching())
+             {
+                 TouchWalkLogic.ChangeTarget(uControls.Player.TouchPosition.ReadValue<Vector2>());
+             }*/
             // ^^for touch only
 
         }
@@ -236,7 +236,7 @@ public class PlayerMovement : MonoBehaviour
             walking = false;
         }
 
-        if (walking && !isPlaying && manager != null && myRoom.getName() != "Outside" && !InvCanvas.activeSelf  && !Journal.activeSelf  && canMove)
+        if (walking && !isPlaying && manager != null && myRoom.getName() != "Outside" && !InvCanvas.activeSelf && !Journal.activeSelf && canMove)
         {
             manager.Play("Player Footsteps", true);
             isPlaying = true;
@@ -305,17 +305,20 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);  // take the comments out to go back to normal
         }
-        if (Camera != null)
-        {
-            Camera.transform.position = myRoom.getCameraPoint().transform.position;
-        }
+        /* if (Camera != null)
+         {
+             Camera.transform.position = myRoom.getCameraPoint().transform.position;
+         }*/
     }
 
     public GameObject getJournal()
     {
         return Canvases[2];
     }
-
+    public room GetMyroom() 
+    {
+        return myRoom;
+    }
     public void changeRoom(room room)
     {
         myRoom = room;
