@@ -62,7 +62,7 @@ public class workbench_cntrl : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(player.transform.position, transform.position); //Get the position of player
-        if (dist <= 0.25f) //If the player is in range
+        if (dist <= 0.5f) //If the player is in range
         {
             //Listener.isFocus = false;
             if (uControls.Player.Interact.triggered && !active)

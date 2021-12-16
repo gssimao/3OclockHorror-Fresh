@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     public room myRoom;
     public Rigidbody2D rb;
     public bool walking;
-    public Camera Camera;
     public Vector2 movement;
     public AudioManager manager;
     public bool isPlaying = false; //for audio
@@ -305,10 +304,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);  // take the comments out to go back to normal
         }
-        /* if (Camera != null)
-         {
-             Camera.transform.position = myRoom.getCameraPoint().transform.position;
-         }*/
     }
 
     public GameObject getJournal()

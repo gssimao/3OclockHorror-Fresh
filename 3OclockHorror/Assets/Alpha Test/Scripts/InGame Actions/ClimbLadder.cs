@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClimbLadder : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class ClimbLadder : MonoBehaviour
     room destRoom;
     [SerializeField]
     invInput Listener;
-    public Camera mainCamera;
+    //public Camera mainCamera;
+    private Image BlackBackground;
 
     public Vector3 posOffset;
 
@@ -30,7 +32,8 @@ public class ClimbLadder : MonoBehaviour
     UniversalControls uControls;
     private void Awake()
     {
-        mainCamera = Camera.main;
+        BlackBackground = GameObject.Find("TransitionPanel").GetComponent<Image>();
+        
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -57,8 +60,6 @@ public class ClimbLadder : MonoBehaviour
     void UpdatePlayer()
     {
         CameraCrossfade(player, dest, player.GetComponent<PlayerMovement>(), destRoom);
-        player.GetComponent<PlayerMovement>().playerFloor = destString;
-        
     }
 
     void OnDrawGizmos()//Shows how far the play needs to be in order to use the door
@@ -81,23 +82,32 @@ public class ClimbLadder : MonoBehaviour
     {
         StartCoroutine(ChangeCamera(player, entranceP, play, RoomNum));
     }
-
+   
     IEnumerator ChangeCamera(GameObject playerObject, GameObject entranceP, PlayerMovement play, room RoomNum)
     {
-        if (transitionOnOff)
-        {
-            Fade.gameObject.SetActive(true);
-            Fade.SetTrigger("fadeOut");
-        }
-        if (transitionOnOff)
-        {
-            yield return new WaitForSeconds(transitionTime);
-            Fade.SetTrigger("fadeIn");
-            playerObject.transform.position = dest.transform.position;
-            playerObject.GetComponent<PlayerMovement>().changeRoom(destRoom);
-        }
-
         play.myRoom = RoomNum;
-        mainCamera.transform.position = playerObject.GetComponent<PlayerMovement>().GetMyroom().getCameraPoint().transform.position;
+        LeanTween.value(BlackBackground.gameObject, 0, 1, transitionTime).setEaseInBack().setOnUpdate((float val) =>
+        {
+            Color newColor = BlackBackground.color;
+            newColor.a = val;
+            BlackBackground.color = newColor;
+        }).setOnComplete(() =>
+        {
+            ChangePlayerPosition(playerObject, entranceP);
+        });
+
+        yield return new WaitForSeconds(transitionTime * 2);
+        LeanTween.value(BlackBackground.gameObject, 1, 0, transitionTime * 2).setOnUpdate((float val) =>
+        {
+            Color newColor = BlackBackground.color;
+            newColor.a = val;
+            BlackBackground.color = newColor;
+        }).setEaseInBack();
+    }
+
+    private void ChangePlayerPosition(GameObject playerObject, GameObject entranceP)
+    {
+        playerObject.transform.position = entranceP.transform.position; // take player to the new place
+
     }
 }

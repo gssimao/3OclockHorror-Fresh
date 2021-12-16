@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class roomCntrl : MonoBehaviour
 {
-    public room room1;
+    public room room1; // Current Room
     public room room2; //DestRoom
     public Camera mainCamera;
 
@@ -15,7 +16,7 @@ public class roomCntrl : MonoBehaviour
 
     public bool transitionOnOff = true; //Use this toggle the transition on and off
     public float range = 0.5f;
-    float transitionTime = 0.5f;
+    float transitionTime = .3f;
     float dist;
 
     public bool locked;
@@ -30,7 +31,8 @@ public class roomCntrl : MonoBehaviour
 
     AudioManager manager;
 
-    public Animator Fade;
+    //public Animator Fade;
+    public Image BlackBackground;
 
     bool opened = false;
     private UniversalControls uControls;
@@ -49,7 +51,8 @@ public class roomCntrl : MonoBehaviour
 
     private void Awake()
     {
-        mainCamera = Camera.main;
+        BlackBackground = GameObject.Find("TransitionPanel").GetComponent<Image>();
+        //mainCamera = Camera.main;
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -114,18 +117,18 @@ public class roomCntrl : MonoBehaviour
     void Update()
     {
         //dist = Vector3.Distance(player.gameObject.transform.position, this.gameObject.transform.position);
-        if (uControls.Player.Interact.triggered)
+        /*if (uControls.Player.Interact.triggered)
         {
             Tooltip.Message = "";
-        }
+        }*/
 
-        if (Fade != null)
+        /*if (Fade != null)
         {
             if(Fade.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
                 Fade.gameObject.SetActive(false);
             }
-        }
+        }*/
 
         if(WatchHallwayTrigger)
         {
@@ -212,25 +215,33 @@ public class roomCntrl : MonoBehaviour
         StartCoroutine(ChangeCamera(playerObject, entranceP, play, RoomNum));
        
     }
-
+    private void ChangePlayerPosition(GameObject playerObject, GameObject entranceP)
+    {
+        playerObject.transform.position = entranceP.transform.position; // take player to the new place
+        
+    }
     IEnumerator ChangeCamera(GameObject playerObject, GameObject entranceP, PlayerMovement play, room RoomNum)
     {
-        if (transitionOnOff)
-        {
-            Fade.gameObject.SetActive(true);
-            Fade.SetTrigger("fadeOut");
-        }
-
-        playerObject.transform.position = entranceP.transform.position;
-       
-
-        if (transitionOnOff)
-        {
-            yield return new WaitForSeconds(transitionTime);
-            Fade.SetTrigger("fadeIn");
-        }
+        //LeanTween.value(BlackBackground.gameObject, 0, 1, transitionTime).;
 
         play.myRoom = RoomNum;
+        LeanTween.value(BlackBackground.gameObject, 0, 1, transitionTime).setEaseInBack().setOnUpdate((float val) =>
+        {
+            Color newColor = BlackBackground.color;
+            newColor.a = val;
+            BlackBackground.color = newColor;
+        }).setOnComplete(()=> 
+        {
+            ChangePlayerPosition(playerObject, entranceP);
+        });
+
+        yield return new WaitForSeconds(transitionTime *2);
+        LeanTween.value(BlackBackground.gameObject, 1, 0, transitionTime*2).setOnUpdate((float val) =>
+        {
+            Color newColor = BlackBackground.color;
+            newColor.a = val;
+            BlackBackground.color = newColor;
+        }).setEaseInBack();
 
 
         if (WatchHallwayTrigger)
@@ -243,7 +254,7 @@ public class roomCntrl : MonoBehaviour
             playerObject.GetComponent<PlayerMovement>().playerFloor = destString;
 
         }
-        mainCamera.transform.position = player.GetMyroom().getCameraPoint().transform.position;
+       // mainCamera.transform.position = player.GetMyroom().getCameraPoint().transform.position;
 
     }
 
@@ -257,7 +268,7 @@ public class roomCntrl : MonoBehaviour
             }
             else
             {
-                Tooltip.Message = "This door is locked.";
+                //Tooltip.Message = "This door is locked.";
                 if(manager != null)
                 {
                     manager.Play("Locked Door", false);
@@ -275,7 +286,7 @@ public class roomCntrl : MonoBehaviour
         }
         else
         {
-            Tooltip.Message = "This door is locked.";
+            //Tooltip.Message = "This door is locked.";
             Debug.LogError("Door is locked but there is no key or inv set");
         }
     }

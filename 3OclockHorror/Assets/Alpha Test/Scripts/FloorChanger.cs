@@ -3,17 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FloorChanger : MonoBehaviour
 {
+    private float transitionTime = 0.5f;
     public string sceneName; //name of the scene to transfer too
-    Scene currentScene;
+    //Scene currentScene;
     public GameObject spawnPoint;
     public GameObject player;
     public invInput Listener;
     public room destRoom;
 
     public Animator Fade;
+    private Image BlackBackground;
 
     [SerializeField]
     string destString;
@@ -26,6 +29,7 @@ public class FloorChanger : MonoBehaviour
     UniversalControls uControls;
     private void Awake()
     {
+        BlackBackground = GameObject.Find("TransitionPanel").GetComponent<Image>();
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -48,7 +52,7 @@ public class FloorChanger : MonoBehaviour
             //Listener.isFocus = false;
             if (uControls.Player.Interact.triggered)
             {
-                StartCoroutine(ChangeCamera());   
+                StartCoroutine(ChangeCamera(player.gameObject));   
             }
         }
 
@@ -61,18 +65,36 @@ public class FloorChanger : MonoBehaviour
         }
     }
 
-    IEnumerator ChangeCamera()
+    IEnumerator ChangeCamera(GameObject playerObject)
     {
-        Fade.gameObject.SetActive(true);
-        Fade.SetTrigger("fadeOut");
-
-        yield return new WaitForSeconds(0.5f);
 
         player.transform.position = spawnPoint.transform.position;
         player.GetComponent<PlayerMovement>().myRoom = destRoom;
         player.GetComponent<PlayerMovement>().playerFloor = destString;
-        //playSound();
-        Fade.SetTrigger("fadeIn");
+
+        LeanTween.value(BlackBackground.gameObject, 0, 1, transitionTime).setEaseInBack().setOnUpdate((float val) =>
+        {
+            Color newColor = BlackBackground.color;
+            newColor.a = val;
+            BlackBackground.color = newColor;
+        }).setOnComplete(() =>
+        {
+            ChangePlayerPosition(playerObject, destRoom.gameObject);
+        });
+
+        yield return new WaitForSeconds(transitionTime * 2);
+        LeanTween.value(BlackBackground.gameObject, 1, 0, transitionTime * 2).setOnUpdate((float val) =>
+        {
+            Color newColor = BlackBackground.color;
+            newColor.a = val;
+            BlackBackground.color = newColor;
+        }).setEaseInBack();
+
+    }
+    private void ChangePlayerPosition(GameObject playerObject, GameObject entranceP)
+    {
+        playerObject.transform.position = entranceP.transform.position; // take player to the new place
+
     }
 
     private void OnDrawGizmos()
@@ -95,23 +117,5 @@ public class FloorChanger : MonoBehaviour
         }
     }
 
-    /*IEnumerator LoadYourAsyncScene(GameObject Instance)
-    {
-        currentScene = SceneManager.GetActiveScene();
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-
-        player.transform.position = spawnPoint.transform.position;
-        blackWall.SetActive(false);
-        crossFade.SetActive(false);
-
-        SceneManager.MoveGameObjectToScene(Instance, SceneManager.GetSceneByName(sceneName));
-
-        SceneManager.UnloadSceneAsync(currentScene);
-    }*/
 }

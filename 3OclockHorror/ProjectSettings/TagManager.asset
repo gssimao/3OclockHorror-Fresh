@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WaypointF1
+  - WaypointF2
+  - WaypointF3
+  - Beartrap
+  - Interactible
+  - Message
+  - Furniture
+  - TutorialMessage
+  - Container
+  - invUI
+  - NoteContainer
+  - RedBookLine
   layers:
   - Default
   - TransparentFX
@@ -13,7 +25,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - player
   - 
   - 
   - 

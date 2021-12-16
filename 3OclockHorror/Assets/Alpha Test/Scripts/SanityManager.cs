@@ -39,6 +39,8 @@ public class SanityManager : MonoBehaviour
 
     void Awake()
     {
+        if(manager != null)
+            manager = FindObjectOfType<AudioManager>();
         material.SetFloat("_Flick", 0f);
         //deathVP.gameObject.SetActive(false);
     }
@@ -66,10 +68,14 @@ public class SanityManager : MonoBehaviour
                 PlayGameOver();
             }
         }
+        
+        //this is the part of the sript that used to handle effects and also shake the camera
+        //when hitting the watcher. There is also an effect queue that could manage the instance of more than one
+        // effect at a time. 
 
-        if (effectOn)
+        /*if (effectOn)
         {
-            StartCoroutine(ShakeScrean());
+            //StartCoroutine(ShakeScrean());
             if (timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime; //countdown to turn off the effect.
@@ -84,27 +90,15 @@ public class SanityManager : MonoBehaviour
         {
             playEffect(effectCue[0]);
             removeEffectCue();
-        }
+        }*/
     }
-    IEnumerator ShakeScrean()
-    {
-        while(effectOn)
-        {
-            Vector3 originalPosition = this.GetComponent<PlayerMovement>().myRoom.GetCameraPoint().position;
-            float x = Random.Range(-.09f, .09f) * .02f;
-            float y = Random.Range(-.9f, .9f) *.02f;
-            Camera.main.transform.position = new Vector3(x+originalPosition.x, y+originalPosition.y, originalPosition.z);
-            yield return null;
-        }
-        Camera.main.transform.position = this.GetComponent<PlayerMovement>().myRoom.GetCameraPoint().position;
-        material.SetFloat("_Flick", 0f);
-    }
+
 
     public void ChangeSanity(float changeValue)
     {
         sanityValue = sanityValue + changeValue;
         
-        playEffect(1);//this calls the first effect, the red flicking lights
+        //playEffect(1);//this calls the first effect, the red flicking lights
         if(sanityValue<=20 && !ScreenVeins.activeSelf)
         {
             ScreenVeins.SetActive(true);
@@ -207,7 +201,7 @@ public class SanityManager : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        manager = FindObjectOfType<AudioManager>();
+        //manager = FindObjectOfType<AudioManager>();
         sound.StopSoundTrack();
 
         currentScene = SceneManager.GetActiveScene();
