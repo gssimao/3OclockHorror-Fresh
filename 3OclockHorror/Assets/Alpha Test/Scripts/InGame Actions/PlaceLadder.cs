@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlaceLadder : MonoBehaviour
 {
@@ -21,13 +22,12 @@ public class PlaceLadder : MonoBehaviour
 
     [Space]
     [SerializeField]
-    Animator Fade;
-    [SerializeField]
     SpriteRenderer Room;
     [SerializeField]
     Sprite newRoom;
-
-    bool ladAcquired = false;
+    private Image BlackBackground;
+    private float transitionTime = 0.5f;
+    private bool ladAcquired = false;
 
     float dist;
 
@@ -37,6 +37,7 @@ public class PlaceLadder : MonoBehaviour
     UniversalControls uControls;
     private void Awake()
     {
+        BlackBackground = GameObject.Find("TransitionPanel").GetComponent<Image>();
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -44,12 +45,7 @@ public class PlaceLadder : MonoBehaviour
     {
         uControls.Disable();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+   
     // Update is called once per frame
     void Update()
     {
@@ -73,23 +69,14 @@ public class PlaceLadder : MonoBehaviour
                         invCanvas.SetActive(true);
                         plyInv.RemoveItem(Ladder);
                         invCanvas.SetActive(false);
-
+                        Room.sprite = newRoom;
                         ladAcquired = true;
 
-                        CallLadderFade();
                     }
                 }
             }
         }
         
-
-        if (Fade != null)
-        {
-            if (Fade.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-            {
-                Fade.gameObject.SetActive(false);
-            }
-        }
     }
 
     private void OnDrawGizmos()
@@ -102,33 +89,37 @@ public class PlaceLadder : MonoBehaviour
         StartCoroutine(Transition());
     }
 
-    void CallLadderFade()
-    {
-        StartCoroutine(LadderFadeOut());
-    }
-
-    IEnumerator LadderFadeOut()
-    {
-        Fade.gameObject.SetActive(true);
-        Fade.SetTrigger("fadeOut");
-
-        yield return new WaitForSeconds(Fade.GetCurrentAnimatorStateInfo(0).length);
-        Room.sprite = newRoom;
-
-        Fade.SetTrigger("fadeIn");
-    }
 
     IEnumerator Transition()
     {
-        Fade.gameObject.SetActive(true);
-        Fade.SetTrigger("fadeOut");
 
-        yield return new WaitForSeconds(Fade.GetCurrentAnimatorStateInfo(0).length);
-
-        player.transform.position = destination.transform.position;
         player.myRoom = desRoom;
         player.playerFloor = destString;
 
-        Fade.SetTrigger("fadeIn");
+        LeanTween.value(BlackBackground.gameObject, 0, 1, transitionTime).setEaseInBack().setOnUpdate((float val) =>
+        {
+            Color newColor = BlackBackground.color;
+            newColor.a = val;
+            BlackBackground.color = newColor;
+        }).setOnComplete(() =>
+        {
+            ChangePlayerPosition(player.gameObject, destination.gameObject);
+        });
+
+        yield return new WaitForSeconds(transitionTime * 2);
+        LeanTween.value(BlackBackground.gameObject, 1, 0, transitionTime * 2).setOnUpdate((float val) =>
+        {
+            Color newColor = BlackBackground.color;
+            newColor.a = val;
+            BlackBackground.color = newColor;
+        }).setEaseInBack();
+        
+       
+
+    }
+    private void ChangePlayerPosition(GameObject playerObject, GameObject entranceP)
+    {
+        playerObject.transform.position = entranceP.transform.position; // take player to the new place
+
     }
 }

@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     //A list of all canvases that should block player movement
     public List<GameObject> Canvases; //Canvases that won't be deleted between scenes
-    public bool canMove;
+    public bool canMove = true;
 
     private UniversalControls uControls;
     private PlayerTouchWalk TouchWalkLogic;
@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         resetState();
         if (Canvases != null)
         {
@@ -103,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
                 if (canv.activeSelf)
                 {
                     canMove = false;
+                    Debug.Log("Setting movement to false");
                 }
             }
         }
@@ -127,58 +129,6 @@ public class PlayerMovement : MonoBehaviour
             movement.x = 0;
             movement.y = 0;
         }
-
-        #region Depreciated_mouse_control
-        /*
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// testing here
-        if (Input.GetMouseButtonDown(0) == true && RightLeg == true && canMove == true)
-        {
-            RightLeg = false;
-            LeftLeg = true;
-            countTime = CheckSpeed(countTime);
-             if (movement.x == 1 && canMoveRight == true) //going right
-             {
-                 GotoNumberX(rb.position + movement * moveSpeed, canMove);
-             }
-             if (movement.x == -1 && canMoveLeft == true) //going left
-             {
-                 GotoNumberX(rb.position + movement * moveSpeed, canMove);
-             }
-             if (movement.y == 1 && canMoveUp == true) //going up
-             {
-                 GotoNumberY(rb.position + movement * moveSpeed, canMove);
-             }
-             if (movement.y == -1 && canMoveDown == true) //going down
-             {
-                 GotoNumberY(rb.position + movement * moveSpeed, canMove);
-             }
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        }
-        if (Input.GetMouseButtonDown(1) == true && LeftLeg == true && canMove == true)
-        {
-            RightLeg = true;
-            LeftLeg = false;
-            if (movement.x == 1 && canMoveRight == true) //going right
-            {
-                GotoNumberX(rb.position + movement * moveSpeed, canMove);
-            }
-            if (movement.x == -1 && canMoveLeft == true) //going left
-            {
-                GotoNumberX(rb.position + movement * moveSpeed, canMove);
-            }
-            if (movement.y == 1 && canMoveUp == true) //going up
-            {
-                GotoNumberY(rb.position + movement * moveSpeed, canMove);
-            }
-            if (movement.y == -1 && canMoveDown == true) //going down
-            {
-                GotoNumberY(rb.position + movement * moveSpeed, canMove);
-            }
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        }
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        */
-        #endregion
 
         //Check the states for the walk animation.
         #region ChecKWalkStates 
@@ -250,7 +200,14 @@ public class PlayerMovement : MonoBehaviour
             isPlaying = false;
         }
     }
-
+    private void FixedUpdate()
+    {
+        // Movement
+        if (canMove)
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);  // take the comments out to go back to normal
+        }
+    }
 
     public void CheckWalkState()
     {
@@ -297,14 +254,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        // Movement
-        if (canMove)
-        {
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);  // take the comments out to go back to normal
-        }
-    }
 
     public GameObject getJournal()
     {
