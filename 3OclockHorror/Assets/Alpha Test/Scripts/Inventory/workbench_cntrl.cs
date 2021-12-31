@@ -25,6 +25,7 @@ public class workbench_cntrl : MonoBehaviour
     public GameObject invCanv;
     //private GameObject[] ItemPopups;
 
+
     UniversalControls uControls;
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class workbench_cntrl : MonoBehaviour
         }
 
         active = false;
+        Debug.Log("I've did this");
         myInv.CloseInv();
 
         myInv.InitStartingItems(Items);
@@ -67,24 +69,27 @@ public class workbench_cntrl : MonoBehaviour
             //Listener.isFocus = false;
             if (uControls.Player.Interact.triggered && !active)
             {
-                IM.ActivateInventory(myInv);
+                open();
+               /* IM.ActivateInventory(myInv);
                 myInv.OpenInv(); //Update the items to be in accordance with the items array
                 active = true;
                 myInvDisplay.SetActive(true);
                 invCanv.SetActive(true);
                 IM.craftField.SetActive(true);
-                tooltip.SetActive(false);
+                tooltip.SetActive(false);*/
+
             }
             else if (uControls.Player.Interact.triggered && active)
             {
-                //if (invCanv.activeSelf)
+                close();
+                /*//if (invCanv.activeSelf)
                 //{
                     IM.DeactivateInventory(myInv);
                     active = false;
                     invCanv.SetActive(false);
                     myInvDisplay.SetActive(false);
                     IM.craftField.SetActive(false);
-                //}
+                //}*/
             }
         }
     }
@@ -110,9 +115,11 @@ public class workbench_cntrl : MonoBehaviour
         invCanv.SetActive(true);
         IM.craftField.SetActive(true);
         tooltip.SetActive(false);
+
     }
     public void close()
     {
+        //Debug.Log("Try Closing");
         IM.DeactivateInventory(myInv);
         active = false;
         invCanv.SetActive(false);
@@ -120,27 +127,7 @@ public class workbench_cntrl : MonoBehaviour
         IM.craftField.SetActive(false);
     }
 
-    /*private void Inventory(InputAction.CallbackContext c)
-    {
-        if(!active)
-        {
-            IM.ActivateInventory(myInv);
-            myInv.OpenInv(); //Update the items to be in accordance with the items array
-            active = true;
-            myInvDisplay.SetActive(true);
-            invCanv.SetActive(true);
-            IM.craftField.SetActive(true);
-            tooltip.SetActive(false);
-        }
-        else
-        {
-            IM.DeactivateInventory(myInv);
-            active = false;
-            invCanv.SetActive(false);
-            myInvDisplay.SetActive(false);
-            IM.craftField.SetActive(false);
-        }
-    }*/
+
 
     private void OnDrawGizmos()
     {

@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
          //Debug.Log("hello");*/
     }
 
-    void PerformTouch(InputAction.CallbackContext context) // delegate work to PlayerTouchWalk
+/*    void PerformTouch(InputAction.CallbackContext context) // delegate work to PlayerTouchWalk
     {
         Debug.Log("Touch Performed");
         if (EventOnPerformedTouch != null)
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         if (EventOnEndTouch != null) EventOnEndTouch(uControls.Player.TouchPosition.ReadValue<Vector2>(), (float)context.time);
 
         TouchWalkLogic.ChangeIsTouching(false);
-    }
+    }*/
 
 
     // Update is called once per frame
@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
                 if (canv.activeSelf)
                 {
                     canMove = false;
-                    Debug.Log("Setting movement to false");
+                    //Debug.Log("Setting movement to false");
                 }
             }
         }

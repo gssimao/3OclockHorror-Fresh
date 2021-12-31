@@ -14,7 +14,7 @@ public class BenchSlider : MonoBehaviour
     {
         if(Time.realtimeSinceStartup > time + 2f && moving)
         {
-            LeanTween.moveLocalY(this.gameObject, -140.5f, 1f);
+            LeanTween.moveLocalY(this.gameObject, -140.5f, .6f);
             holder.Craft();
             moving = false;
         }
@@ -30,7 +30,7 @@ public class BenchSlider : MonoBehaviour
         if (!moving && !childplace)
         {
             this.gameObject.transform.SetAsLastSibling();
-            LeanTween.moveLocalY(this.gameObject, 94.6f, 1f);
+            LeanTween.moveLocalY(this.gameObject, 94.6f, .6f);
             moving = true;
             time = Time.realtimeSinceStartup;
             childplace = true;
