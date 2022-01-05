@@ -28,7 +28,8 @@ public class WatcherAI : MonoBehaviour
     public bool isClosePlaying = false;
     public bool isScreamPlaying = false;
     public bool timerLock = true;
-    int[] candlesOn;
+    //int[] candlesOn;
+    List<CandleScript> CandlesOn = new List<CandleScript>();
     float ovTimer;
     public float distance;
     int plyIndex;
@@ -56,7 +57,6 @@ public class WatcherAI : MonoBehaviour
     GameObject startPoint;
     [SerializeField]
     GameObject[] Spawns;
-    int i;
     public float spwnDist;
     [SerializeField]
     room roomBFHallway;
@@ -101,7 +101,7 @@ public class WatcherAI : MonoBehaviour
         {
             WaitMessageTimer();
         }
-        playerRoom = player.GetComponent<PlayerMovement>().myRoom;
+        
         CheckRoom();
         UpdateFace();
         candlesOut = CheckCandles();
@@ -337,30 +337,23 @@ public class WatcherAI : MonoBehaviour
         }
     }
 
-    void BlowOutCandle()// Blows out the candles, from 1 candle to all the candles
+    void BlowOutCandle()// Blows out 1 candle
     {
-        int selectedAmt = Random.Range(1, candlesOn.Length + 1);
-        int temp;
-
         if (Candles != null)
         {
             if (manager != null)
             {
                 manager.Play("Candle Blow Out", true);
+                //change "Candle Blow Out" to a quick wind blow sound
             }
-
-            for (int i = 0; i <= selectedAmt; i++)
-            {
-                temp = candlesOn[Random.Range(0, selectedAmt - 1)];
-                Candles[temp].CandleToggle(false);
-            }
+            CandlesOn[Random.Range(0, CandlesOn.Count)].CandleToggle(false);
+            //Candles[selectedCandle].CandleToggle(false); // setting that random candle to false
         }
     }
 
-    bool CheckCandles()// Checks to see if there is any candles that are on, if there are, find out how many there are
+    bool CheckCandles()// Checks to see if there is any candles that are on, if there are, find out how many
     {
-        int candleCount = 0;
-        int j = 0;
+        CandlesOn.Clear();
 
         if(Candles == null || Candles.Length == 0)
         {
@@ -369,38 +362,17 @@ public class WatcherAI : MonoBehaviour
 
         foreach (CandleScript candle in Candles)
         {
-            if (candle.flame != null)
+            if (candle.flame != null && candle.flame.isActiveAndEnabled)
             {
-                if (candle.flame.isActiveAndEnabled)
-                {
-                    candleCount++;
-                }
-            }
-
-        }
-
-        candlesOn = new int[candleCount];
-
-        for(int i = 0; i < Candles.Length; i++)
-        {
-            if (Candles[i].flame != null)
-            {
-                if (Candles[i].flame.isActiveAndEnabled)
-                {
-                    candlesOn[j] = i;
-                    j++;
-                }
-
+                CandlesOn.Add(candle);
             }
         }
-        if (candleCount > 0)
+
+        if (CandlesOn.Count == 0)
         {
-            return true; // True means there are still candles on
+            return false; // there are no candles
         }
-        else
-        {
-            return false; // False means all the candles are off or don't exist
-        }
+        return true; // there are candles on
     }
 
     int FindPlayerRoom() //Finds the index of the room the player is in
@@ -426,19 +398,17 @@ public class WatcherAI : MonoBehaviour
         }
         else
         {
+            playerInRoom = false;
             if (currentRoom.getFloorNum() != playerRoom.getFloorNum())
             {
                 ChangeFloor(playerRoom.getFloorNum());
-            }
-            else
-            {
-                playerInRoom = false;
             }
         }
     }
 
     public void ChangeRoom(room target)
     {
+        playerRoom = player.GetComponent<PlayerMovement>().myRoom;
         if (abandonment)
         {
             int rand = Random.Range(0, 2);
@@ -499,6 +469,7 @@ public class WatcherAI : MonoBehaviour
                 Rooms = floor3Rooms;
                 break;
             default:
+                Debug.Log("Floor: " + " \n could not be found or the wrong number was sent");
                 Rooms = floor1Rooms;
                 break;
         }
@@ -506,12 +477,9 @@ public class WatcherAI : MonoBehaviour
 
     void MoveWatcherHW()
     {
-        if (true)
-        {
-            i = GetClosestSpawn();
-            Debug.Log("Teleported to: " + Spawns[i].name);
-            timerLock = false;
-        }
+        int i = GetClosestSpawn();
+        Debug.Log("Teleported to: " + Spawns[i].name);
+        timerLock = false;
 
         this.transform.position = Spawns[i].transform.position;
         spwnDist = Vector3.Distance(player.transform.position, Spawns[i].transform.position);
@@ -541,10 +509,10 @@ public class WatcherAI : MonoBehaviour
         return closestObject;
     }
 
-    void activate() //Turns on the Watcher
+/*    void activate() //Turns on the Watcher
     {
         gameObject.SetActive(true);
-    }
+    }*/
 
     private void OnDrawGizmos()
     {
@@ -628,7 +596,7 @@ public class WatcherAI : MonoBehaviour
 
         player.transform.position = startPoint.transform.position;
         player.GetComponent<PlayerMovement>().changeRoom(roomBFHallway);
-        sanityManager.ChangeSanity(-5);
+        sanityManager.ChangeSanity(-18.19f);
 
         watchClip.gameObject.SetActive(false);
     }

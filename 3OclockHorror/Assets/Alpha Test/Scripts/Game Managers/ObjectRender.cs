@@ -24,6 +24,7 @@ public class ObjectRender : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             colliding = true;
+            Listener.NoteSwitch(true);
         }
     }
 
@@ -32,6 +33,7 @@ public class ObjectRender : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             colliding = false;
+            Listener.NoteSwitch(false);
         }
     }
 

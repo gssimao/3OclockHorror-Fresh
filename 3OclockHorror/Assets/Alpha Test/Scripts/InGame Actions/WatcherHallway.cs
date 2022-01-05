@@ -46,7 +46,7 @@ public class WatcherHallway : MonoBehaviour
         WatchHallwaySwitch();
 
         dist = Vector3.Distance(this.transform.position, player.transform.position);
-        if(dist <= thisDoor.range)
+        if(dist <= thisDoor.getRange())
         {
             if(uControls.Player.Interact.triggered)
             {

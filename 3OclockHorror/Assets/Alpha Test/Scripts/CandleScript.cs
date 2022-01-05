@@ -17,13 +17,14 @@ public class CandleScript : MonoBehaviour
     public float interRange;
 
     UniversalControls uControls;
-
+    public invInput Listener;
     AudioManager manager;
     float dist;
 
     public bool lightOn;
     private void Awake()
     {
+        Listener = GameObject.Find("Listener").GetComponent<invInput>();
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -51,8 +52,9 @@ public class CandleScript : MonoBehaviour
     {
         dist = Vector3.Distance(player.transform.position, this.transform.position);
 
-        if(dist <= interRange && uControls.Player.Light.triggered && !SkullCandle)
+        if(dist <= interRange && uControls.Player.Interact.triggered && !SkullCandle)
         {
+            //Listener.isFocus = false;
             if (flame.isActiveAndEnabled == false)
             {
                 CandleToggle(true);
@@ -66,6 +68,11 @@ public class CandleScript : MonoBehaviour
                 CandleToggle(false);
             }
         }
+        else
+        {
+            //Listener.isFocus = true;
+        }
+        
     }
 
     void OnDrawGizmos()// Draws a blue circle around the candle in the editor to help visualize the disance of the interactableRange
@@ -121,5 +128,14 @@ public class CandleScript : MonoBehaviour
     public GameObject getPlayerObject()
     {
         return player;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Listener.CandleSwitch(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Listener.CandleSwitch(false);
     }
 }

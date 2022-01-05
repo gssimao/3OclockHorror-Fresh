@@ -30,7 +30,7 @@ public class room : MonoBehaviour
         int i = 0;
         
         i = Random.Range(0, watcherSpawn.Length);
-
+        Debug.Log("Watcher trying to spawn at " + i);
         return watcherSpawn[i];
     }
     public connectedPatrolPoint getEntrancePoint()

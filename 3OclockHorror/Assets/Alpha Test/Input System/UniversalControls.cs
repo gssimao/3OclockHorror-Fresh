@@ -255,8 +255,8 @@ public class @UniversalControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""929e00d2-ac51-4b85-8f59-c2509f156484"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Light"",

@@ -18,8 +18,7 @@ public class FloorAudioController : MonoBehaviour
 
     float t = 0;
     public int floor;
-    //public room Rfloor;
-    //public int prevFloorAudio = 0;
+
     public int lFloor;
     public bool StopALL = false;
     public bool is2ATrue = false;
@@ -33,7 +32,7 @@ public class FloorAudioController : MonoBehaviour
     // Update Function, WIP not yet finished
     void Update()
     {
-        if (t <= 0 && player.myRoom.getName() != "Outside")
+        if (t <= 0 && player.myRoom.getName() != "Outside") // error here
         {
             lFloor = floor; //Catch the last floor
             CheckFloor();

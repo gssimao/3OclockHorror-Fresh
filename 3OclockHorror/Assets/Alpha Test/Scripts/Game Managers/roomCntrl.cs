@@ -6,21 +6,18 @@ using UnityEngine.UI;
 
 public class roomCntrl : MonoBehaviour
 {
-    public room room1; // Current Room
-    public room room2; //DestRoom
-    public Camera mainCamera;
-
+    private room CurrentRoom; // Current Room
+    private room DestinationRoom; //DestRoom
     public GameObject entrancePointRoom;
-    public PlayerMovement player;
-    public invInput Listener;
+    private PlayerMovement playerMovementScript;
+    private invInput Listener;
 
     public bool transitionOnOff = true; //Use this toggle the transition on and off
-    public float range = 0.5f;
-    float transitionTime = .3f;
-    float dist;
-
+    private float range = 0.5f;
+    private float transitionTime = .3f;
+    [Space]
     public bool locked;
-    public Inventory pInv;
+    public Inventory PlayerInvetory;
     public Item MyKey;
 
 
@@ -29,10 +26,10 @@ public class roomCntrl : MonoBehaviour
     [SerializeField]
     TaskListTracker taskManager;
 
-    AudioManager manager;
+    private AudioManager manager;
 
     //public Animator Fade;
-    public Image BlackBackground;
+    private Image BlackBackground;
 
     bool opened = false;
     private UniversalControls uControls;
@@ -43,16 +40,22 @@ public class roomCntrl : MonoBehaviour
     [SerializeField]
     room WatcherHallway;
 
-    [Space]
+/*    [Space]
     [SerializeField]
     bool floorChanger;
     [SerializeField]
-    string destString;
+    string destString;*/
 
     private void Awake()
     {
+        CurrentRoom = this.gameObject.GetComponentInParent<room>(); // get current room script
+        DestinationRoom = entrancePointRoom.transform.parent.parent.gameObject.GetComponent<room>(); // get destination room script based on entrance point
+        manager = FindObjectOfType<AudioManager>();
+        if (playerMovementScript == null)
+            playerMovementScript = GameObject.Find("Player2").GetComponent<PlayerMovement>();
+        if (Listener == null)
+            Listener = GameObject.Find("Listener").GetComponent<invInput>();
         BlackBackground = GameObject.Find("TransitionPanel").GetComponent<Image>();
-        //mainCamera = Camera.main;
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -60,96 +63,39 @@ public class roomCntrl : MonoBehaviour
     {
         uControls.Disable(); 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        manager = FindObjectOfType<AudioManager>();
-    }
     private void Interact(InputAction.CallbackContext c)
     {
         Tooltip.Message = "";
-        if (transitionOnOff)
+        if (locked)
         {
-            if (locked)
-            {
-                CheckKey();
-            }
+            CheckKey();
+        }
+        else 
+        {
+            CameraCrossfade(playerMovementScript.gameObject, entrancePointRoom, DestinationRoom);
+            manager.Play("Door Open", true);
 
-            if (player != null && !locked) //Make sure it's not null, check if door is locked
-            {
-                if (player.myRoom == room1) //Check the room states then update as necessary
-                {
-                    CameraCrossfade(player.gameObject, entrancePointRoom, player, room2);
-
-                    if (manager != null)
-                    {
-                        manager.Play("Door Open", true);
-                    }
-
-                    //Debug.Log("outside if");
-                    if (floorChanger)
-                    {
-                        Debug.Log("inside if");
-                        player.playerFloor = destString;
-                    }
-                }
-                else// player.myRoom == room2
-                {
-                    CameraCrossfade(player.gameObject, entrancePointRoom, player, room1);
-
-                    if (manager != null)
-                    {
-                        manager.Play("Door Open", true);
-                    }
-
-                   // Debug.Log("outside if");
-                    if (floorChanger)
-                    {
-                        Debug.Log("inside if");
-                        player.playerFloor = destString;
-                    }
-                }
-
-            }
         }
     }
     // Update is called once per frame
     void Update()
     {
-        //dist = Vector3.Distance(player.gameObject.transform.position, this.gameObject.transform.position);
-        /*if (uControls.Player.Interact.triggered)
-        {
-            Tooltip.Message = "";
-        }*/
-
-        /*if (Fade != null)
-        {
-            if(Fade.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-            {
-                Fade.gameObject.SetActive(false);
-            }
-        }*/
-
         if(WatchHallwayTrigger)
         {
-            if(WatcherHallway == null)
+            if(WatcherHallway == null || watcher == null)
             {
-                Debug.LogError("Missing WatcherHallway room script");
-            }
-            else if(watcher == null)
-            {
-                Debug.LogError("Missing WatcherAI script");
+                Debug.LogError("Missing WatcherHallway room script or Missing WatcherAI script at " + this.gameObject.name);
             }
             else
             {
-                if (player.myRoom != WatcherHallway)
+                if (playerMovementScript.myRoom != WatcherHallway)
                 {
                     ActivateHallway(false);
                 }
             }
         }
     }
-    void OnDrawGizmos()//Shows how far the play needs to be in order to use the door
+    void OnDrawGizmos()//Shows how far the player needs to be in order to use the door
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(gameObject.transform.position, range);
@@ -167,25 +113,15 @@ public class roomCntrl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player" && transitionOnOff == true)
+        Listener.RoomTeleportSwitch(true);
+
+        if(collision.gameObject.tag == "Player")
         {
             uControls.Player.Interact.performed += Interact;
         }
-        else if (collision.gameObject.tag == "Player" && transitionOnOff == false && !locked) //If its a player, this is necessary to determine what class to attempt to grab
+        else if(collision.gameObject.tag == "Player" && transitionOnOff)
         {
-            PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>(); //Grab the player movement script
-
-            if (player != null) //Make sure it's not null
-            {
-                if(player.myRoom == room1) //Check the room states then update as necessary
-                {
-                    CameraCrossfade(collision.gameObject, entrancePointRoom, player, room2);
-                }
-                else// player.myRoom == room2
-                {
-                    CameraCrossfade(collision.gameObject, entrancePointRoom, player, room1);
-                }
-            }
+            ChangeRoom(playerMovementScript.gameObject, entrancePointRoom, DestinationRoom);
         }
         else
         {
@@ -193,13 +129,13 @@ public class roomCntrl : MonoBehaviour
             NPC exe = collision.gameObject.GetComponent<NPC>();
             if(exe != null)
             {
-                if(exe.myRoom == room1)
+                if(exe.myRoom == CurrentRoom)
                 {
-                    exe.myRoom = room2;
+                    exe.myRoom = DestinationRoom;
                 }
                 else
                 {
-                    exe.myRoom = room1;
+                    exe.myRoom = CurrentRoom;
                 }
             }
 
@@ -207,24 +143,25 @@ public class roomCntrl : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Listener.RoomTeleportSwitch(true);
         uControls.Player.Interact.performed -= Interact;
     }
 
-    public void CameraCrossfade(GameObject playerObject, GameObject entranceP, PlayerMovement play, room RoomNum)
+    public void CameraCrossfade(GameObject playerObject, GameObject entranceP, room Room)
     {
-        StartCoroutine(ChangeCamera(playerObject, entranceP, play, RoomNum));
+        StartCoroutine(ChangeRoom(playerObject, entranceP, Room));
        
     }
     private void ChangePlayerPosition(GameObject playerObject, GameObject entranceP)
     {
+
         playerObject.transform.position = entranceP.transform.position; // take player to the new place
         
     }
-    IEnumerator ChangeCamera(GameObject playerObject, GameObject entranceP, PlayerMovement play, room RoomNum)
+    IEnumerator ChangeRoom(GameObject playerObject, GameObject entranceP, room RoomNum)
     {
         //LeanTween.value(BlackBackground.gameObject, 0, 1, transitionTime).;
-
-        play.myRoom = RoomNum;
+        playerObject.GetComponent<PlayerMovement>().myRoom = RoomNum;
         LeanTween.value(BlackBackground.gameObject, 0, 1, transitionTime).setEaseInBack().setOnUpdate((float val) =>
         {
             Color newColor = BlackBackground.color;
@@ -249,20 +186,16 @@ public class roomCntrl : MonoBehaviour
             ActivateHallway(true);
         }
 
-        if (floorChanger)
-        {
-            playerObject.GetComponent<PlayerMovement>().playerFloor = destString;
-
-        }
-       // mainCamera.transform.position = player.GetMyroom().getCameraPoint().transform.position;
-
     }
-
+    public float getRange() // This might Go away later (Gabe's update)
+    {
+        return range;
+    }
     public void CheckKey()
     {
-        if (pInv != null && MyKey != null)
+        if (PlayerInvetory != null && MyKey != null)
         {
-            if (pInv.ContainsItem(MyKey))
+            if (PlayerInvetory.ContainsItem(MyKey))
             {
                 locked = false;
             }
@@ -298,13 +231,13 @@ public class roomCntrl : MonoBehaviour
             watcher.WatcherHallway = true;
             watcher.circleAnim.gameObject.SetActive(true);
             watcher.ChangeRoom(WatcherHallway);
-            player.GetComponent<LightMatch>().TurnOffLight(false);
+            playerMovementScript.GetComponent<LightMatch>().TurnOffLight(false);
         }
         else
         {
             watcher.WatcherHallway = false;
             watcher.circleAnim.gameObject.SetActive(false);
-            player.GetComponent<LightMatch>().TurnOffLight(true);
+            playerMovementScript.GetComponent<LightMatch>().TurnOffLight(true);
         }
     }
 }

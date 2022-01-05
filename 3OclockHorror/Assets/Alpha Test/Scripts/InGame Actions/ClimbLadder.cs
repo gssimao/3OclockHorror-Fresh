@@ -110,4 +110,13 @@ public class ClimbLadder : MonoBehaviour
         playerObject.transform.position = entranceP.transform.position; // take player to the new place
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Listener.LadderSwitch(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Listener.LadderSwitch(false);
+    }
 }

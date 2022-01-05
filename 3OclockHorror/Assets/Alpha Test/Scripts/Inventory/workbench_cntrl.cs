@@ -29,6 +29,7 @@ public class workbench_cntrl : MonoBehaviour
     UniversalControls uControls;
     private void Awake()
     {
+        Listener = GameObject.Find("Listener").GetComponent<invInput>();
         uControls = new UniversalControls();
         uControls.Enable();
     }
@@ -66,30 +67,18 @@ public class workbench_cntrl : MonoBehaviour
         float dist = Vector3.Distance(player.transform.position, transform.position); //Get the position of player
         if (dist <= 0.5f) //If the player is in range
         {
-            //Listener.isFocus = false;
+            
             if (uControls.Player.Interact.triggered && !active)
             {
                 open();
-               /* IM.ActivateInventory(myInv);
-                myInv.OpenInv(); //Update the items to be in accordance with the items array
-                active = true;
-                myInvDisplay.SetActive(true);
-                invCanv.SetActive(true);
-                IM.craftField.SetActive(true);
-                tooltip.SetActive(false);*/
+               
 
             }
             else if (uControls.Player.Interact.triggered && active)
             {
-                close();
-                /*//if (invCanv.activeSelf)
-                //{
-                    IM.DeactivateInventory(myInv);
-                    active = false;
-                    invCanv.SetActive(false);
-                    myInvDisplay.SetActive(false);
-                    IM.craftField.SetActive(false);
-                //}*/
+                if (invCanv.activeSelf)
+                    close();
+                
             }
         }
     }
@@ -134,13 +123,15 @@ public class workbench_cntrl : MonoBehaviour
         Gizmos.DrawWireSphere(this.transform.position, 0.25f);
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        uControls.Player.Interact.performed += Inventory;
+        Listener.BenchSwitch(true);
+        //uControls.Player.Interact.performed += Inventory;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        uControls.Player.Interact.performed -= Inventory;
-    }*/
+        Listener.BenchSwitch(false);
+        //uControls.Player.Interact.performed -= Inventory;
+    }
 }

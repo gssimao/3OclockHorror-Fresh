@@ -31,14 +31,12 @@ public class SanityManager : MonoBehaviour
     int tick = 0;
     AudioManager manager;
     public FloorAudioController sound;
-    /*void Start()
-    {
-        //get reference from player's material
-        material = GetComponent<SpriteRenderer>().material;
-    }*/
+
+    [SerializeField] private LightMatch lightMatch;
 
     void Awake()
     {
+        lightMatch = this.GetComponent<LightMatch>();
         if(manager != null)
             manager = FindObjectOfType<AudioManager>();
         material.SetFloat("_Flick", 0f);
@@ -97,7 +95,7 @@ public class SanityManager : MonoBehaviour
     public void ChangeSanity(float changeValue)
     {
         sanityValue = sanityValue + changeValue;
-        
+        lightMatch.ChangeMaskSize(changeValue/100);
         //playEffect(1);//this calls the first effect, the red flicking lights
         if(sanityValue<=20 && !ScreenVeins.activeSelf)
         {

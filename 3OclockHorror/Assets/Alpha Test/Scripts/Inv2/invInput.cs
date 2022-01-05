@@ -6,16 +6,16 @@ using UnityEngine.InputSystem;
 
 public class invInput : MonoBehaviour
 {
-    [SerializeField]
+    /*[SerializeField]
     KeyCode invKey;
     [SerializeField]
-    KeyCode escKey;
+    KeyCode escKey;*/
     [SerializeField]
     GameObject Journal;
-    [SerializeField]
+    /*[SerializeField]
     GameObject invCanvas;
     [SerializeField]
-    GameObject tooltip;
+    GameObject tooltip;*/
     [SerializeField]
     InputField jInput;
     [SerializeField]
@@ -23,23 +23,32 @@ public class invInput : MonoBehaviour
     [SerializeField]
     GameObject escCanv;
 
+    [SerializeField] private bool candles = false;
+    [SerializeField] private bool WorkBench = false;
+    [SerializeField] private bool Ladder = false;
+    [SerializeField] private bool Note = false;
+    [SerializeField] private bool RoomTeleport = false;
+
+    [SerializeField] private Image InteractDrawer;
+
+
     AudioManager manager;
-    public bool isFocus = true;
+    private bool isFocus = true;
 
     private UniversalControls uControls;
     private void Awake()
     {
         uControls = new UniversalControls();
         uControls.Enable();
-        uControls.Player.Interact.performed += ShowJournal;
-        InteractibleTrigger.EnableJournal += EnableJournal;
+        uControls.Player.Interact.performed += Interaction;
+        //InteractibleTrigger.EnableJournal += EnableJournal;
         InteractibleTrigger.DisableJournal += DisableJournal;
     }
     private void OnDisable()
     {
         uControls.Disable();
-        uControls.Player.Interact.performed -= ShowJournal;
-        InteractibleTrigger.EnableJournal -= EnableJournal;
+        uControls.Player.Interact.performed -= Interaction;
+        //InteractibleTrigger.EnableJournal -= EnableJournal;
         InteractibleTrigger.DisableJournal -= DisableJournal;
     }
 
@@ -48,8 +57,51 @@ public class invInput : MonoBehaviour
         manager = FindObjectOfType<AudioManager>();
     }
 
-    private void EnableJournal() { isFocus = true; }
+    //private void EnableJournal() { isFocus = true; }
     private void DisableJournal() { isFocus = false; }
+
+    private void Interaction(InputAction.CallbackContext c)
+    {
+        if (Ladder)
+        {
+            Debug.Log("Ladder teleport");
+            return;
+        }
+        else if (WorkBench)
+        {
+            Debug.Log("Do the thing with the Bench");
+            return;
+        }
+        else if (candles)
+        {
+            Debug.Log("Do the thing with the Candles");
+            return;
+        }
+        else if (Note)
+        {
+            Debug.Log("Reading Note");
+            return;
+        }
+        else if (RoomTeleport)
+        {
+            Debug.Log("Teleporting to new room");
+            return;
+        }
+        else
+        {
+            playSound();
+            if (Journal.activeSelf)
+            {
+                Journal.SetActive(false);
+            }
+            else
+            {
+                Journal.SetActive(true);
+            }
+        }
+       
+
+    }
 
     private void ShowJournal(InputAction.CallbackContext c)
     {
@@ -146,8 +198,33 @@ public class invInput : MonoBehaviour
         }
     }
 
-    /*private void Interact(InputAction.CallbackContext c)
-    {
+    
 
-    }*/
+    public void BenchSwitch(bool state)
+    {
+        
+        WorkBench = state;
+        if (state)
+            LeanTween.moveY(InteractDrawer.gameObject, InteractDrawer.gameObject.transform.position.y -.5f, .5f).setEase(LeanTweenType.easeInQuad);
+        else
+            LeanTween.moveY(InteractDrawer.gameObject, InteractDrawer.gameObject.transform.position.y+.5f, .5f).setEase(LeanTweenType.easeInQuad);
+    }
+    public void CandleSwitch(bool state)
+    {
+        candles = state;
+    }
+    public void NoteSwitch(bool state)
+    {
+        Note = state;
+    }
+    public void LadderSwitch(bool state)
+    {
+        Ladder = state;
+    }
+    public void RoomTeleportSwitch(bool state)
+    {
+        RoomTeleport = state;
+    }
+
+
 }
