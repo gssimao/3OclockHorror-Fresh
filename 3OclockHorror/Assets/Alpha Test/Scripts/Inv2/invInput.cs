@@ -62,12 +62,7 @@ public class invInput : MonoBehaviour
 
     private void Interaction(InputAction.CallbackContext c)
     {
-        if (Ladder)
-        {
-            Debug.Log("Ladder teleport");
-            return;
-        }
-        else if (WorkBench)
+        if (WorkBench)
         {
             Debug.Log("Do the thing with the Bench");
             return;

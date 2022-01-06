@@ -115,13 +115,14 @@ public class roomCntrl : MonoBehaviour
     {
         Listener.RoomTeleportSwitch(true);
 
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" && transitionOnOff) // no need to press the interact button
+        {
+            CameraCrossfade(playerMovementScript.gameObject, entrancePointRoom, DestinationRoom);
+            
+        }
+        else if (collision.gameObject.tag == "Player" ) // need to press interact button
         {
             uControls.Player.Interact.performed += Interact;
-        }
-        else if(collision.gameObject.tag == "Player" && transitionOnOff)
-        {
-            ChangeRoom(playerMovementScript.gameObject, entrancePointRoom, DestinationRoom);
         }
         else
         {
@@ -143,7 +144,7 @@ public class roomCntrl : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Listener.RoomTeleportSwitch(true);
+        Listener.RoomTeleportSwitch(false);
         uControls.Player.Interact.performed -= Interact;
     }
 
