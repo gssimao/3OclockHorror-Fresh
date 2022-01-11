@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class invInitOpener : MonoBehaviour
 {
-    [SerializeField]
+ /*   [SerializeField]
     workbench_cntrl benchToOpen;
     bool opened = false;
     bool closed = false;
     float startTime;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -33,5 +28,5 @@ public class invInitOpener : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
+    }*/
 }

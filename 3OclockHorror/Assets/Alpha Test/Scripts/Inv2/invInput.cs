@@ -30,6 +30,7 @@ public class invInput : MonoBehaviour
     [SerializeField] private bool RoomTeleport = false;
 
     [SerializeField] private Image InteractDrawer;
+    private Vector3 DrawerOriginalPosition;
 
 
     AudioManager manager;
@@ -38,6 +39,7 @@ public class invInput : MonoBehaviour
     private UniversalControls uControls;
     private void Awake()
     {
+        DrawerOriginalPosition = InteractDrawer.gameObject.transform.localPosition;
         uControls = new UniversalControls();
         uControls.Enable();
         uControls.Player.Interact.performed += Interaction;
@@ -64,7 +66,7 @@ public class invInput : MonoBehaviour
     {
         if (WorkBench)
         {
-            Debug.Log("Do the thing with the Bench");
+            OpenBench.TriggerBench();
             return;
         }
         else if (candles)
@@ -94,7 +96,7 @@ public class invInput : MonoBehaviour
                 Journal.SetActive(true);
             }
         }
-       
+
 
     }
 
@@ -197,13 +199,27 @@ public class invInput : MonoBehaviour
 
     public void BenchSwitch(bool state)
     {
-        
+        //LeanTween.moveY(InteractDrawer.gameObject, InteractDrawer.gameObject.transform.position.y+.5f, .5f).setEase(LeanTweenType.easeInQuad);
+
         WorkBench = state;
-        if (state)
-            LeanTween.moveY(InteractDrawer.gameObject, InteractDrawer.gameObject.transform.position.y -.5f, .5f).setEase(LeanTweenType.easeInQuad);
+       /* if (state)
+            StartCoroutine(LerpTopItem((InteractDrawer.gameObject.transform.localPosition + new Vector3(0,-195, 0)), .5f, InteractDrawer.gameObject));
         else
-            LeanTween.moveY(InteractDrawer.gameObject, InteractDrawer.gameObject.transform.position.y+.5f, .5f).setEase(LeanTweenType.easeInQuad);
+            StartCoroutine(LerpTopItem((InteractDrawer.gameObject.transform.localPosition + new Vector3(0, +195, 0)), .5f, InteractDrawer.gameObject));*/
     }
+    public GameObject GetInteractDrawer()
+    {
+        return InteractDrawer.gameObject;
+    }
+    public void AdjustDrawer(Vector3 FinalbenchPosition, float interpolate)
+    {
+        InteractDrawer.transform.localPosition = Vector3.Lerp(GetOriginalDrawerPosition(), FinalbenchPosition, interpolate);
+    }
+    public Vector3 GetOriginalDrawerPosition()
+    {
+        return DrawerOriginalPosition;
+    }
+
     public void CandleSwitch(bool state)
     {
         candles = state;

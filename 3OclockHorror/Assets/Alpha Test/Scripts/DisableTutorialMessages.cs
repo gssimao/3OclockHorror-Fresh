@@ -6,9 +6,10 @@ public class DisableTutorialMessages : MonoBehaviour
 {
 
     GameObject[] tutorialNotes;
-    public GameObject player;
+    private GameObject player;
     void Awake()
     {
+        player = GameObject.Find("Player2");
         tutorialNotes = GameObject.FindGameObjectsWithTag("TutorialMessage");
     }
 
