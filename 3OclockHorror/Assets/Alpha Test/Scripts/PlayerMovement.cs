@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         manager = FindObjectOfType<AudioManager>();
 
 #if UNITY_ANDROID
-        Debug.Log("Android");
+        //Debug.Log("Android"); // this is working
 #endif
 
 #if UNITY_IPHONE

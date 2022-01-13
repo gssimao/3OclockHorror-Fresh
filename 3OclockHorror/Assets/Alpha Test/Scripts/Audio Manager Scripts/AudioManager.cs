@@ -23,17 +23,16 @@ public class AudioManager : MonoBehaviour
 
 	void Awake()
 	{
-			if (instance != null)
-			{
-				Destroy(gameObject); //Is there a manager? If yes then I'm gone
-			}
-			else
-			{
-				instance = this;  //There isnt a manager? I'm it
-				DontDestroyOnLoad(gameObject);
-			}
+		if (instance != null)
+		{
+			Destroy(gameObject); //Is there a manager? If yes then I'm gone
+		}
+		else
+		{
+			instance = this;  //There isnt a manager? I'm it
+			DontDestroyOnLoad(gameObject);
+		}
 
-        //Debug.Log("hello");
 
         foreach (Sound s in sounds) //Init each sound - give it a source and init that source to make it playable
         {
@@ -46,11 +45,6 @@ public class AudioManager : MonoBehaviour
 
     }
 
-  /*  void Update()
-    {
-        //doFade();
-        
-    }*/
 
     public void Play(string sound, bool isRandom) 
 	{

@@ -5,7 +5,6 @@ using UnityEngine;
 public class CandleScript : MonoBehaviour
 {
     public bool SkullCandle;
-    public GameObject player;
     public GameObject Light;
     public GameObject Flicker;
     public GameObject lightEffect;
@@ -13,13 +12,11 @@ public class CandleScript : MonoBehaviour
     public Light flame; //Variable to that holds the light component of the game object
     [SerializeField]
     bool LeaveOn = false; // Tick this if you want to leave light on during start up
-
-    public float interRange;
+    private bool EternalLight = false; //make a candle last forever once lit
 
     UniversalControls uControls;
     public invInput Listener;
     AudioManager manager;
-    float dist;
 
     public bool lightOn;
     private void Awake()
@@ -27,18 +24,12 @@ public class CandleScript : MonoBehaviour
         Listener = GameObject.Find("Listener").GetComponent<invInput>();
         uControls = new UniversalControls();
         uControls.Enable();
-    }
-    private void OnDisable()
-    {
-        uControls.Disable();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+
         flame = Light.GetComponent<Light>(); //gets the light component of the child of this game object and sets it to the variable
         if (!LeaveOn)
         {
-            CandleToggle(false);
+            lightOn = true;
+            CandleToggle();//the lights will be turned off
         }
         else
         {
@@ -46,96 +37,79 @@ public class CandleScript : MonoBehaviour
         }
         manager = FindObjectOfType<AudioManager>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        dist = Vector3.Distance(player.transform.position, this.transform.position);
-
-        if(dist <= interRange && uControls.Player.Interact.triggered && !SkullCandle)
-        {
-            //Listener.isFocus = false;
-            if (flame.isActiveAndEnabled == false)
-            {
-                CandleToggle(true);
-                if(manager != null)
-                {
-                    manager.Play("Candle Light", true);
-                }
-            }
-            else
-            {
-                CandleToggle(false);
-            }
-        }
-        else
-        {
-            //Listener.isFocus = true;
-        }
+        uControls.Disable();
+    }
+    public void CandleToggle()
+    {
         
-    }
-
-    void OnDrawGizmos()// Draws a blue circle around the candle in the editor to help visualize the disance of the interactableRange
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(gameObject.transform.position, interRange);
-    }
-
-    public void CandleToggle(bool trigger)
-    {
-        if (trigger == false)
+        if (lightOn == true) //the light is on and we want to turn if off
         {
-            if (flame != null && LightMask != null && Flicker != null)
+            if (flame != null && LightMask != null)
             {
                 flame.enabled = false;
                 LightMask.enabled = false;
+                lightEffect.SetActive(false);
+            }
+            if(Flicker != null)
+            {
                 Flicker.SetActive(false);
-                lightEffect.SetActive(false);
             }
-            else if (flame != null && LightMask != null)
-            {
-                flame.enabled = false;
-                LightMask.enabled = false;
-                lightEffect.SetActive(false);
-            }
-
             lightOn = false;
+            Debug.Log("Complete lignt off");
+
         }
-        else if(trigger == true)
+        else  //the light is off and we want to turn if on
         {
-            if (flame != null && LightMask != null && Flicker != null)
+            manager.Play("Candle Light", true);
+            if (flame != null && LightMask != null)
             {
                 flame.enabled = true;
                 LightMask.enabled = true;
+                lightEffect.SetActive(true);
+            }
+            if (Flicker != null)
+            {
                 Flicker.SetActive(true);
-                lightEffect.SetActive(true);
             }
-            else if (flame != null && LightMask != null)
-            {
-                flame.enabled = true;
-                LightMask.enabled = true;
-                lightEffect.SetActive(true);
-            }
-
             lightOn = true;
+            Debug.Log("Complete lignt ON");
         }
     }
-
-    public void setPlayerObject(GameObject input)// used for sceneManager script
+    public void CandleToggle(bool state)
     {
-        player = input;
+        if (flame != null && LightMask != null)
+        {
+            flame.enabled = state;
+            LightMask.enabled = state;
+            lightEffect.SetActive(state);
+        }
+        if (Flicker != null)
+        {
+            Flicker.SetActive(state);
+        }
+        lightOn = state;
     }
-    public GameObject getPlayerObject()
-    {
-        return player;
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
+ /*   private void OnTriggerEnter2D(Collider2D collision)
     {
         Listener.CandleSwitch(true);
+        LightCandle.TriggerCandle += CandleToggle;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         Listener.CandleSwitch(false);
-    }
+        LightCandle.TriggerCandle -= CandleToggle;
+    }*/
+
+    /*  public void setPlayerObject(GameObject input)// used for sceneManager script
+      {
+          player = input;
+      }
+      public GameObject getPlayerObject()
+      {
+          return player;
+      }*/
+
 }

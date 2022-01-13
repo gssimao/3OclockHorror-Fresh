@@ -382,6 +382,8 @@ GameObject:
   - component: {fileID: 4319032880085066268}
   - component: {fileID: 4319032880085066271}
   - component: {fileID: 8223257568332544356}
+  - component: {fileID: 3537201334315606881}
+  - component: {fileID: 8490120157299273599}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
@@ -471,20 +473,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4319032880085066264}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4594ceb2298e74ca662811c98b7e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SkullCandle: 0
-  player: {fileID: 0}
   Light: {fileID: 4319032880085066264}
   Flicker: {fileID: 4319032878249710946}
   lightEffect: {fileID: 4319032879280252864}
   LightMask: {fileID: 4319032879571133342}
   flame: {fileID: 4319032880085066268}
   LeaveOn: 0
-  interRange: 0.8
   Listener: {fileID: 0}
   lightOn: 0
 --- !u!58 &8223257568332544356
@@ -503,6 +503,41 @@ CircleCollider2D:
   m_Offset: {x: -0.024857296, y: -0.096955605}
   serializedVersion: 2
   m_Radius: 0.57209826
+--- !u!114 &3537201334315606881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319032880085066264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576ff9eb342d7954bbb9a0d7297eadfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultAction:
+  - {fileID: 8490120157299273599}
+  bAutoTrigger: 0
+--- !u!114 &8490120157299273599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319032880085066264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b540c334287724998419381430b5e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  SkullCandle: 0
+  Light: {fileID: 4319032880085066264}
+  Flicker: {fileID: 4319032878249710946}
+  lightEffect: {fileID: 4319032879280252864}
+  LightMask: {fileID: 4319032879571133342}
+  flame: {fileID: 4319032880085066268}
+  lightOn: 0
 --- !u!1 &4761420719058402616
 GameObject:
   m_ObjectHideFlags: 0

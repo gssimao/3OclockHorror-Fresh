@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System;
+
+#if UNITY_ANDROID
+//Debug.Log("Android"); // this is working
+#endif
 
 public class invInput : MonoBehaviour
 {
+
     /*[SerializeField]
     KeyCode invKey;
     [SerializeField]
     KeyCode escKey;*/
-    [SerializeField]
-    GameObject Journal;
+
     /*[SerializeField]
     GameObject invCanvas;
     [SerializeField]
     GameObject tooltip;*/
+    [SerializeField]
+    GameObject Journal;
     [SerializeField]
     InputField jInput;
     [SerializeField]
@@ -25,13 +32,11 @@ public class invInput : MonoBehaviour
 
     [SerializeField] private bool candles = false;
     [SerializeField] private bool WorkBench = false;
-    [SerializeField] private bool Ladder = false;
     [SerializeField] private bool Note = false;
     [SerializeField] private bool RoomTeleport = false;
 
     [SerializeField] private Image InteractDrawer;
     private Vector3 DrawerOriginalPosition;
-
 
     AudioManager manager;
     private bool isFocus = true;
@@ -64,29 +69,15 @@ public class invInput : MonoBehaviour
 
     private void Interaction(InputAction.CallbackContext c)
     {
-        if (WorkBench)
+        if (RoomTeleport)
         {
-            OpenBench.TriggerBench();
+            Debug.Log("Interaction Teleporting to new room");
             return;
         }
-        else if (candles)
+        /*else
         {
-            Debug.Log("Do the thing with the Candles");
-            return;
-        }
-        else if (Note)
-        {
-            Debug.Log("Reading Note");
-            return;
-        }
-        else if (RoomTeleport)
-        {
-            Debug.Log("Teleporting to new room");
-            return;
-        }
-        else
-        {
-            playSound();
+            Debug.Log("Interaction Journal Calls");
+            playJournalSound();
             if (Journal.activeSelf)
             {
                 Journal.SetActive(false);
@@ -95,7 +86,7 @@ public class invInput : MonoBehaviour
             {
                 Journal.SetActive(true);
             }
-        }
+        }*/
 
 
     }
@@ -109,13 +100,13 @@ public class invInput : MonoBehaviour
             if (Journal.activeSelf)
             {
                 Journal.SetActive(false);
-                playSound();
+                playJournalSound();
 
             }
             else
             {
                 Journal.SetActive(true);
-                playSound();
+                playJournalSound();
             }
 
             /*
@@ -187,7 +178,7 @@ public class invInput : MonoBehaviour
         //isFocus = true;
     }
 
-    void playSound()
+    void playJournalSound()
     {
         if (manager != null)
         {
@@ -227,10 +218,6 @@ public class invInput : MonoBehaviour
     public void NoteSwitch(bool state)
     {
         Note = state;
-    }
-    public void LadderSwitch(bool state)
-    {
-        Ladder = state;
     }
     public void RoomTeleportSwitch(bool state)
     {
