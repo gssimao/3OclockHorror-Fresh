@@ -24,10 +24,6 @@ public class UpdatePillarStage : GameActions
     {
         if (!stg3)
         {
-            if (!stg1)
-            {
-                Candle1.Execute();
-            }
             if (SkullPosition1 == 2 && SkullPosition2 == 0 && SkullPosition3 == 2 && SkullPosition4 == 0 && !stg1)
             {
                 stg1 = true;
