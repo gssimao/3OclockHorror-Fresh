@@ -205,6 +205,8 @@ public class Inventory : MonoBehaviour, IItemContainer
     public void CloseInv()
     {
         items.Clear();
+        itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
+        Debug.Log("BB " + itemSlots);
         foreach(ItemSlot slot in itemSlots)
         {
             if(slot.Item != null)

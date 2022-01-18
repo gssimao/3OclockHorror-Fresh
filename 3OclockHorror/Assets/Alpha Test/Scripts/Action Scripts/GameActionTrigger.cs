@@ -19,18 +19,18 @@ public class GameActionTrigger : MonoBehaviour
         if (bAutoTrigger)
             Execute();
         else
-            uControls.Player.Interact.performed += Execute; 
+            uControls.Player.Interact.started += Execute; 
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!bAutoTrigger)
-            uControls.Player.Interact.performed -= Execute;
+            uControls.Player.Interact.started -= Execute;
     }
     private void Execute(InputAction.CallbackContext c)
     {
         StartCoroutine(nameof(TriggerAction));
     }
-    private void Execute()
+    public void Execute()
     {
         StartCoroutine(nameof(TriggerAction));
     }

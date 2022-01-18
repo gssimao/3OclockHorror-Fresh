@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MakeBig : GameAction
+public class MakeBig : GameActions
 {
     public override void Action()
     {

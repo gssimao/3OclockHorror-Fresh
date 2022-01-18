@@ -28,7 +28,7 @@ public class skullInteract : MonoBehaviour
         uControls.Disable();
     }
     // Update is called once per frame
-    void Update()
+   /* void Update()
     {
         float dist = Vector2.Distance(player.transform.position, this.transform.position);
         
@@ -53,10 +53,6 @@ public class skullInteract : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(this.transform.position, 0.25f);
-    }
 }

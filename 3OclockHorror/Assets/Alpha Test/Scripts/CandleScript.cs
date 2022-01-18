@@ -57,7 +57,7 @@ public class CandleScript : MonoBehaviour
                 Flicker.SetActive(false);
             }
             lightOn = false;
-            Debug.Log("Complete lignt off");
+            //Debug.Log("Complete lignt off");
 
         }
         else  //the light is off and we want to turn if on
@@ -74,7 +74,7 @@ public class CandleScript : MonoBehaviour
                 Flicker.SetActive(true);
             }
             lightOn = true;
-            Debug.Log("Complete lignt ON");
+           //Debug.Log("Complete lignt ON");
         }
     }
     public void CandleToggle(bool state)

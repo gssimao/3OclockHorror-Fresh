@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisableGameAction : GameAction
+public class DisableGameAction : GameActions
 {
     public override void Action()
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class OpenBenchGA : GameActions
 {
-    [SerializeField]
     Inventory myInv;
     [SerializeField]
     GameObject myInvDisplay;
@@ -22,9 +21,13 @@ public class OpenBenchGA : GameActions
     {
         if (!active) // open the bench
         {
+            active = true;
+            if(myInv == null)
+            {
+                myInv = this.gameObject.GetComponent<Inventory>();
+            }
             IM.ActivateInventory(myInv);
             myInv.OpenInv(); //Update the items to be in accordance with the items array
-            active = true;
             myInvDisplay.SetActive(true);
             invCanv.SetActive(true);
             IM.craftField.SetActive(true);
@@ -32,10 +35,15 @@ public class OpenBenchGA : GameActions
         }
         else// close the bench
         {
-            IM.DeactivateInventory(myInv);
             active = false;
-            invCanv.SetActive(false);
+            if (myInv == null)
+            {
+                myInv = this.gameObject.GetComponent<Inventory>();
+            }
+            IM.DeactivateInventory(myInv);
+            myInv.CloseInv(); // close inventory is getting a reference error
             myInvDisplay.SetActive(false);
+            invCanv.SetActive(false);
             IM.craftField.SetActive(false);
         }
     }
