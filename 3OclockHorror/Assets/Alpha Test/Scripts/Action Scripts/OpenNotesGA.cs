@@ -8,12 +8,13 @@ public  class OpenNotesGA : GameActions
 {
     public Sprite sprite;
     [SerializeField] private Image image;
-    [TextArea] public string Note;
+    [TextArea(1,20)] public string Note;
     [SerializeField] private GameObject NoteText;
     [SerializeField] private Sprite transparent;
     [SerializeField]public bool active = false;
     public override void Action()
     {
+        Note = this.GetComponent<ObjectRender>().Note;
         Debug.Log("getting notes");
         if (!active)
         {

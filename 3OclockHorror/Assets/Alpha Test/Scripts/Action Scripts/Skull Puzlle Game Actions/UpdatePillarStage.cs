@@ -33,7 +33,7 @@ public class UpdatePillarStage : GameActions
                 Candle2.Execute();
                 Candle1.Execute();
             }
-            if (SkullPosition1 == 1 && SkullPosition2 == 1 && SkullPosition3 == 3 && SkullPosition4 == 3 && stg1)
+            if (SkullPosition1 == 1 && SkullPosition2 == 1 && SkullPosition3 == 3 && SkullPosition4 == 3 && stg1 && !stg2)
             {
                 stg2 = true;
                 pillarDisplay.updatePilar("stage2");

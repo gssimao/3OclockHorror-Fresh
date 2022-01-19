@@ -5,16 +5,12 @@ using UnityEngine;
 public class OpenBenchGA : GameActions
 {
     Inventory myInv;
-    [SerializeField]
-    GameObject myInvDisplay;
-    [SerializeField]
-    InventoryManager IM;
+    [SerializeField] GameObject myInvDisplay;
+    [SerializeField] InventoryManager IM;
 
-    bool active; //Am I the active workbench?
-    [SerializeField]
-    List<Item> Items;
-    [SerializeField]
-    GameObject tooltip;
+    private bool active; //Am I the active workbench?
+    [SerializeField] List<Item> Items;
+    [SerializeField] GameObject tooltip;
     public GameObject invCanv;
 
     public override void Action()

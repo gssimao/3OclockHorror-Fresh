@@ -9,7 +9,6 @@ public class LightCandleGA : GameActions
     public GameObject Flicker;
     public GameObject lightEffect;
     public GameObject LightMask;
-    public Light flame; //Variable to that holds the light component of the game object
     public bool EternalLight = false;
     /*[SerializeField]
     bool LeaveOn = false; // Tick this if you want to leave light on during start up
@@ -19,7 +18,7 @@ public class LightCandleGA : GameActions
 
     public override void Action()
     {
-        if (lightOn == false && EternalLight == false) //the light is on and we want to turn if off
+        if (lightOn == false) //the light is off and we want to turn if on
         {
             if (manager == null)
             {
@@ -32,22 +31,22 @@ public class LightCandleGA : GameActions
                 manager.Play("Candle Light", true);
             }
 
-            flame.enabled = true;
             LightMask.SetActive(true);
             lightEffect.SetActive(true);
             Flicker.SetActive(true);
-
             lightOn = true;
 
         }
-        else  //the light is off and we want to turn if on
+        else  //the light is on and we want to turn if off
         {
-            flame.enabled = false;
-            LightMask.SetActive(false);
-            lightEffect.SetActive(false);
-            Flicker.SetActive(false);
-
-            lightOn = false;
+            if(!EternalLight)
+            {
+                LightMask.SetActive(false);
+                lightEffect.SetActive(false);
+                Flicker.SetActive(false);
+                lightOn = false;
+            }
+            
         }
     }
 
