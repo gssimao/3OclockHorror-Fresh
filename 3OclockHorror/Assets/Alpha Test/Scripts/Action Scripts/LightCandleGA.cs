@@ -9,10 +9,7 @@ public class LightCandleGA : GameActions
     public GameObject Flicker;
     public GameObject lightEffect;
     public GameObject LightMask;
-    public bool EternalLight = false;
-    /*[SerializeField]
-    bool LeaveOn = false; // Tick this if you want to leave light on during start up
-    private bool EternalLight = false; //make a candle last forever once lit*/
+    public bool EternalLight = false; //make a candle last forever once lit
     AudioManager manager;
     public bool lightOn;
 

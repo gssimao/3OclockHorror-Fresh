@@ -27,8 +27,17 @@ public class Inventory : MonoBehaviour, IItemContainer
     public event Action<ItemSlot> onDragEvent;
     public event Action<ItemSlot> onDropEvent;
 
-    private void Awake()
+    private void OnEnable()
     {
+        WorkbenchGO.UpdateInventoryGO += UpdateInventoryGO;
+    }
+    private void OnDisable()
+    {
+        WorkbenchGO.UpdateInventoryGO -= UpdateInventoryGO;
+    }
+    private void UpdateInventoryGO(GameObject go)
+    {
+        itemsParent = go.transform;
         if (itemsParent != null) //If the item parent is not null, get all of the children component item slots, add them to the item slots list. 
         {
             itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
@@ -46,7 +55,6 @@ public class Inventory : MonoBehaviour, IItemContainer
 
         SetStartingItems();
     }
-
     //Adding, removing items, changing or setting starting items, etc.
     #region Add/Change Items  
     public void SetStartingItems()
@@ -206,7 +214,6 @@ public class Inventory : MonoBehaviour, IItemContainer
     {
         items.Clear();
         itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
-        Debug.Log("BB " + itemSlots);
         foreach(ItemSlot slot in itemSlots)
         {
             if(slot.Item != null)

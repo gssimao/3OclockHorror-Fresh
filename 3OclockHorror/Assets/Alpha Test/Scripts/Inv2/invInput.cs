@@ -30,16 +30,16 @@ public class invInput : MonoBehaviour
     [SerializeField]
     GameObject escCanv;
 
-    [SerializeField] private bool candles = false;
-    [SerializeField] private bool WorkBench = false;
-    [SerializeField] private bool Note = false;
+    [SerializeField] private bool bTriggerActive;
+
+
     [SerializeField] private bool RoomTeleport = false;
 
     [SerializeField] private Image InteractDrawer;
     private Vector3 DrawerOriginalPosition;
 
     AudioManager manager;
-    private bool isFocus = true;
+    //private bool isFocus = true;
 
     private UniversalControls uControls;
     private void Awake()
@@ -47,16 +47,24 @@ public class invInput : MonoBehaviour
         DrawerOriginalPosition = InteractDrawer.gameObject.transform.localPosition;
         uControls = new UniversalControls();
         uControls.Enable();
-        uControls.Player.Interact.performed += Interaction;
+        uControls.Player.Interact.performed += Interaction;// player controls
         //InteractibleTrigger.EnableJournal += EnableJournal;
-        InteractibleTrigger.DisableJournal += DisableJournal;
+        //InteractibleTrigger.DisableJournal += DisableJournal;
+    }
+    private void OnEnable()
+    {
+        GameActionTrigger.TriggerInactive += TriggerInactive;
+        GameActionTrigger.TriggerActive += TriggerActive;
     }
     private void OnDisable()
     {
         uControls.Disable();
-        uControls.Player.Interact.performed -= Interaction;
+        uControls.Player.Interact.performed -= Interaction; // player controls
         //InteractibleTrigger.EnableJournal -= EnableJournal;
-        InteractibleTrigger.DisableJournal -= DisableJournal;
+        //InteractibleTrigger.DisableJournal -= DisableJournal;
+
+        GameActionTrigger.TriggerInactive -= TriggerInactive;
+        GameActionTrigger.TriggerActive -= TriggerActive;
     }
 
     void Start()
@@ -65,13 +73,14 @@ public class invInput : MonoBehaviour
     }
 
     //private void EnableJournal() { isFocus = true; }
-    private void DisableJournal() { isFocus = false; }
+    //private void DisableJournal() { isFocus = false; }
 
     private void Interaction(InputAction.CallbackContext c)
     {
+        ShowJournal(c);
         if (RoomTeleport)
         {
-            Debug.Log("Interaction Teleporting to new room");
+            //Debug.Log("Interaction Teleporting to new room");
             return;
         }
         /*else
@@ -91,40 +100,36 @@ public class invInput : MonoBehaviour
 
     }
 
+    private void TriggerActive()
+    {
+        bTriggerActive = true;
+    }
+    private void TriggerInactive()
+    {
+        bTriggerActive = false;
+    }
     private void ShowJournal(InputAction.CallbackContext c)
     {
-        if (!isFocus) return;
-        
-        if (!jInput.isFocused)
+        if (Journal.activeSelf)
         {
-            if (Journal.activeSelf)
-            {
-                Journal.SetActive(false);
-                playJournalSound();
+            Journal.SetActive(false);
+            playJournalSound();
 
-            }
-            else
-            {
-                Journal.SetActive(true);
-                playJournalSound();
-            }
-
-            /*
-            if (invCanvas.activeSelf)
-            {
-                tooltip.SetActive(false);
-                invCanvas.SetActive(false);
-            }
-            else
-            {
-                invCanvas.SetActive(true);
-            }
-            */
         }
+        else if (!bTriggerActive)
+        {
+            Journal.SetActive(true);
+            playJournalSound();
+        }
+     
+        
+        /*   if (!jInput.isFocused)
+        {
+        }*/
        
     }
 
-    void ShowPauseMenu(InputAction.CallbackContext c)
+/*    void ShowPauseMenu(InputAction.CallbackContext c)
     {
         if (!escCanv.activeSelf)
         {
@@ -134,7 +139,7 @@ public class invInput : MonoBehaviour
         {
             escCanv.SetActive(false);
         }
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {
@@ -192,7 +197,7 @@ public class invInput : MonoBehaviour
     {
         //LeanTween.moveY(InteractDrawer.gameObject, InteractDrawer.gameObject.transform.position.y+.5f, .5f).setEase(LeanTweenType.easeInQuad);
 
-        WorkBench = state;
+        //WorkBench = state;
        /* if (state)
             StartCoroutine(LerpTopItem((InteractDrawer.gameObject.transform.localPosition + new Vector3(0,-195, 0)), .5f, InteractDrawer.gameObject));
         else
@@ -211,14 +216,6 @@ public class invInput : MonoBehaviour
         return DrawerOriginalPosition;
     }
 
-    public void CandleSwitch(bool state)
-    {
-        candles = state;
-    }
-    public void NoteSwitch(bool state)
-    {
-        Note = state;
-    }
     public void RoomTeleportSwitch(bool state)
     {
         RoomTeleport = state;

@@ -35,16 +35,27 @@ public class InventoryManager : MonoBehaviour
         AddEvents(inventory);
         AddEvents(craftInventory);
     }
+    private void OnEnable()
+    {
+        OpenBenchGA.ActivateInventory += ActivateInventory;
+        OpenBenchGA.DeactivateInventory += DeactivateInventory;
+        OpenBenchGA.CraftField += CraftField;
+    }
 
     private void OnDisable()
     {
         uControls.Disable();
+        OpenBenchGA.ActivateInventory -= ActivateInventory;
+        OpenBenchGA.DeactivateInventory -= DeactivateInventory;
+        OpenBenchGA.CraftField -= CraftField;
     }
 
-    private void Start()
+    private void CraftField(bool state)
     {
-        //noteStarter.initNotePuzzle();
+        craftField.SetActive(state);
     }
+
+
 
     //Sets all inventory event references for the given inventory.
     private void AddEvents(Inventory inv)

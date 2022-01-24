@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using System;
 
 public class GameActionTrigger : MonoBehaviour
 {
     public List<GameActions> defaultAction;   
     public bool bAutoTrigger;
     private UniversalControls uControls;
+
+    public static Action TriggerActive = delegate { };
+    public static Action TriggerInactive = delegate { };
 
     private void Awake()
     {
@@ -16,6 +20,7 @@ public class GameActionTrigger : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        TriggerActive();
         if (bAutoTrigger)
             Execute();
         else
@@ -23,6 +28,7 @@ public class GameActionTrigger : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        TriggerInactive();
         if (!bAutoTrigger)
             uControls.Player.Interact.started -= Execute;
     }

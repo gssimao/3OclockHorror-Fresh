@@ -15,6 +15,7 @@ public class roomCntrl : MonoBehaviour
     public bool transitionOnOff = true; //Use this toggle the transition on and off
     private float range = 0.5f;
     private float transitionTime = .3f;
+
     [Space]
     public bool locked;
     public Inventory PlayerInvetory;
@@ -28,7 +29,6 @@ public class roomCntrl : MonoBehaviour
 
     private AudioManager manager;
 
-    //public Animator Fade;
     private Image BlackBackground;
 
     bool opened = false;
@@ -40,21 +40,21 @@ public class roomCntrl : MonoBehaviour
     [SerializeField]
     room WatcherHallway;
 
-/*    [Space]
-    [SerializeField]
-    bool floorChanger;
-    [SerializeField]
-    string destString;*/
 
     private void Awake()
     {
-        CurrentRoom = this.gameObject.GetComponentInParent<room>(); // get current room script
-        DestinationRoom = entrancePointRoom.transform.parent.parent.gameObject.GetComponent<room>(); // get destination room script based on entrance point
+        // get current room script
+        CurrentRoom = this.gameObject.GetComponentInParent<room>();
+
+        // get destination room script based on entrance point
+        DestinationRoom = entrancePointRoom.transform.parent.parent.gameObject.GetComponent<room>(); 
+
         manager = FindObjectOfType<AudioManager>();
         if (playerMovementScript == null)
             playerMovementScript = GameObject.Find("Player2").GetComponent<PlayerMovement>();
         if (Listener == null)
             Listener = GameObject.Find("Listener").GetComponent<invInput>();
+        
         BlackBackground = GameObject.Find("TransitionPanel").GetComponent<Image>();
         uControls = new UniversalControls();
         uControls.Enable();

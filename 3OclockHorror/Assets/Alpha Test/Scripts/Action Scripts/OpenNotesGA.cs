@@ -14,7 +14,7 @@ public  class OpenNotesGA : GameActions
     [SerializeField]public bool active = false;
     public override void Action()
     {
-        Note = this.GetComponent<ObjectRender>().Note;
+        Note = this.gameObject.GetComponent<ObjectRender>().Note;
         Debug.Log("getting notes");
         if (!active)
         {
