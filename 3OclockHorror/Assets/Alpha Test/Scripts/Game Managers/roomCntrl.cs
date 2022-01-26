@@ -113,7 +113,6 @@ public class roomCntrl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Listener.RoomTeleportSwitch(true);
 
         if(collision.gameObject.tag == "Player" && transitionOnOff) // no need to press the interact button
         {
@@ -144,7 +143,6 @@ public class roomCntrl : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Listener.RoomTeleportSwitch(false);
         uControls.Player.Interact.performed -= Interact;
     }
 

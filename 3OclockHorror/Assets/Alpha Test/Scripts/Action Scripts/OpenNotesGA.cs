@@ -2,16 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 
 public  class OpenNotesGA : GameActions
 {
-    public Sprite sprite;
-    [SerializeField] private Image image;
-    [TextArea(1,20)] public string Note;
-    [SerializeField] private GameObject NoteText;
-    [SerializeField] private Sprite transparent;
-    [SerializeField]public bool active = false;
+    [TextArea(1, 20)] public string Note;
+    [Space]
+    private Sprite sprite;
+    private Image image;
+    private GameObject NoteText;
+    private Sprite transparent;
+    public bool active = false;
+    private void OnEnable()
+    {
+        NoteGO.SetUpNote += setUpNote;
+    }
+    private void OnDisable()
+    {
+        NoteGO.SetUpNote -= setUpNote;
+    }
+    private void setUpNote(GameObject noteText, Image img, Sprite sprt, Sprite transprt )
+    {
+        image = img;
+        NoteText = noteText;
+        sprite = sprt;
+        transparent = transprt;
+    }
     public override void Action()
     {
         Note = this.gameObject.GetComponent<ObjectRender>().Note;

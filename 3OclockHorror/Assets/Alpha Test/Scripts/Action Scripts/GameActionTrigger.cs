@@ -6,7 +6,8 @@ using System;
 
 public class GameActionTrigger : MonoBehaviour
 {
-    public List<GameActions> defaultAction;   
+    public List<GameActions> defaultAction;
+    public List<GameActions> exitActions;
     public bool bAutoTrigger;
     private UniversalControls uControls;
 
@@ -31,6 +32,10 @@ public class GameActionTrigger : MonoBehaviour
         TriggerInactive();
         if (!bAutoTrigger)
             uControls.Player.Interact.started -= Execute;
+        if(exitActions.Count != 0)
+        {
+            ExecuteExit();
+        }
     }
     private void Execute(InputAction.CallbackContext c)
     {
@@ -40,12 +45,24 @@ public class GameActionTrigger : MonoBehaviour
     {
         StartCoroutine(nameof(TriggerAction));
     }
+    public void ExecuteExit()
+    {
+        StartCoroutine(nameof(TriggerExitAction));
+    }
     IEnumerator TriggerAction()
     {
         for (int x = 0; x < defaultAction.Count; x++)
         {
             yield return new WaitForSeconds(defaultAction[x].delay);
             defaultAction[x].Action();
+        }
+    }
+    IEnumerator TriggerExitAction()
+    {
+        for (int x = 0; x < exitActions.Count; x++)
+        {
+            yield return new WaitForSeconds(exitActions[x].delay);
+            exitActions[x].Action();
         }
     }
 }

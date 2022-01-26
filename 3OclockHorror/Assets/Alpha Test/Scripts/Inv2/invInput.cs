@@ -32,9 +32,6 @@ public class invInput : MonoBehaviour
 
     [SerializeField] private bool bTriggerActive;
 
-
-    [SerializeField] private bool RoomTeleport = false;
-
     [SerializeField] private Image InteractDrawer;
     private Vector3 DrawerOriginalPosition;
 
@@ -48,6 +45,8 @@ public class invInput : MonoBehaviour
         uControls = new UniversalControls();
         uControls.Enable();
         uControls.Player.Interact.performed += Interaction;// player controls
+        uControls.Player.PauseMenu.performed += PauseGame;
+
         //InteractibleTrigger.EnableJournal += EnableJournal;
         //InteractibleTrigger.DisableJournal += DisableJournal;
     }
@@ -60,8 +59,10 @@ public class invInput : MonoBehaviour
     {
         uControls.Disable();
         uControls.Player.Interact.performed -= Interaction; // player controls
+
         //InteractibleTrigger.EnableJournal -= EnableJournal;
         //InteractibleTrigger.DisableJournal -= DisableJournal;
+        uControls.Player.PauseMenu.performed -= PauseGame;
 
         GameActionTrigger.TriggerInactive -= TriggerInactive;
         GameActionTrigger.TriggerActive -= TriggerActive;
@@ -78,28 +79,21 @@ public class invInput : MonoBehaviour
     private void Interaction(InputAction.CallbackContext c)
     {
         ShowJournal(c);
-        if (RoomTeleport)
+    }
+    private void PauseGame(InputAction.CallbackContext c)
+    {
+        if (!escCanv.activeSelf)
         {
-            //Debug.Log("Interaction Teleporting to new room");
-            return;
+            escCanv.SetActive(true);
         }
-        /*else
+        else
         {
-            Debug.Log("Interaction Journal Calls");
-            playJournalSound();
-            if (Journal.activeSelf)
-            {
-                Journal.SetActive(false);
-            }
-            else
-            {
-                Journal.SetActive(true);
-            }
-        }*/
-
-
+            escCanv.SetActive(false);
+        }
     }
 
+    // triggerActive an trigger Inactive are resposible to check if the player is touching anything
+    //if the player happens to not be touching anything we want to pull up the journal.
     private void TriggerActive()
     {
         bTriggerActive = true;
@@ -108,6 +102,8 @@ public class invInput : MonoBehaviour
     {
         bTriggerActive = false;
     }
+
+
     private void ShowJournal(InputAction.CallbackContext c)
     {
         if (Journal.activeSelf)
@@ -121,25 +117,8 @@ public class invInput : MonoBehaviour
             Journal.SetActive(true);
             playJournalSound();
         }
-     
-        
-        /*   if (!jInput.isFocused)
-        {
-        }*/
-       
     }
 
-/*    void ShowPauseMenu(InputAction.CallbackContext c)
-    {
-        if (!escCanv.activeSelf)
-        {
-            escCanv.SetActive(true);
-        }
-        else
-        {
-            escCanv.SetActive(false);
-        }
-    }*/
     // Update is called once per frame
     void Update()
     {
@@ -151,35 +130,11 @@ public class invInput : MonoBehaviour
                 puzOpen = true;
             }
         }
-        /*
-        if (isFocus)
-        {
-            if (uControls.Player.Interact.triggered && !jInput.isFocused && !puzOpen)
-            {
-                if (Journal.activeSelf)
-                {
-                    Journal.SetActive(false);
-                    playSound();
 
-                }
-                else
-                {
-                    Journal.SetActive(true);
-                    playSound();
-                }
-            }
-        }*/
-        if (uControls.Player.PauseMenu.triggered)
+        /*if (uControls.Player.PauseMenu.triggered)
         {
-            if (!escCanv.activeSelf)
-            {
-                escCanv.SetActive(true);
-            }
-            else
-            {
-                escCanv.SetActive(false);
-            }
-        }
+           
+        }*/
         //isFocus = true;
     }
 
@@ -214,11 +169,6 @@ public class invInput : MonoBehaviour
     public Vector3 GetOriginalDrawerPosition()
     {
         return DrawerOriginalPosition;
-    }
-
-    public void RoomTeleportSwitch(bool state)
-    {
-        RoomTeleport = state;
     }
 
 
