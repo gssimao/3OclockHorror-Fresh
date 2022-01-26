@@ -9,7 +9,7 @@ public class Item : ScriptableObject
     public string ItemName; //Name of the Item
     public Sprite Icon; //The Item Icon
     public string desc; //A description of what the item is
-
+    public ContainerItems container;
     //Location Variables
     public bool rand;
 

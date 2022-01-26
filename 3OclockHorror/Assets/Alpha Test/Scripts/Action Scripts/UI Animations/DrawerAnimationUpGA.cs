@@ -10,7 +10,6 @@ public class DrawerAnimationUpGA : GameActions
     public override void Action()
     {
         LeanTween.moveLocalY(InteractDrawer.gameObject, positionTop, .5f).setEase(LeanTweenType.easeInQuad);
-        Debug.Log("Running DrawerAnimation UP");
-        
+        Debug.Log("Running DrawerAnimation UP");        
     }
 }

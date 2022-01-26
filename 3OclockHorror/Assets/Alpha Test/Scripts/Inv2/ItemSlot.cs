@@ -9,6 +9,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 {
     [SerializeField]
     Image image;
+    [SerializeField]
+    Item localItem;
 
     public event Action<ItemSlot> onPointerEnterEvent;
     public event Action<ItemSlot> onPointerExitEvent;
@@ -27,11 +29,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void Awake()
     {
+        /*
         if (image == null)
         {
-            image = GetComponent<Image>();
-        }
+            image = GetComponent<Image>();        
+        }*/
     }
+    /*
     public void Update()
     {
         if(Item == null)
@@ -45,9 +49,26 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             image.color = normColor;
         }
     }
-
+    */
+    public void UpdateSlot(Item value)
+    {
+        if (value == null) return;
+        localItem = value;
+        image.sprite = localItem.Icon;
+        image.enabled = true;
+    }
+    public void ClearSlot()
+    {
+        image.sprite = null;
+        image.enabled = false;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("Click");
+        if (image.sprite == null) return;
+        //Remove Item from ContainerItem class
+        localItem.container.RemoveItem(localItem);
+        ClearSlot();
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
             onRightClickEvent?.Invoke(this);
@@ -56,11 +77,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //Debug.Log("Enter");
         onPointerEnterEvent?.Invoke(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        //Debug.Log("Exit");
         onPointerExitEvent?.Invoke(this);
     }
 
