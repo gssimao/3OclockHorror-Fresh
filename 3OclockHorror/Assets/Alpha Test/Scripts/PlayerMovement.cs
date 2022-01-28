@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     public room myRoom;
     public Rigidbody2D rb;
-    public bool walking;
+    public bool walkingSounds;
     public Vector2 movement;
     public AudioManager manager;
     public bool isPlaying = false; //for audio
@@ -74,23 +74,6 @@ public class PlayerMovement : MonoBehaviour
          //Debug.Log("hello");*/
     }
 
-/*    void PerformTouch(InputAction.CallbackContext context) // delegate work to PlayerTouchWalk
-    {
-        Debug.Log("Touch Performed");
-        if (EventOnPerformedTouch != null)
-        {
-            EventOnPerformedTouch(uControls.Player.TouchPosition.ReadValue<Vector2>(), (float)context.startTime);
-        }
-        TouchWalkLogic.ChangeIsTouching(true);
-    }
-    void EndTouch(InputAction.CallbackContext context) // delegate work to PlayerTouchWalk
-    {
-        Debug.Log("Touch ended");
-        if (EventOnEndTouch != null) EventOnEndTouch(uControls.Player.TouchPosition.ReadValue<Vector2>(), (float)context.time);
-
-        TouchWalkLogic.ChangeIsTouching(false);
-    }*/
-
 
     // Update is called once per frame
     void Update()
@@ -112,16 +95,9 @@ public class PlayerMovement : MonoBehaviour
         //Check if the player can move and is registering input
         if (canMove)
         {
-            //for testing the touch
+            
             movement.x = uControls.Player.MovePlayer.ReadValue<Vector2>().x; //Input.GetAxisRaw("Horizontal");
             movement.y = uControls.Player.MovePlayer.ReadValue<Vector2>().y; //Input.GetAxisRaw("Vertical");
-
-            //for touch only
-            /* if (TouchWalkLogic.GetIsTouching())
-             {
-                 TouchWalkLogic.ChangeTarget(uControls.Player.TouchPosition.ReadValue<Vector2>());
-             }*/
-            // ^^for touch only
 
         }
         else
@@ -130,67 +106,25 @@ public class PlayerMovement : MonoBehaviour
             movement.y = 0;
         }
 
-        //Check the states for the walk animation.
-        #region ChecKWalkStates 
-        /*
-                if (movement.x != 0 && movement.y != 0)
-                {
-                    if (movement.x < 0)
-                    {
-                        anim.SetBool("walkingLeft", true);
-                    }
-
-                    if (movement.x > 0)
-                    {
-                        anim.SetBool("walkingRight", true);
-                    }
-                }
-                else
-                {
-                    if (movement.x != 0)
-                    {
-                        if (movement.x < 0)
-                        {
-                            anim.SetBool("walkingLeft", true);
-                        }
-
-                        if (movement.x > 0)
-                        {
-                            anim.SetBool("walkingRight", true);
-                        }
-                    }
-
-                    if (movement.y != 0)
-                    {
-                        if (movement.y < 0)
-                        {
-                            anim.SetBool("walkingForwards", true);
-                        }
-
-                        if (movement.y > 0)
-                        {
-                            anim.SetBool("walkingBackwards", true);
-                        }
-                    }
-                }*/
-        #endregion
+        
         CheckWalkState();
 
+        #region footsteps sounds 
         if (movement.x != 0 || movement.y != 0)
         {
-            walking = true;
+            walkingSounds = true;
         }
         else
         {
-            walking = false;
+            walkingSounds = false;
         }
 
-        if (walking && !isPlaying && manager != null && myRoom.getName() != "Outside" && !InvCanvas.activeSelf && !Journal.activeSelf && canMove)
+        if (walkingSounds && !isPlaying && manager != null && myRoom.getName() != "Outside" && !InvCanvas.activeSelf && !Journal.activeSelf && canMove)
         {
             manager.Play("Player Footsteps", true);
             isPlaying = true;
         }
-        if (walking && !isPlaying && manager != null && myRoom.getName() == "Outside" && !InvCanvas.activeSelf && !Journal.activeSelf && canMove)
+        if (walkingSounds && !isPlaying && manager != null && myRoom.getName() == "Outside" && !InvCanvas.activeSelf && !Journal.activeSelf && canMove)
         {
             manager.Play("Snow Footsteps", true);
             isPlaying = true;
@@ -199,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isPlaying = false;
         }
+        #endregion
     }
     private void FixedUpdate()
     {

@@ -27,7 +27,10 @@ public class ContainerUI : MonoBehaviour
     }
     private void HideContainerUI()
     {
-        LeanTween.moveLocalY(gameObject, 430, .5f).setEase(LeanTweenType.easeInQuad);
+        LeanTween.moveLocalY(gameObject, 430, .5f).setEase(LeanTweenType.easeInQuad).setOnComplete(ClearItems);
+    }
+    private void ClearItems()
+    {
         for (int x = 0; x < itemSlots.Count; x++)
             itemSlots[x].ClearSlot();
     }
