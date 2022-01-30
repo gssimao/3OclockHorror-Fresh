@@ -53,11 +53,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
             SendItem(localItem); // send the item to the one who is listening
-            if(localItem)
-                localItem.container.StartListening(); // make "this" start listening again
-            ClearSlot(); // clear this slot since we finish sending the item
-            //ContainerItems.ItemReceived += ItemReceived;
-            //StartCoroutine(nameof(SendItemCrt));
+            ClearSlot(); // clear this slot since we finish sending the item           
         }
 
       /*  Debug.Log("Click");

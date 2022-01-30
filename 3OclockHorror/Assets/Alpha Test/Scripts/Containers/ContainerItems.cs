@@ -13,6 +13,7 @@ public class ContainerItems : GameActions
     private void OnDisable()
     {
         ItemSlot.SendItem -= ReceiveItem;
+        ContainerUI.StopListening -= StopListening;
     }
     private void Awake()
     {
@@ -20,7 +21,8 @@ public class ContainerItems : GameActions
         {
             if(item) //null check
                 item.container = this; // Link Container with their items
-        }            
+        }
+        ContainerUI.StopListening += StopListening;
     }
     public override void Action()
     {
@@ -53,6 +55,7 @@ public class ContainerItems : GameActions
     private void ReceiveItem(Item v)
     {
         if (!v) return; //null check and return
+        ContainerItems tempContainer = v.container;
         //Debug.Log(itemList.Count);
         for (int i = 0; i < itemList.Count; i++)
         {
@@ -62,11 +65,11 @@ public class ContainerItems : GameActions
             {
 
                 //Debug.Log("trying to get item " + v.name + " from " + v.container.transform.name);
+                v.container = this;
                 itemList[i] = v; // set that slot equal to the object
-                itemList[i].container.RemoveItem(itemList[i]); // get that object container and remove this item from it
-                itemList[i].container.Refresh();
-                itemList[i].container.StartListening();
-                itemList[i].container = this;
+                tempContainer.RemoveItem(itemList[i]); // get that object container and remove this item from it
+                tempContainer.Refresh();
+                tempContainer.StartListening();                
                 ShowUiSlotItems(itemList,ID);                
                 break;
             }

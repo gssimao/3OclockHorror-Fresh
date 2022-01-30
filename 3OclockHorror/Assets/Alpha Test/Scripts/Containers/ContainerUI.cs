@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ContainerUI : MonoBehaviour
 {
     public bool bJournal;
     public int ID;
     public List<ItemSlot> itemSlots;
+    public static Action StopListening = delegate { };
 
     private void OnEnable()
     {
@@ -28,10 +30,12 @@ public class ContainerUI : MonoBehaviour
             itemSlots[x].UpdateSlot(ItemList[x]);
         }
         if (bJournal) return;
+        if (transform.localPosition.y == 190) return;
         LeanTween.moveLocalY(gameObject, 190, .5f).setEase(LeanTweenType.easeInQuad);        
     }
     private void HideContainerUI()
     {
+        StopListening();
         if (bJournal) return;
         LeanTween.moveLocalY(gameObject, 430, .5f).setEase(LeanTweenType.easeInQuad).setOnComplete(ClearSlotUiImage);
     }
