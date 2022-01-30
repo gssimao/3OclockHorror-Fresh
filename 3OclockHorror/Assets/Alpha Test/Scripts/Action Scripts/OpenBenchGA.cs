@@ -6,8 +6,7 @@ using System;
 public class OpenBenchGA : GameActions
 {
     Inventory myInv;
-    GameObject myInvDisplay;
-    //[SerializeField] InventoryManager inventoryManager;
+    PlayerMovement Player;
 
     private bool active; //Am I the active workbench?
     [SerializeField] List<Item> Items;
@@ -26,16 +25,17 @@ public class OpenBenchGA : GameActions
     {
         WorkbenchGO.UpdateWorkbenchDisplay -= SetWorkbenchDisplay;
     }
-    private void SetWorkbenchDisplay(GameObject disp,GameObject canvas, GameObject Tooltip)
+    private void SetWorkbenchDisplay(GameObject canvas, GameObject Tooltip, GameObject player)
     {
-        myInvDisplay = disp;
         invCanv = canvas;
         tooltip = Tooltip;
+        Player = player.GetComponent<PlayerMovement>();
     }
     public override void Action()
     {
         if (!active) // open the bench
         {
+            Player.ChangeCanMove(false);
             active = true;
             if(myInv == null)
             {
@@ -44,7 +44,6 @@ public class OpenBenchGA : GameActions
             //inventoryManager.ActivateInventory(myInv);
             ActivateInventory(myInv);
             myInv.OpenInv(); //Update the items to be in accordance with the items array
-            myInvDisplay.SetActive(true);
             invCanv.SetActive(true);
             //inventoryManager.craftField.SetActive(true);
             CraftField(true);
@@ -52,6 +51,7 @@ public class OpenBenchGA : GameActions
         }
         else// close the bench
         {
+            Player.ChangeCanMove(true);
             active = false;
             if (myInv == null)
             {
@@ -61,7 +61,6 @@ public class OpenBenchGA : GameActions
             DeactivateInventory(myInv);
 
             myInv.CloseInv(); // close inventory is getting a reference error
-            myInvDisplay.SetActive(false);
             invCanv.SetActive(false);
             //inventoryManager.craftField.SetActive(false);
             CraftField(false);

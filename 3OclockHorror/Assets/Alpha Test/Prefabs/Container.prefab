@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6603486581929877553}
   - component: {fileID: 6603486581929877555}
   - component: {fileID: 6603486581929877558}
+  - component: {fileID: 2982061841243696955}
+  - component: {fileID: 3736654192573941334}
   m_Layer: 0
   m_Name: Container
   m_TagString: Interactible
@@ -149,8 +151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultAction:
   - {fileID: 6603486581929877555}
+  - {fileID: 2982061841243696955}
   exitActions:
   - {fileID: 6603486581929877558}
+  - {fileID: 3736654192573941334}
   bAutoTrigger: 1
 --- !u!114 &6603486581929877555
 MonoBehaviour:
@@ -181,6 +185,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+--- !u!114 &2982061841243696955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603486581929877561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5b21914d73a1546928a4451a043124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  positionTop: -1000
+--- !u!114 &3736654192573941334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603486581929877561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7a0d5a58ad1e04ca4ab21003094dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  positionTop: -1300
 --- !u!1 &6603486582094648751
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,6 @@ public class JournalSlotCntrl : MonoBehaviour
     [SerializeField]
     Image myImage;
 
-    Color on = new Color(255, 255, 255, 1);
-    Color off = new Color(255, 255, 255, 0);
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +21,7 @@ public class JournalSlotCntrl : MonoBehaviour
             Debug.Log("No parent slot assigned for " + this.gameObject.name);
         }
     }
-    void Update()
+ /*   void Update()
     {
         if(pSlot.Item != null)
         {
@@ -37,5 +34,5 @@ public class JournalSlotCntrl : MonoBehaviour
             myImage.color = off;
             myText.text = " ";
         }
-    }
+    }*/
 }

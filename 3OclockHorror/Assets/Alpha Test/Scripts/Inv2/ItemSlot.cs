@@ -19,40 +19,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public event Action<ItemSlot> onEndDragEvent;
     public event Action<ItemSlot> onDragEvent;
     public event Action<ItemSlot> onDropEvent;
-
-
-    private Color normColor = Color.white;
-    private Color disabledColor = new Color(255, 255, 255, 0.1f);
+    public static Action<Item> SendItem = delegate { };
 
     public Item Item; //{ get; set; }
     public bool PlayerInv;
+    public bool bItemReceived = false;
 
-    public void Awake()
-    {
-        /*
-        if (image == null)
-        {
-            image = GetComponent<Image>();        
-        }*/
-    }
-    /*
-    public void Update()
-    {
-        if(Item == null)
-        {
-            image.sprite = null;
-            image.color = disabledColor;
-        }
-        else
-        {
-            image.sprite = Item.Icon;
-            image.color = normColor;
-        }
-    }
-    */
     public void UpdateSlot(Item value)
     {
-        if (value == null) return;
+        if (value == null)
+            return;
+        Debug.Log(transform.name);
         localItem = value;
         image.sprite = localItem.Icon;
         image.enabled = true;
@@ -61,10 +38,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         image.sprite = null;
         image.enabled = false;
+        localItem = null;
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Click");
+        if (localItem && !bItemReceived)
+        {
+            ContainerItems.ItemReceived += ItemReceived;
+            StartCoroutine(nameof(SendItemCrt));
+        }
+
+      /*  Debug.Log("Click");
         if (image.sprite == null) return;
         //Remove Item from ContainerItem class
         localItem.container.RemoveItem(localItem);
@@ -72,9 +56,27 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
             onRightClickEvent?.Invoke(this);
-        }
+        }*/
     }
-
+    IEnumerator SendItemCrt()
+    {
+        localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
+        SendItem(localItem); // send the item to the one who is listening
+        bItemReceived = false;
+        while(!bItemReceived)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        Debug.Log("pass the coroutine");
+        localItem.container.StartListening(); // make "this" start listening again
+        ClearSlot(); // clear this slot since we finish sending the item
+        ContainerItems.ItemReceived -= ItemReceived;
+    }
+    private void ItemReceived()
+    {
+        Debug.Log("passssssssss");
+        bItemReceived = true;
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("Enter");

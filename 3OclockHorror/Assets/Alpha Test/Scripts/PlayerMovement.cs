@@ -23,10 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     //A list of all canvases that should block player movement
     public List<GameObject> Canvases; //Canvases that won't be deleted between scenes
-    public bool canMove = true;
+    [SerializeField]private bool canMove = true;
 
     private UniversalControls uControls;
-    private PlayerTouchWalk TouchWalkLogic;
 
     public bool leftSide = false;
 
@@ -42,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
     {
         uControls = new UniversalControls();
         uControls.Enable();
-        TouchWalkLogic = this.GetComponent<PlayerTouchWalk>();
     }
     private void OnDisable()
     {
@@ -60,22 +58,9 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Iphone");
 #endif
 
-        //uControls.Player.TouchPress.started += context => StartTouch(context);
-
-        //uControls.Player.TouchPress.performed += context => PerformTouch(context);
-        //uControls.Player.TouchPress.canceled += context => EndTouch(context);
-
-
-
-        /* if (manager != null)
-         {
-             //manager.Play("Heavy Wind");
-         }
-         //Debug.Log("hello");*/
     }
 
 
-    // Update is called once per frame
     void Update()
     {
        
@@ -204,11 +189,15 @@ public class PlayerMovement : MonoBehaviour
     }
     public void resetState()
     {
-        canMove = true;
+        //canMove = true;
 
         anim.SetBool("walkingLeft", false);
         anim.SetBool("walkingRight", false);
         anim.SetBool("walkingForwards", false);
         anim.SetBool("walkingBackwards", false);
+    }
+    public void ChangeCanMove(bool state)
+    {
+        canMove = state;
     }
 }

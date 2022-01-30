@@ -5,14 +5,14 @@ using System;
 
 public class WorkbenchGO : MonoBehaviour
 {
-    public GameObject workbenchSlot,workbenchDisplay,workbenchCanvas, workbenchTooltip;
+    public GameObject workbenchCanvas, workbenchTooltip, Player;
     public static Action<GameObject> UpdateInventoryGO = delegate { };
-    public static Action<GameObject,GameObject, GameObject> UpdateWorkbenchDisplay = delegate { };
+    public static Action<GameObject, GameObject, GameObject> UpdateWorkbenchDisplay = delegate { };
 
     private void Start()
     {
-        UpdateInventoryGO(workbenchSlot);
-        UpdateWorkbenchDisplay(workbenchDisplay,workbenchCanvas, workbenchTooltip);
+        //UpdateInventoryGO(workbenchSlot);
+        UpdateWorkbenchDisplay(workbenchCanvas, workbenchTooltip, Player);
     }
 }
 

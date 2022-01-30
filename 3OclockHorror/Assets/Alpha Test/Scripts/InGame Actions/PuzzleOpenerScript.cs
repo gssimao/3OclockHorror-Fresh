@@ -132,11 +132,11 @@ public class PuzzleOpenerScript : MonoBehaviour
         {
             Puzzle.SetActive(true);
             canvasActive = true;
-            player.GetComponent<PlayerMovement>().canMove = false;
+            player.GetComponent<PlayerMovement>().ChangeCanMove(false);
         }
         else
         {
-            player.GetComponent<PlayerMovement>().canMove = true;
+            player.GetComponent<PlayerMovement>().ChangeCanMove(true);
             Puzzle.SetActive(false);
             canvasActive = false;
             if (PhotoPuzzle && allPhotoFounds == false)

@@ -10,8 +10,8 @@ public class Inventory : MonoBehaviour, IItemContainer
     [SerializeField] 
     ItemSlot[] itemSlots; //The slots that hold and display items for the inventory.
     [Space]
-    [SerializeField]
-    Transform itemsParent; //The hirearchy parent to those slots
+    /*[SerializeField]
+    Transform itemsParent; //The hirearchy parent to those slots*/
 
     [SerializeField]
     bool PInv; //True if this inventory is the player inventory.
@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour, IItemContainer
     public event Action<ItemSlot> onDragEvent;
     public event Action<ItemSlot> onDropEvent;
 
-    private void OnEnable()
+ /*   private void OnEnable()
     {
         WorkbenchGO.UpdateInventoryGO += UpdateInventoryGO;
     }
@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour, IItemContainer
         }
 
         SetStartingItems();
-    }
+    }*/
     //Adding, removing items, changing or setting starting items, etc.
     #region Add/Change Items  
     public void SetStartingItems()
@@ -196,7 +196,7 @@ public class Inventory : MonoBehaviour, IItemContainer
     //Properly open a dynamic inventory.
     public void OpenInv()
     {
-        itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
+        //itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
         if(itemSlots == null)
         {
             Debug.Log("Slots not found");
@@ -213,7 +213,7 @@ public class Inventory : MonoBehaviour, IItemContainer
     public void CloseInv()
     {
         items.Clear();
-        itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
+        //itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
         foreach(ItemSlot slot in itemSlots)
         {
             if(slot.Item != null)

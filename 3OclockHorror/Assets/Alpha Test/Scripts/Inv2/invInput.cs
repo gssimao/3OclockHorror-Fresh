@@ -21,6 +21,8 @@ public class invInput : MonoBehaviour
     GameObject invCanvas;
     [SerializeField]
     GameObject tooltip;*/
+
+
     [SerializeField]
     GameObject Journal;
     [SerializeField]
@@ -31,9 +33,9 @@ public class invInput : MonoBehaviour
     GameObject escCanv;
 
     [SerializeField] private bool bTriggerActive;
-
-    [SerializeField] private Image InteractDrawer;
-    private Vector3 DrawerOriginalPosition;
+    public List<GameActions> defaultAction;
+    public List<GameActions> exitActions;
+    [SerializeField] private bool JournalActive = false;
 
     AudioManager manager;
     //private bool isFocus = true;
@@ -41,8 +43,8 @@ public class invInput : MonoBehaviour
     private UniversalControls uControls;
     private void Awake()
     {
-        DrawerOriginalPosition = InteractDrawer.gameObject.transform.localPosition;
-        uControls = new UniversalControls();
+        
+    uControls = new UniversalControls();
         uControls.Enable();
         uControls.Player.Interact.performed += Interaction;// player controls
         uControls.Player.PauseMenu.performed += PauseGame;
@@ -54,6 +56,8 @@ public class invInput : MonoBehaviour
     {
         GameActionTrigger.TriggerInactive += TriggerInactive;
         GameActionTrigger.TriggerActive += TriggerActive;
+
+        
     }
     private void OnDisable()
     {
@@ -78,7 +82,31 @@ public class invInput : MonoBehaviour
 
     private void Interaction(InputAction.CallbackContext c)
     {
-        ShowJournal(c);
+        //ShowJournal(c);
+
+        if (JournalActive) //journal is open asking to close
+            StartCoroutine(nameof(TriggerExitAction)); //close the journal 
+        else if (!bTriggerActive) //journal is closed asking to be open
+            StartCoroutine(nameof(TriggerAction)); //open journal
+
+    }
+    IEnumerator TriggerAction() // swipe opens
+    {
+        JournalActive = true;
+        for (int x = 0; x < defaultAction.Count; x++)
+        {
+            yield return new WaitForSeconds(defaultAction[x].delay);
+            defaultAction[x].Action();
+        }
+    }
+    IEnumerator TriggerExitAction() //swipe closes 
+    {
+        JournalActive = false;
+        for (int x = 0; x < exitActions.Count; x++)
+        {
+            yield return new WaitForSeconds(exitActions[x].delay);
+            exitActions[x].Action();
+        }
     }
     private void PauseGame(InputAction.CallbackContext c)
     {
@@ -130,12 +158,6 @@ public class invInput : MonoBehaviour
                 puzOpen = true;
             }
         }
-
-        /*if (uControls.Player.PauseMenu.triggered)
-        {
-           
-        }*/
-        //isFocus = true;
     }
 
     void playJournalSound()
