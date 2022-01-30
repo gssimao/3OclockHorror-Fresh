@@ -22,16 +22,23 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public static Action<Item> SendItem = delegate { };
 
     public Item Item; //{ get; set; }
-    public bool PlayerInv;
-    public bool bItemReceived = false;
+    public bool PlayerInv;   
 
     public void UpdateSlot(Item value)
     {
         if (value == null)
+        {
+            //this prevents the slot from having items when it supposed to be empty. This problem occurs when items are moved but
+            //the UI isn't updated. Because the UI directly references Items, no clearing the slots would lead to errors
+            localItem = null;
+            image.sprite = null;
+            image.color = new Color(0, 0, 0, 0); //removes white box when empty
             return;
-        Debug.Log(transform.name);
+        }
+        //Debug.Log(transform.name);
         localItem = value;
         image.sprite = localItem.Icon;
+        image.color = Color.white;
         image.enabled = true;
     }
     public void ClearSlot()
@@ -42,10 +49,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (localItem && !bItemReceived)
+        if (localItem)
         {
-            ContainerItems.ItemReceived += ItemReceived;
-            StartCoroutine(nameof(SendItemCrt));
+            localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
+            SendItem(localItem); // send the item to the one who is listening
+            if(localItem)
+                localItem.container.StartListening(); // make "this" start listening again
+            ClearSlot(); // clear this slot since we finish sending the item
+            //ContainerItems.ItemReceived += ItemReceived;
+            //StartCoroutine(nameof(SendItemCrt));
         }
 
       /*  Debug.Log("Click");
@@ -57,26 +69,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             onRightClickEvent?.Invoke(this);
         }*/
-    }
-    IEnumerator SendItemCrt()
-    {
-        localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
-        SendItem(localItem); // send the item to the one who is listening
-        bItemReceived = false;
-        while(!bItemReceived)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        Debug.Log("pass the coroutine");
-        localItem.container.StartListening(); // make "this" start listening again
-        ClearSlot(); // clear this slot since we finish sending the item
-        ContainerItems.ItemReceived -= ItemReceived;
-    }
-    private void ItemReceived()
-    {
-        Debug.Log("passssssssss");
-        bItemReceived = true;
-    }
+    } 
     public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("Enter");
