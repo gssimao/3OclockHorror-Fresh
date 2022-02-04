@@ -22,7 +22,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public static Action<Item> SendItem = delegate { };
 
     public Item Item; //{ get; set; }
-    public bool PlayerInv;   
+    public bool PlayerInv;
+    public bool inventoryStatus;
 
     public void UpdateSlot(Item value)
     {
@@ -49,6 +50,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (inventoryStatus)
+            return;
+
         if (localItem)
         {
             localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 

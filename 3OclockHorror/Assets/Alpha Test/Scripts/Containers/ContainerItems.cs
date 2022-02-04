@@ -7,7 +7,8 @@ public class ContainerItems : GameActions
 {
     public int ID;
     public List<Item> itemList;
-    public static Action<List<Item>,int> ShowUiSlotItems = delegate { };    
+    public static Action<List<Item>,int> ShowUiSlotItems = delegate { };
+
     public bool bJournal;
  
     private void OnDisable()
@@ -17,6 +18,7 @@ public class ContainerItems : GameActions
     }
     private void Awake()
     {
+        //ID = getNewId();
         foreach (Item item in itemList)
         {
             if(item) //null check

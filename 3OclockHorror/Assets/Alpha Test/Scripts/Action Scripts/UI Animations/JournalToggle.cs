@@ -6,6 +6,7 @@ public class JournalToggle : MonoBehaviour
 {
     public ContainerItems cItems;
     public int positionShow,positionHide;
+    public List<ItemSlot> itemSlots;
 
     private void OnEnable()
     {
@@ -26,12 +27,27 @@ public class JournalToggle : MonoBehaviour
     }
     private void Show(int position)
     {
-        //cItems.StartListening();
+        TurnoffButton();
         LeanTween.moveLocalX(gameObject, position, .5f).setEase(LeanTweenType.easeInQuad);
     }
     private void Hide()
     {
+        TurnOnButton();
         cItems.StopListening();
         LeanTween.moveLocalX(gameObject, positionHide, .5f).setEase(LeanTweenType.easeInQuad);
+    }
+    private void TurnoffButton()
+    {
+        for(int i =0; i<itemSlots.Count; i++)
+        {
+            itemSlots[i].inventoryStatus = true;
+        }
+    }
+    private void TurnOnButton()
+    {
+        for (int i = 0; i < itemSlots.Count; i++)
+        {
+            itemSlots[i].inventoryStatus = false; 
+        }
     }
 }

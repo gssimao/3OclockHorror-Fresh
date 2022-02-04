@@ -169,9 +169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+  ID: 0
   itemList:
   - {fileID: 11400000, guid: e44c038624dcb304ca19d44bf8ad8d01, type: 2}
   - {fileID: 11400000, guid: 8c429c5b191c7c9499c497e69a1f77d7, type: 2}
+  bJournal: 0
 --- !u!114 &6603486581929877558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +200,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  positionTop: -1000
 --- !u!114 &3736654192573941334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  positionTop: -1300
 --- !u!1 &6603486582094648751
 GameObject:
   m_ObjectHideFlags: 0
