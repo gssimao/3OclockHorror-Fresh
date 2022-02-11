@@ -170,9 +170,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   ID: 0
-  itemList:
-  - {fileID: 11400000, guid: e44c038624dcb304ca19d44bf8ad8d01, type: 2}
-  - {fileID: 11400000, guid: 8c429c5b191c7c9499c497e69a1f77d7, type: 2}
+  ContainerItemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bJournal: 0
 --- !u!114 &6603486581929877558
 MonoBehaviour:

@@ -381,7 +381,10 @@ GameObject:
   - component: {fileID: 4319032880085066265}
   - component: {fileID: 8223257568332544356}
   - component: {fileID: 3537201334315606881}
+  - component: {fileID: 6043939476814575593}
   - component: {fileID: 8490120157299273599}
+  - component: {fileID: 6927257649530859570}
+  - component: {fileID: 8727482332497396600}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
@@ -433,7 +436,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultAction:
   - {fileID: 8490120157299273599}
+  exitActions: []
   bAutoTrigger: 0
+--- !u!114 &6043939476814575593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319032880085066264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576ff9eb342d7954bbb9a0d7297eadfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultAction:
+  - {fileID: 6927257649530859570}
+  exitActions:
+  - {fileID: 8727482332497396600}
+  bAutoTrigger: 1
 --- !u!114 &8490120157299273599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,6 +475,32 @@ MonoBehaviour:
   LightMask: {fileID: 4319032879571133336}
   EternalLight: 0
   lightOn: 0
+--- !u!114 &6927257649530859570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319032880085066264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3438c42026d42479dfc39defdb6195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+--- !u!114 &8727482332497396600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319032880085066264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d481430d932714543af74df9d4852f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
 --- !u!1 &4761420719058402616
 GameObject:
   m_ObjectHideFlags: 0

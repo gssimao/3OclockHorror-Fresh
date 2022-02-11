@@ -17,12 +17,12 @@ public class InteractiveToggle : MonoBehaviour
     }
     private void Show()
     {
-        Debug.Log("Caaaaaaaaaaaaaa");
+        //Debug.Log("Caaaaaaaaaaaaaa");
         LeanTween.moveLocalX(gameObject, positionShow, .5f).setEase(LeanTweenType.easeInQuad);
     }
     private void Hide()
     {
-        Debug.Log("ooofffffff");
+        //Debug.Log("ooofffffff");
         LeanTween.moveLocalX(gameObject, positionHide, .5f).setEase(LeanTweenType.easeInQuad);
     }
 }

@@ -31,13 +31,13 @@ public class ContainerUI : MonoBehaviour
         }
         if (bJournal) return;
         if (transform.localPosition.y == 190) return;
-        LeanTween.moveLocalY(gameObject, 190, .5f).setEase(LeanTweenType.easeInQuad);        
+        LeanTween.moveLocalY(gameObject, 190, .5f).setEase(LeanTweenType.easeInQuad); // move journal down     
     }
     private void HideContainerUI()
     {
         StopListening();
         if (bJournal) return;
-        LeanTween.moveLocalY(gameObject, 430, .5f).setEase(LeanTweenType.easeInQuad).setOnComplete(ClearSlotUiImage);
+        LeanTween.moveLocalY(gameObject, 430, .5f).setEase(LeanTweenType.easeInQuad).setOnComplete(ClearSlotUiImage); // move journal up
     }
     private void ClearSlotUiImage()
     {

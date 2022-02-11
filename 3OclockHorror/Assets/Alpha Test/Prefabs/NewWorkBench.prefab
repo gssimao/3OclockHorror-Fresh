@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2982061841243696955}
   - component: {fileID: 3736654192573941334}
   m_Layer: 0
-  m_Name: Container
+  m_Name: NewWorkBench
   m_TagString: Interactible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 281c80e58b3bbdf46a0e1d67a9d891f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4d3704881b55fc4490d34b4b79f09b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,7 +107,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.58, y: 0.53}
+    oldSize: {x: 0.96, y: 0.67}
     newSize: {x: 0.57, y: 0.55}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

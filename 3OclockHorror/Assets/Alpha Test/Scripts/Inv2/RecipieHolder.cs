@@ -7,17 +7,13 @@ public class RecipieHolder : MonoBehaviour
 
     [SerializeField]
     List<CraftingRecipe> Recipies;
-    [SerializeField]
-    Inventory craftInv;
 
     public void Craft()
     {
+        
         foreach(CraftingRecipe recipe in Recipies)
-        {
-            if (recipe.CanCraft(craftInv))
-            {
-                recipe.Craft(craftInv);
-            }
+        {           
+            recipe.Craft(this.GetComponent<ContainerItems>());
         }
     }
 }

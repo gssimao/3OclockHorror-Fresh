@@ -25,10 +25,12 @@ public class invInput : MonoBehaviour
 
     [SerializeField]
     GameObject Journal;
+     /*
     [SerializeField]
-    InputField jInput;
-    [SerializeField]
-    List<GameObject> objs;
+    InputField jInput; //this was probably used for typing in the journal
+       [SerializeField]
+        List<GameObject> objs; // these used to hold the puzzles for some reason
+    */
     [SerializeField]
     GameObject escCanv;
 
@@ -82,16 +84,14 @@ public class invInput : MonoBehaviour
 
     private void Interaction(InputAction.CallbackContext c)
     {
-        //ShowJournal(c);
-
         if (JournalActive) //journal is open asking to close
             StartCoroutine(nameof(TriggerExitAction)); //close the journal 
         else if (!bTriggerActive) //journal is closed asking to be open
             StartCoroutine(nameof(TriggerAction)); //open journal
-
     }
     IEnumerator TriggerAction() // swipe opens
     {
+        playJournalSound();
         JournalActive = true;
         for (int x = 0; x < defaultAction.Count; x++)
         {
@@ -102,6 +102,7 @@ public class invInput : MonoBehaviour
     IEnumerator TriggerExitAction() //swipe closes 
     {
         JournalActive = false;
+        playJournalSound();
         for (int x = 0; x < exitActions.Count; x++)
         {
             yield return new WaitForSeconds(exitActions[x].delay);
@@ -131,34 +132,6 @@ public class invInput : MonoBehaviour
         bTriggerActive = false;
     }
 
-
-    private void ShowJournal(InputAction.CallbackContext c)
-    {
-        if (Journal.activeSelf)
-        {
-            Journal.SetActive(false);
-            playJournalSound();
-
-        }
-        else if (!bTriggerActive)
-        {
-            Journal.SetActive(true);
-            playJournalSound();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        bool puzOpen = false;
-        foreach(GameObject obj in objs)
-        {
-            if(obj.activeSelf)
-            {
-                puzOpen = true;
-            }
-        }
-    }
 
     void playJournalSound()
     {

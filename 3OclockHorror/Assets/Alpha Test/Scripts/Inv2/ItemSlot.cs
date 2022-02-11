@@ -48,6 +48,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         image.enabled = false;
         localItem = null;
     }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (inventoryStatus)
@@ -57,18 +58,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
             localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
             SendItem(localItem); // send the item to the one who is listening
-            ClearSlot(); // clear this slot since we finish sending the item           
+            //ClearSlot(); // clear this slot since we finish sending the item (no longer needed)       
         }
 
-      /*  Debug.Log("Click");
-        if (image.sprite == null) return;
-        //Remove Item from ContainerItem class
-        localItem.container.RemoveItem(localItem);
-        ClearSlot();
-        if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
-        {
-            onRightClickEvent?.Invoke(this);
-        }*/
     } 
     public void OnPointerEnter(PointerEventData eventData)
     {

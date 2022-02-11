@@ -14,10 +14,8 @@ public class PhotoPuzzle : MonoBehaviour
     List<LPhotoCntrl> photos;
     [SerializeField]
     GameObject puzzleGO;
-    [SerializeField]
-    PicSlot[] Slots;
 
-    float dist;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +41,7 @@ public class PhotoPuzzle : MonoBehaviour
                     invCanv.SetActive(true);
                     photoFoundCount++;
                     photos[i].gameObject.SetActive(true);
-                    plyInv.RemoveItem(photos[i].myPhoto);
+                    plyInv.RemoveItem(photos[i].myPhoto); // remove the item from the player inventory
                     openWithNoPhotos = false;
                     GameObject photoPuzzle = GameObject.Find("Photo Frame");
                     photoPuzzle.GetComponent<PuzzleOpenerScript>().havePhoto = true;

@@ -6,7 +6,7 @@ using System;
 public class ContainerItems : GameActions
 {
     public int ID;
-    public List<Item> itemList;
+    public List<Item> ContainerItemList;
     public static Action<List<Item>,int> ShowUiSlotItems = delegate { };
 
     public bool bJournal;
@@ -19,7 +19,7 @@ public class ContainerItems : GameActions
     private void Awake()
     {
         //ID = getNewId();
-        foreach (Item item in itemList)
+        foreach (Item item in ContainerItemList)
         {
             if(item) //null check
                 item.container = this; // Link Container with their items
@@ -28,12 +28,12 @@ public class ContainerItems : GameActions
     }
     public override void Action()
     {
-        ShowUiSlotItems(itemList,ID);
+        ShowUiSlotItems(ContainerItemList,ID);
         ItemSlot.SendItem += ReceiveItem;
     }
-    public void Refresh()
+    public void RefreshUI()
     {
-        ShowUiSlotItems(itemList, ID);
+        ShowUiSlotItems(ContainerItemList, ID);
     }
     public void StopListening()
     {
@@ -45,34 +45,93 @@ public class ContainerItems : GameActions
     }
     public void RemoveItem(Item value)
     {
-        for (int x = 0; x < itemList.Count; x++)
+        for (int x = 0; x < ContainerItemList.Count; x++)
         {
-            if (itemList[x] == value)
+            if (ContainerItemList[x] == value)
             {
-                itemList[x] = null;
+                ContainerItemList[x] = null;
                 break;
             }
         }
     }
-    private void ReceiveItem(Item v)
+    public bool ContainsItem(List<Item> Recepie)
+    {
+        List<Item> LocalStorage = ContainerItemList;
+        bool check = false;
+        foreach (Item Recepieitem in Recepie)
+        {
+            foreach (Item localItem in LocalStorage)
+            {
+                if(Recepieitem == localItem)
+                {
+                    LocalStorage.Remove(localItem);
+                    check = true;
+                    break;
+                }
+                check = false;
+            }
+            if (check == false)
+                return check; // efficent way to return since one of the recepie items was not found in this counter
+        }
+        return check;
+
+        /*for (int i = 0; i < ContainerItemList.Count; i++)
+        {
+            if (ContainerItemList[i] == item)
+            {
+                return true;
+            }
+        }
+        return false;*/
+    }
+
+
+    /* private bool CheckAvailableSpaceInContainer() // return false if its full
+     {
+         foreach (Item item in ContainerItemList)
+         {
+             if (item == null)
+                 return true;
+         }
+         return false;
+     }*/
+    public void ReceiveItem(Item v)
     {
         if (!v) return; //null check and return
         ContainerItems tempContainer = v.container;
         //Debug.Log(itemList.Count);
-        for (int i = 0; i < itemList.Count; i++)
+        for (int i = 0; i < ContainerItemList.Count; i++)
         {
-            //if (bJournal)
-                //Debug.Log("Journal countainer item receive item call");
-            if(itemList[i] == null) // find a slot that is null
+            if(ContainerItemList[i] == null) // found a slot that is null
             {
 
                 //Debug.Log("trying to get item " + v.name + " from " + v.container.transform.name);
                 v.container = this;
-                itemList[i] = v; // set that slot equal to the object
-                tempContainer.RemoveItem(itemList[i]); // get that object container and remove this item from it
-                tempContainer.Refresh();
+                ContainerItemList[i] = v; // set that slot equal to the object
+                tempContainer.RemoveItem(ContainerItemList[i]); // get that object container and remove this item from it
+                tempContainer.RefreshUI();
                 tempContainer.StartListening();                
-                ShowUiSlotItems(itemList,ID);                
+                ShowUiSlotItems(ContainerItemList,ID);                
+                break;
+            }
+        }
+    }
+    public void MendItem(Item v)
+    {
+        if (!v) return; //null check and return
+        ContainerItems tempContainer = v.container;
+        //Debug.Log(itemList.Count);
+        for (int i = 0; i < ContainerItemList.Count; i++)
+        {
+            if (ContainerItemList[i] == null) // found a slot that is null
+            {
+
+                //Debug.Log("trying to get item " + v.name + " from " + v.container.transform.name);
+                v.container = this;
+                ContainerItemList[i] = v; // set that slot equal to the object
+                tempContainer.RemoveItem(ContainerItemList[i]); // get that object container and remove this item from it
+                tempContainer.RefreshUI();
+                ShowUiSlotItems(ContainerItemList, ID);
                 break;
             }
         }
