@@ -12,7 +12,9 @@ public class TableManager : MonoBehaviour
     [SerializeField]
     Item brokenLadder;
     [SerializeField]
-    Inventory plyInv;
+    ContainerItems PlayerInventory;
+    /*[SerializeField]
+    Inventory plyInv;*/
 
     int[] table = new int[] { 0, 90, 180, 270 };
     public int tablePosition = 0;
@@ -274,7 +276,8 @@ public class TableManager : MonoBehaviour
             if (checkAnswer(allCoinsPos, puzzleAnswer))
             {
                 // UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
-                plyInv.AddItem(brokenLadder);
+                //plyInv.AddItem(brokenLadder);
+                PlayerInventory.ReceiveItem(brokenLadder);
                 taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
 
             }
@@ -308,7 +311,8 @@ public class TableManager : MonoBehaviour
             if (checkAnswer(allCoinsPos, puzzleAnswer))
             {
                 //UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
-                plyInv.AddItem(brokenLadder);
+                //plyInv.AddItem(brokenLadder);
+                PlayerInventory.ReceiveItem(brokenLadder);
                 taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
             }
         }

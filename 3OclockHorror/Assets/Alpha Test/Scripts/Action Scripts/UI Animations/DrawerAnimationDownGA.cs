@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class DrawerAnimationDownGA : GameActions
 {
     [SerializeField] private Image InteractDrawer;
-    private float positionBot = 190; //-139
+    public float positionBot = 190; //-139
     public override void Action()
     {
         LeanTween.moveLocalY(InteractDrawer.gameObject, positionBot, .5f).setEase(LeanTweenType.easeInQuad);
-        Debug.Log("Running DrawerAnimation Down");
+       // Debug.Log("Running DrawerAnimation Down");
     }
 }

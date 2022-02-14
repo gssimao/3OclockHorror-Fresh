@@ -30,12 +30,6 @@ public class LPhotoCntrl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void InitLargePhoto(Item photo)
     {
         myPhoto = photo;

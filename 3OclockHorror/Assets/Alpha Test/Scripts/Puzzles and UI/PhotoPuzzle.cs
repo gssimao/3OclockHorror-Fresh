@@ -2,31 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhotoPuzzle : MonoBehaviour
+public class PhotoPuzzle : MonoBehaviour // no longer needed
 {
-    public bool openWithNoPhotos = true; // this will determine if we open the puzzle with a photo in our inventory or not
-    public int photoFoundCount = 0;
-    [SerializeField]
-    Inventory plyInv;
-    [SerializeField]
-    GameObject invCanv;
+
+    /*    public int photoFoundCount = 0;*/
+    /*    [SerializeField]
+        Inventory plyInv;
+        [SerializeField]
+        GameObject invCanv;*/
+
+    /*    [SerializeField]
+        GameObject puzzleGO;*/
     [SerializeField]
     List<LPhotoCntrl> photos;
-    [SerializeField]
-    GameObject puzzleGO;
 
 
     // Start is called before the first frame update
-    void Start()
+    /*   void Start()
+       {
+           for (int i = 0; i < photos.Count; i++)
+           {
+               photos[i].gameObject.SetActive(false);
+           }
+       }*/
+
+    // Update is called once per frame
+
+    public void StartPhotoPuzzle()
     {
         for (int i = 0; i < photos.Count; i++)
         {
-            photos[i].gameObject.SetActive(false);
+            //invCanv.SetActive(true);
+            //photoFoundCount++;
+
+            //plyInv.RemoveItem(photos[i].myPhoto); // remove the item from the player inventory
+            photos[i].gameObject.SetActive(true);
+            GameObject photoPuzzle = GameObject.Find("Photo Frame");
+            photoPuzzle.GetComponent<PuzzleOpenerScript>().havePhoto = true;
+
+            photos.RemoveAt(i);
+
         }
     }
-
-    // Update is called once per frame
-    void Update()
+ /*   void Update()
     {
         if (puzzleGO.activeSelf)
         {
@@ -56,5 +74,7 @@ public class PhotoPuzzle : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
+
+
 }

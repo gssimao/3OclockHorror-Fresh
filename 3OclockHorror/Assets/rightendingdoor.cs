@@ -30,9 +30,9 @@ public class rightendingdoor : MonoBehaviour
 
     public EscCntrl escMenu;
 
-    [SerializeField]
+    /*[SerializeField]
     TaskListTracker tasklist;
-    bool taskGiven = false;
+    bool taskGiven = false;*/
 
     bool opened = false;
     public bool transitionOnOff = true; //Use this toggle the transition on and off
@@ -67,13 +67,7 @@ public class rightendingdoor : MonoBehaviour
                     CheckKey();
                 }
 
-                if (!taskGiven)
-                {
-                    //tasklist.updateList("\n - The door has a cross shaped hole, and appears to be linked to the four surrounding symbols");
-                    //message here
-                    //MessageRedBookHint.TriggerMessage();
-                    taskGiven = true;
-                }
+              
 
                 if (player != null && !locked) //Make sure it's not null, check if door is locked
                 {
@@ -115,11 +109,6 @@ public class rightendingdoor : MonoBehaviour
                     manager.Play("Locked Door", false);
                 }
             }
-        }
-        else
-        {
-            //Tooltip.Message = "This door is locked.";
-          //  Debug.LogError("Door is locked but there is no key or inv set");
         }
     }
 

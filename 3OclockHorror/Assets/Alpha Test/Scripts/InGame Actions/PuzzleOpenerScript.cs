@@ -10,8 +10,10 @@ public class PuzzleOpenerScript : MonoBehaviour
     public sendMessage PhotoPuzzleIntroMessageNoPhotos;
     public sendMessage PhotoPuzzleIntroMessageWithPhotos;
     public sendMessage PhotoPuzzleMessageAllPhotosFound;
+
     public bool allPhotoFounds = false;
     public bool havePhoto = false;
+
     bool reminder = false;
     [SerializeField]
     bool coinPuzzle = false;
@@ -35,16 +37,16 @@ public class PuzzleOpenerScript : MonoBehaviour
     GameObject coinCanv;
 
     [Space]
-    [SerializeField]
-    string TaskString;
+    /*[SerializeField]
+    string TaskString;*/
 
     public invInput listener;
 
-    AudioManager manager;
     float dist;
+
     bool canvasActive = false;
     bool havCoins = false;
-    bool opened = false;
+    //bool opened = false;
     
 
     UniversalControls uControls;
@@ -57,11 +59,7 @@ public class PuzzleOpenerScript : MonoBehaviour
     {
         uControls.Disable();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        manager = FindObjectOfType<AudioManager>();
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -70,20 +68,10 @@ public class PuzzleOpenerScript : MonoBehaviour
 
         if(dist <= range)
         {
-            //listener.isFocus = false;
+
             if (uControls.Player.Interact.triggered)
             {
-                /*if (!opened && coinPuzzle)
-                {
-                    if (coinPuzzle)
-                    {
-                        coinCanv.SetActive(true);
-                    }
-
-                    TaskString = "\n " + TaskString;
-                    taskManager.updateList(TaskString);
-                    opened = true;
-                }*/
+                
                 if (!coinPuzzle || havCoins)
                 {
                     OpenInventoryToggle();
@@ -120,11 +108,6 @@ public class PuzzleOpenerScript : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(this.transform.position, range);
-    }
 
     void OpenInventoryToggle()
     {

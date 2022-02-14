@@ -6,7 +6,7 @@ public class CraftingRecipe : ScriptableObject
 {
     public List<Item> Pieces;
     public Item result;
-    public GameObject myButton;
+    //public GameObject myButton;
     //public int minItems;
     //public bool notPuzzle;
 
@@ -32,28 +32,16 @@ public class CraftingRecipe : ScriptableObject
             container.RemoveItem(item);
         }
         container.MendItem(result);
+    }
+    public void Craft(ContainerItems container, bool puzzleReady)
+    {
+        if (!CanCraft(container)) // check if the puzzle is ready
+            return;
 
-
-        //int itemsRemoved = 0;
-        /*
-         List<Item> removed = new List<Item>();
-        
-        if (itemsRemoved != minItems) // checking if we removed all of the neceserry items and if not >> put them back
+        foreach (Item item in Pieces)
         {
-            foreach (Item itm in removed)
-            {
-                //need a way to add items
-                container.ContainerItemList.Add(itm);
-            }
-        }*/
-
-        /*else // check went through! add the result to the slot
-        {
-            //need a way to add items
-           
-            //container.ContainerItemList.(result);
-        }*/
-
-
+            container.RemoveItem(item);
+        }
+        container.MendItem(result);
     }
 }

@@ -14,12 +14,15 @@ public class ContainerUI : MonoBehaviour
     {
         ContainerItems.ShowUiSlotItems += ShowContainerUI;
         HideContainerItems.HideItems += HideContainerUI;
+
     }
     private void OnDisable()
     {
         ContainerItems.ShowUiSlotItems -= ShowContainerUI;
         HideContainerItems.HideItems -= HideContainerUI;
+
     }
+
     private void ShowContainerUI(List<Item> ItemList,int ContainerId)
     {
         if (ContainerId != ID) return;

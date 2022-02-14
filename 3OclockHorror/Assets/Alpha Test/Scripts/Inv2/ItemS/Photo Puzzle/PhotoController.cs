@@ -6,13 +6,10 @@ public class PhotoController : MonoBehaviour
 {
     [SerializeField]
     List<Item> Photos;
-    [SerializeField]
-    List<ContainerControl> AllowedInvs;
+
     [SerializeField]
     List<LPhotoCntrl> LPhotos;
-    [Space]
-    [SerializeField]
-    ContainerControl DiningRoom;
+
 
     int dateSelector;
     List<string> SelectedDate;
@@ -22,22 +19,15 @@ public class PhotoController : MonoBehaviour
     List<string> Dates3 = new List<string> { "1891", "1898", "1905", "1907" };
     List<string> Numerals = new List<string> { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
 
-    public bool Distributed;
 
     [SerializeField]
     Padlock padlock;
-    [SerializeField]
-    CraftingRecipe photoRecipie;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        if(Photos == null || AllowedInvs == null)
+        if(Photos == null)
         {
             Debug.LogError("One or more of the necessary items for photo puzzle initiation is not set.");
-        }
-        else if(AllowedInvs.Count < 3)
-        {
-            Debug.LogError("Allowed invs must contain at least as many inventories as photos contains photos");
         }
 
         if(LPhotos.Count != 4)
@@ -60,65 +50,66 @@ public class PhotoController : MonoBehaviour
             SelectedDate = Dates3;
         }
 
-        photoRecipie.Pieces.Clear();
-        InitPuzzle();
-        Distributed = true;
+
+        DistPhotos();
+
     }
 
-    public void DistPhotos() //Called once to distribute photos. Only occurs when the first photo is grabbed
+    public void DistPhotos()
     {
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 4; i++)
         {
+            Debug.Log("calling distPhotos " + i + " times");
             int rand = Random.Range(0, Photos.Count);
             Item photo = Photos[rand];
-            rand = Random.Range(0, AllowedInvs.Count);
-            ContainerControl selectedInv = AllowedInvs[rand];
+            rand = Random.Range(0, 3);
 
-            selectedInv.Items.Add(photo);
-            AllowedInvs.Remove(selectedInv);
             Photos.Remove(photo);
 
             rand = Random.Range(0, Numerals.Count);
             photo.numeral = Numerals[rand];
             Numerals.RemoveAt(rand);
 
-            photo.date = SelectedDate[i + 1];
+            photo.date = SelectedDate[i];
 
-            LPhotos[i + 1].InitLargePhoto(photo);
+            LPhotos[i].InitLargePhoto(photo);
 
-            if (AllowedInvs.Contains(selectedInv))
+
+            if (i == 0)
             {
-                Debug.Log("Something went wacky there - PhotoController");
+                Debug.Log("set photo 1");
+                padlock.Photo1 = photo;
             }
-
-            if(i == 0)
+            else if (i == 1)
             {
+                Debug.Log("set photo 2");
                 padlock.Photo2 = photo;
-            }
-            else if(i == 1)
-            {
-                padlock.Photo3 = photo;
             }
             else if(i == 2)
             {
+                Debug.Log("set photo 3");
+                padlock.Photo3 = photo;
+            }
+            else if(i == 3)
+            {
+                Debug.Log("set photo 4");
                 padlock.Photo4 = photo;
             }
 
-            photoRecipie.Pieces.Add(photo);
+           // photoRecipie.Pieces.Add(photo);
         }
 
-        Distributed = true;
+
     }
 
     public void InitPuzzle()
     {
+
         int rand = Random.Range(0, Photos.Count);
         Item photo = Photos[rand];
-        DiningRoom.Items.Add(photo);
         Photos.Remove(photo);
-
         padlock.Photo1 = photo;
-        photoRecipie.Pieces.Add(photo);
+        Debug.Log("set photo 1");
 
         rand = Random.Range(0, Numerals.Count);
         photo.numeral = Numerals[rand];

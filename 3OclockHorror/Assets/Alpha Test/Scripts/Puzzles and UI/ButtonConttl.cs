@@ -8,7 +8,7 @@ public class ButtonConttl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myRecipie.myButton = this.gameObject;
+        //myRecipie.myButton = this.gameObject;
         this.gameObject.SetActive(false);
     }
 }

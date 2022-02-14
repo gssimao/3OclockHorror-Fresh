@@ -56,9 +56,15 @@ public class ContainerItems : GameActions
     }
     public bool ContainsItem(List<Item> Recepie)
     {
-        List<Item> LocalStorage = ContainerItemList;
         bool check = false;
-        foreach (Item Recepieitem in Recepie)
+        List<Item> LocalStorage = new List<Item>();
+
+        foreach(Item Localitem in ContainerItemList) // load items to the temp list
+        {
+            LocalStorage.Add(Localitem);
+        }
+
+        foreach (Item Recepieitem in Recepie) // check if container has all its necessery items
         {
             foreach (Item localItem in LocalStorage)
             {
@@ -75,26 +81,8 @@ public class ContainerItems : GameActions
         }
         return check;
 
-        /*for (int i = 0; i < ContainerItemList.Count; i++)
-        {
-            if (ContainerItemList[i] == item)
-            {
-                return true;
-            }
-        }
-        return false;*/
     }
 
-
-    /* private bool CheckAvailableSpaceInContainer() // return false if its full
-     {
-         foreach (Item item in ContainerItemList)
-         {
-             if (item == null)
-                 return true;
-         }
-         return false;
-     }*/
     public void ReceiveItem(Item v)
     {
         if (!v) return; //null check and return

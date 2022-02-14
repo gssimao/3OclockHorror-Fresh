@@ -1481,12 +1481,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextUi: {fileID: 804041316}
-  typewriter: {fileID: 516139801}
-  DoneWriting: {fileID: 957308674}
+  textColor: {r: 0, g: 0, b: 0, a: 0}
+  normal: {fileID: 12800000, guid: 627ea37d68805af40b6a3fb84510d2bc, type: 3}
+  FatherCreepy: {fileID: 12800000, guid: b54f7c5fd8a533d44a57b5cf89c02983, type: 3}
   blackTop: {fileID: 516139800}
   mouse: {fileID: 364494315}
   Button: {fileID: 408739108}
   destroyBlackTop: 1
+  AutoplayText: 1
 --- !u!224 &957308676
 RectTransform:
   m_ObjectHideFlags: 0
