@@ -12,12 +12,10 @@ public class CraftingRecipe : ScriptableObject
 
     public bool CanCraft(ContainerItems container) // check if all items needed are available to craft
     {
-        
         bool craft = false;
+        if (!container) Debug.LogError("null " + container.name);
         craft = container.ContainsItem(Pieces);// checking all slots of the container for the item returns true if found
-        Debug.Log("Can I craft? " + craft);
         return craft;
-
     }
 
     public void Craft(ContainerItems container)

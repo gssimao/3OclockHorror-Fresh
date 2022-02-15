@@ -77,22 +77,22 @@ public class PhotoController : MonoBehaviour
 
             if (i == 0)
             {
-                Debug.Log("set photo 1");
+
                 padlock.Photo1 = photo;
             }
             else if (i == 1)
             {
-                Debug.Log("set photo 2");
+
                 padlock.Photo2 = photo;
             }
             else if(i == 2)
             {
-                Debug.Log("set photo 3");
+
                 padlock.Photo3 = photo;
             }
             else if(i == 3)
             {
-                Debug.Log("set photo 4");
+
                 padlock.Photo4 = photo;
             }
 

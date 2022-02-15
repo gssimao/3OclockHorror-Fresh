@@ -56,6 +56,7 @@ public class ContainerItems : GameActions
     }
     public bool ContainsItem(List<Item> Recepie)
     {
+
         bool check = false;
         List<Item> LocalStorage = new List<Item>();
 
@@ -85,7 +86,9 @@ public class ContainerItems : GameActions
 
     public void ReceiveItem(Item v)
     {
+
         if (!v) return; //null check and return
+        
         ContainerItems tempContainer = v.container;
         //Debug.Log(itemList.Count);
         for (int i = 0; i < ContainerItemList.Count; i++)
@@ -106,7 +109,7 @@ public class ContainerItems : GameActions
     }
     public void MendItem(Item v)
     {
-        if (!v) return; //null check and return
+        if (!v) return; //null check and return       
         ContainerItems tempContainer = v.container;
         //Debug.Log(itemList.Count);
         for (int i = 0; i < ContainerItemList.Count; i++)
@@ -117,8 +120,12 @@ public class ContainerItems : GameActions
                 //Debug.Log("trying to get item " + v.name + " from " + v.container.transform.name);
                 v.container = this;
                 ContainerItemList[i] = v; // set that slot equal to the object
-                tempContainer.RemoveItem(ContainerItemList[i]); // get that object container and remove this item from it
-                tempContainer.RefreshUI();
+
+                if (tempContainer)
+                {
+                    tempContainer.RemoveItem(ContainerItemList[i]); // get that object container and remove this item from it
+                    tempContainer.RefreshUI();
+                }
                 ShowUiSlotItems(ContainerItemList, ID);
                 break;
             }
