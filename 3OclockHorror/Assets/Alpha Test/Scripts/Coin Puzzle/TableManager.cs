@@ -5,8 +5,8 @@ using UnityEngine;
 public class TableManager : MonoBehaviour
 {
 
-    [SerializeField]
-    TaskListTracker taskManager;
+    /*[SerializeField]
+    TaskListTracker taskManager;*/
     public int SelectPuzzle = 0;
     //public bool puzzleSelected = true;
     [SerializeField]
@@ -157,10 +157,12 @@ public class TableManager : MonoBehaviour
     }
     private void Start()
     {
-        
+
         //if(!puzzleSelected)
-       //{
-            SelectPuzzle = Random.Range(1, 4); // this generates a random number from 1 to 3.
+        //{
+        UnityEngine.Debug.Log("change this later so its random");
+        //SelectPuzzle = Random.Range(1, 4); // this generates a random number from 1 to 3.
+        SelectPuzzle = 3;
             //UnityEngine.Debug.Log(SelectPuzzle);
             if(SelectPuzzle == 1)
             {
@@ -253,7 +255,8 @@ public class TableManager : MonoBehaviour
 
     public void TurnLeft()
     {
-        if(!LockTableMoviment)
+        PlayerInventory.ReceiveItem(brokenLadder);
+        if (!LockTableMoviment)
         {
             //LockTableMoviment = true; //to add a timer to wait for the animation from leantween to play out
             //adjusting table before rotating
@@ -278,7 +281,7 @@ public class TableManager : MonoBehaviour
                 // UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
                 //plyInv.AddItem(brokenLadder);
                 PlayerInventory.ReceiveItem(brokenLadder);
-                taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
+                //taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
 
             }
         }
@@ -313,7 +316,7 @@ public class TableManager : MonoBehaviour
                 //UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
                 //plyInv.AddItem(brokenLadder);
                 PlayerInventory.ReceiveItem(brokenLadder);
-                taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
+                //taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
             }
         }
         

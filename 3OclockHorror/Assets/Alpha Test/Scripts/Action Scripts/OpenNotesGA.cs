@@ -32,7 +32,6 @@ public  class OpenNotesGA : GameActions
     public override void Action()
     {
         Note = this.gameObject.GetComponent<ObjectRender>().Note;
-        Debug.Log("getting notes");
         if (!active)
         {
             active = true;

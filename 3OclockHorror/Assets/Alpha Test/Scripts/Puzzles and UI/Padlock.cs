@@ -5,6 +5,8 @@ using UnityEngine;
 public class Padlock : MonoBehaviour
 {
     [SerializeField]
+    private DoorTeleport doorTeleportControl;
+
     public bool solved;
     //Rotating elements of the lock
     [SerializeField]
@@ -32,21 +34,26 @@ public class Padlock : MonoBehaviour
     Animator lockAnim;
 
     AudioManager manager;
+    public string pass1;
+    public string pass2;
+    public string pass3;
+    public string pass4;
+
 
     void Start()
     {
         manager = FindObjectOfType<AudioManager>();
+        pass1 = Photo1.numeral;
+        pass2 = Photo2.numeral;
+        pass3 = Photo3.numeral;
+        pass4 = Photo4.numeral;
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckAnswer();
-
-        /*if(lockAnim.GetCurrentAnimatorStateInfo(0).IsName("PadlockOpen") && solved)
-        {
-            lockAnim.gameObject.SetActive(false);
-        }*/
+     
     }
 
     public void CheckAnswer()
@@ -61,6 +68,8 @@ public class Padlock : MonoBehaviour
                 door.locked = false;
             }
             solved = true;
+            doorTeleportControl.RomanNumeralLocker = false;
+
             lockAnim.SetTrigger("unlock");
             manager.Play("Success", false);
         }

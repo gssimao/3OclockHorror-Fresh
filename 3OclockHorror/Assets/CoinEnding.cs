@@ -51,7 +51,6 @@ public class CoinEnding : MonoBehaviour
         {
             chest2.SetActive(false);
             ladder.SetActive(false);
-            Debug.Log("Inside tick 0");
             if (Time.realtimeSinceStartup < c1time)
             {
                 chest1.SetActive(true);
@@ -84,7 +83,6 @@ public class CoinEnding : MonoBehaviour
         {
             chest2.SetActive(true);
             ladder.SetActive(true);
-            Debug.Log("Inside tick 1");
             if (Time.realtimeSinceStartup < c1time)
             {
                 chest1.SetActive(true);
@@ -104,7 +102,7 @@ public class CoinEnding : MonoBehaviour
                     chest1.SetActive(false);
                 }
                 chest2.SetActive(true);
-                Debug.Log("Inside tick 1 chest2");
+               // Debug.Log("Inside tick 1 chest2");
             }
             else if (Time.realtimeSinceStartup > c2time && Time.realtimeSinceStartup < ldrtime)
             {

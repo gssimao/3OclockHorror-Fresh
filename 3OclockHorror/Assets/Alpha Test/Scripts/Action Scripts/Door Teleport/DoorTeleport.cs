@@ -11,29 +11,28 @@ public class DoorTeleport : GameActions
     [SerializeField] GameObject RomanNumeralLockerCanv;
     public List<Item> Key;
     public bool RomanNumeralLocker;
-    private bool RomanNumeralSolved;
     private float transitionTime = .3f;
-    private Image BlackBackground;
+    [SerializeField] private Image BlackBackground;
 
     public override void Action()
     {
-        if (RomanNumeralLocker)
+        BlackBackground = GameObject.Find("TransitionPanel").GetComponent<Image>();
+        Debug.Log("caling action");
+        if (RomanNumeralLocker) // turn on when lock is needed, turn off when the lock is solved
         {
-            if (!RomanNumeralSolved)
-            {
-                RomanNumeralLockerCanv.SetActive(true);
-                return;
-            }
+            RomanNumeralLockerCanv.SetActive(true);
+            return;
         }
+        Debug.Log("passed roman numeral ready to ckeck keys");
 
-
-        if (Key != null)
+        if (Key.Count > 0)
         {
             bool unlock = CheckKey(); //returns false if player does not have the necessery items to open it.
             if (!unlock)
                 return;
         }
 
+        Debug.Log("pass the key wants to teleport");
         // there is nothing else in the way of the player to get into the other room, teleport the player
         StartCoroutine(ChangeRoom(GameObject.Find("Player2"), DestinationRoomObject, DestinationRoomObject.transform.parent.parent.gameObject.GetComponent<room>()));
     }

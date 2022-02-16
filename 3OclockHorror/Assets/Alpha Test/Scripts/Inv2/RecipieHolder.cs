@@ -20,7 +20,6 @@ public class RecipieHolder : MonoBehaviour
 
     public void Craft()
     {
-        Debug.LogError(containerItems.name);
         foreach(CraftingRecipe recipe in Recipies)
         {           
             recipe.Craft(containerItems);

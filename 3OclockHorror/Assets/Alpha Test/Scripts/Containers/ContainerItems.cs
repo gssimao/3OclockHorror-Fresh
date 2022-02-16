@@ -41,6 +41,7 @@ public class ContainerItems : GameActions
     }
     public void StartListening()
     {
+        Debug.Log("start listening");
         ItemSlot.SendItem += ReceiveItem;
     }
     public void RemoveItem(Item value)
@@ -101,7 +102,7 @@ public class ContainerItems : GameActions
                 ContainerItemList[i] = v; // set that slot equal to the object
                 tempContainer.RemoveItem(ContainerItemList[i]); // get that object container and remove this item from it
                 tempContainer.RefreshUI();
-                tempContainer.StartListening();                
+                tempContainer.StartListening();
                 ShowUiSlotItems(ContainerItemList,ID);                
                 break;
             }

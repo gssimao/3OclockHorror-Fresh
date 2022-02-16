@@ -28,6 +28,7 @@ public class JournalToggle : MonoBehaviour
     private void Show(int position)
     {
         TurnoffButton();
+        cItems.RefreshUI();
         LeanTween.moveLocalX(gameObject, position, .5f).setEase(LeanTweenType.easeInQuad);
     }
     private void Hide()

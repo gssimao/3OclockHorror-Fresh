@@ -50,7 +50,6 @@ public class PhotoController : MonoBehaviour
             SelectedDate = Dates3;
         }
 
-
         DistPhotos();
 
     }
@@ -59,7 +58,7 @@ public class PhotoController : MonoBehaviour
     {
         for(int i = 0; i < 4; i++)
         {
-            Debug.Log("calling distPhotos " + i + " times");
+            //Debug.Log("calling distPhotos " + i + " times");
             int rand = Random.Range(0, Photos.Count);
             Item photo = Photos[rand];
             rand = Random.Range(0, 3);
@@ -98,26 +97,5 @@ public class PhotoController : MonoBehaviour
 
            // photoRecipie.Pieces.Add(photo);
         }
-
-
-    }
-
-    public void InitPuzzle()
-    {
-
-        int rand = Random.Range(0, Photos.Count);
-        Item photo = Photos[rand];
-        Photos.Remove(photo);
-        padlock.Photo1 = photo;
-        Debug.Log("set photo 1");
-
-        rand = Random.Range(0, Numerals.Count);
-        photo.numeral = Numerals[rand];
-        Numerals.RemoveAt(rand);
-        photo.date = SelectedDate[0];
-
-        LPhotos[0].InitLargePhoto(photo);
-
-        DistPhotos();
     }
 }
