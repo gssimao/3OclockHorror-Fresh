@@ -228,23 +228,11 @@ public class Inventory : MonoBehaviour, IItemContainer
 
     public void AddInvokers(ItemSlot slot)
     {
-        slot.onPointerEnterEvent += onPointerEnterEvent;
-        slot.onPointerExitEvent += onPointerExitEvent;
-        slot.onRightClickEvent += onRightClickEvent;
-        slot.onBeginDragEvent += onBeginDragEvent;
-        slot.onEndDragEvent += onEndDragEvent;
-        slot.onDragEvent += onDragEvent;
-        slot.onDropEvent += onDropEvent;
+        
     }
     public void RemoveInvokers(ItemSlot slot)
     {
-        slot.onPointerEnterEvent -= onPointerEnterEvent;
-        slot.onPointerExitEvent -= onPointerExitEvent;
-        slot.onRightClickEvent -= onRightClickEvent;
-        slot.onBeginDragEvent -= onBeginDragEvent;
-        slot.onEndDragEvent -= onEndDragEvent;
-        slot.onDragEvent -= onDragEvent;
-        slot.onDropEvent -= onDropEvent;
+       
     }
 
     #endregion

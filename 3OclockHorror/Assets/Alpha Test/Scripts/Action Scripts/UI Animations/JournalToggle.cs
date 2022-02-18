@@ -21,7 +21,7 @@ public class JournalToggle : MonoBehaviour
     }
     private void Show()
     {
-        cItems.StartListening();
+        //cItems.StartListening();
         cItems.RefreshUI();
         LeanTween.moveLocalX(gameObject, positionShow, .5f).setEase(LeanTweenType.easeInQuad);
     }
@@ -34,7 +34,7 @@ public class JournalToggle : MonoBehaviour
     private void Hide()
     {
         TurnOnButton();
-        cItems.StopListening();
+        //cItems.StopListening();
         LeanTween.moveLocalX(gameObject, positionHide, .5f).setEase(LeanTweenType.easeInQuad);
     }
     private void TurnoffButton()

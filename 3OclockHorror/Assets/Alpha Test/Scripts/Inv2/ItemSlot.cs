@@ -5,21 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
+public class ItemSlot : MonoBehaviour
 {
     [SerializeField]
     Image image;
     [SerializeField]
     Item localItem;
 
-    public event Action<ItemSlot> onPointerEnterEvent;
-    public event Action<ItemSlot> onPointerExitEvent;
-    public event Action<ItemSlot> onRightClickEvent;
-    public event Action<ItemSlot> onBeginDragEvent;
-    public event Action<ItemSlot> onEndDragEvent;
-    public event Action<ItemSlot> onDragEvent;
-    public event Action<ItemSlot> onDropEvent;
-    public static Action<Item> SendItem = delegate { };
+    public static Action<Item, int> SendItem = delegate { };
 
     public Item Item; //{ get; set; }
     public bool PlayerInv;
@@ -56,43 +49,25 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
         if (localItem)
         {
-            localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
-            SendItem(localItem); // send the item to the one who is listening
-            //ClearSlot(); // clear this slot since we finish sending the item (no longer needed)       
+            if(localItem.container.ID == 0)
+                SendItem(localItem, 1); 
+            else
+                SendItem(localItem, 0); // send the item to the one who is listening
+                                        //localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
+                                        //ClearSlot(); // clear this slot since we finish sending the item (no longer needed)       
         }
 
-    } 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        //Debug.Log("Enter");
-        onPointerEnterEvent?.Invoke(this);
     }
-
-    public void OnPointerExit(PointerEventData eventData)
+    public void Send()
     {
-        //Debug.Log("Exit");
-        onPointerExitEvent?.Invoke(this);
+        if (localItem)
+            SendItem(localItem, localItem.container.ID);
     }
-
-    public void OnBeginDrag(PointerEventData eventData)
+    /*public void SendFromPuzzle(Item localItemFromPuzzle)
     {
-        onBeginDragEvent?.Invoke(this);
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        onDragEvent?.Invoke(this);
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        onEndDragEvent?.Invoke(this);
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        onDropEvent?.Invoke(this);
-    }
+        localItemFromPuzzle.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
+        SendItem(localItemFromPuzzle, localItem.container.ID); // send the item to the one who is listening
+    }*/
 
     public virtual bool CanRecieveItem(Item item)
     {

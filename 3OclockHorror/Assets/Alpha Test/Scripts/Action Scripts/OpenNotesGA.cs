@@ -39,7 +39,6 @@ public  class OpenNotesGA : GameActions
             NoteText.SetActive(true);
             NoteText.GetComponent<Text>().text = Note;
             Time.timeScale = 0;
-            Debug.Log("OPEN notes");
         }
         else
         {
@@ -48,7 +47,6 @@ public  class OpenNotesGA : GameActions
             image.sprite = transparent;
             active = false;
             Time.timeScale = 1;
-            Debug.Log("CLOSE notes");
         }
     }
 }

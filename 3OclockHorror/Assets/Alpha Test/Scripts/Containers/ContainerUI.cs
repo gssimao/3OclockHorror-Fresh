@@ -26,7 +26,7 @@ public class ContainerUI : MonoBehaviour
     private void ShowContainerUI(List<Item> ItemList,int ContainerId)
     {        
         if (ContainerId != ID) return;
-        Debug.Log(ID + "  " + ContainerId);        
+        //Debug.Log(ID + "  " + ContainerId);        
         for (int x = 0;x < ItemList.Count;x++)
         {
             if (x >= itemSlots.Count) 

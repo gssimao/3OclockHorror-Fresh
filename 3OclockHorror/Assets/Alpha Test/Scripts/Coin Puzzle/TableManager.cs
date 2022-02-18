@@ -1,20 +1,17 @@
 ﻿using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
+using System;
 
 public class TableManager : MonoBehaviour
 {
 
-    /*[SerializeField]
-    TaskListTracker taskManager;*/
     public int SelectPuzzle = 0;
     //public bool puzzleSelected = true;
-    [SerializeField]
-    Item brokenLadder;
-    [SerializeField]
-    ContainerItems PlayerInventory;
-    /*[SerializeField]
-    Inventory plyInv;*/
+    [SerializeField] ItemSlot FlyingContainer;
+    [SerializeField] ContainerItems PlayerInventory;
+    public static Action<int, int> SendItem = delegate { };
+    
 
     int[] table = new int[] { 0, 90, 180, 270 };
     public int tablePosition = 0;
@@ -160,7 +157,7 @@ public class TableManager : MonoBehaviour
 
         //if(!puzzleSelected)
         //{
-        UnityEngine.Debug.Log("change this later so its random");
+        UnityEngine.Debug.LogError("GABE!!! change this later so its random");
         //SelectPuzzle = Random.Range(1, 4); // this generates a random number from 1 to 3.
         SelectPuzzle = 3;
             //UnityEngine.Debug.Log(SelectPuzzle);
@@ -255,7 +252,10 @@ public class TableManager : MonoBehaviour
 
     public void TurnLeft()
     {
-        PlayerInventory.ReceiveItem(brokenLadder);
+        //FlyingContainer.SendFromPuzzle();
+        SendItem(2, 1);
+       // PlayerInventory.ReceiveItem(brokenLadder);
+
         if (!LockTableMoviment)
         {
             //LockTableMoviment = true; //to add a timer to wait for the animation from leantween to play out
@@ -280,7 +280,11 @@ public class TableManager : MonoBehaviour
             {
                 // UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
                 //plyInv.AddItem(brokenLadder);
-                PlayerInventory.ReceiveItem(brokenLadder);
+
+
+                //PlayerInventory.ReceiveItem(brokenLadder);
+
+
                 //taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
 
             }
@@ -315,7 +319,11 @@ public class TableManager : MonoBehaviour
             {
                 //UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
                 //plyInv.AddItem(brokenLadder);
-                PlayerInventory.ReceiveItem(brokenLadder);
+
+
+                //PlayerInventory.ReceiveItem(brokenLadder);
+
+
                 //taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
             }
         }

@@ -8,23 +8,40 @@ public class ContainerItems : GameActions
     public int ID;
     public List<Item> ContainerItemList;
     public static Action<List<Item>,int> ShowUiSlotItems = delegate { };
+    public static Action<ContainerItems> ReceiveContainer = delegate { };
+    public static Action<Item, int,int> SendItemToContainer = delegate { };
+
 
     public bool bJournal;
  
-    private void OnDisable()
-    {
-        ItemSlot.SendItem -= ReceiveItem;
-        ContainerUI.StopListening -= StopListening;
-    }
+
     private void Awake()
     {
         //ID = getNewId();
+        PuzzleOpenerGA.ContainerRequest += SendContainer;
+        //ContainerItems.SendItemToContainer += ContainerItemReceive;
+        TableManager.SendItem += PuzzleReward;
+        ItemSlot.SendItem += ReceiveItem;
+
         foreach (Item item in ContainerItemList)
         {
             if(item) //null check
                 item.container = this; // Link Container with their items
         }
-        ContainerUI.StopListening += StopListening;
+        //ContainerUI.StopListening += StopListening;
+    }
+    private void OnDisable()
+    {
+        ItemSlot.SendItem -= ReceiveItem;
+        //ContainerUI.StopListening -= StopListening;
+        PuzzleOpenerGA.ContainerRequest -= SendContainer;
+        ContainerItems.SendItemToContainer -= ContainerItemReceive;
+        TableManager.SendItem -= PuzzleReward;
+    }
+    public void SendContainer(int containerID)
+    {
+        if (containerID == ID)
+            ReceiveContainer(this);
     }
     public override void Action()
     {
@@ -35,7 +52,7 @@ public class ContainerItems : GameActions
     {
         ShowUiSlotItems(ContainerItemList, ID);
     }
-    public void StopListening()
+   /* public void StopListening()
     {
         ItemSlot.SendItem -= ReceiveItem;
     }
@@ -43,7 +60,7 @@ public class ContainerItems : GameActions
     {
         Debug.Log("start listening");
         ItemSlot.SendItem += ReceiveItem;
-    }
+    }*/
     public void RemoveItem(Item value)
     {
         for (int x = 0; x < ContainerItemList.Count; x++)
@@ -85,8 +102,11 @@ public class ContainerItems : GameActions
 
     }
 
-    public void ReceiveItem(Item v)
+    public void ReceiveItem(Item v, int incomingID)
     {
+        if (incomingID == ID) return;
+
+        Debug.Log("Receiving " + incomingID + "  " + transform.name);
 
         if (!v) return; //null check and return
         
@@ -102,7 +122,7 @@ public class ContainerItems : GameActions
                 ContainerItemList[i] = v; // set that slot equal to the object
                 tempContainer.RemoveItem(ContainerItemList[i]); // get that object container and remove this item from it
                 tempContainer.RefreshUI();
-                tempContainer.StartListening();
+                ///tempContainer.StartListening();
                 ShowUiSlotItems(ContainerItemList,ID);                
                 break;
             }
@@ -130,6 +150,18 @@ public class ContainerItems : GameActions
                 ShowUiSlotItems(ContainerItemList, ID);
                 break;
             }
+        }
+    }
+
+    public void PuzzleReward(int fromID, int toID)
+    {
+        SendItemToContainer(ContainerItemList[0], fromID,toID);    
+    }
+    private void ContainerItemReceive(Item v, int fromID,int toID)
+    {
+        if(toID == ID)
+        {
+            ReceiveItem(v, fromID);
         }
     }
 }

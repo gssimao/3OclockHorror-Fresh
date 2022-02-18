@@ -34,6 +34,7 @@ public class FloorAudioController : MonoBehaviour
     {
         if (t <= 0 && player.myRoom.getName() != "Outside") // error here
         {
+            //Debug.Log(player.myRoom.getName());
             lFloor = floor; //Catch the last floor
             CheckFloor();
             if(lFloor != floor)
