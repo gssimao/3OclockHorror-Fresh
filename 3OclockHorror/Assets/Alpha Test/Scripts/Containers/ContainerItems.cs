@@ -11,17 +11,15 @@ public class ContainerItems : GameActions
     public static Action<ContainerItems> ReceiveContainer = delegate { };
     public static Action<Item, int,int> SendItemToContainer = delegate { };
 
-
-    public bool bJournal;
- 
+    public bool bJournal; 
 
     private void Awake()
     {
         //ID = getNewId();
-        PuzzleOpenerGA.ContainerRequest += SendContainer;
-        //ContainerItems.SendItemToContainer += ContainerItemReceive;
+        PuzzleOpenerGA.ContainerRequest += SendContainer;        
         TableManager.SendItem += PuzzleReward;
         ItemSlot.SendItem += ReceiveItem;
+        ContainerItems.SendItemToContainer += ContainerItemReceive;
 
         foreach (Item item in ContainerItemList)
         {
@@ -106,7 +104,7 @@ public class ContainerItems : GameActions
     {
         if (incomingID == ID) return;
 
-        Debug.Log("Receiving " + incomingID + "  " + transform.name);
+        //Debug.Log("Receiving " + incomingID + "  " + transform.name);
 
         if (!v) return; //null check and return
         
@@ -153,15 +151,15 @@ public class ContainerItems : GameActions
         }
     }
 
+    //calls on containers with fromID to send their contents to containers with toID
     public void PuzzleReward(int fromID, int toID)
     {
-        SendItemToContainer(ContainerItemList[0], fromID,toID);    
+        if (fromID == ID)
+            SendItemToContainer(ContainerItemList[0], fromID, toID);
     }
     private void ContainerItemReceive(Item v, int fromID,int toID)
     {
         if(toID == ID)
-        {
             ReceiveItem(v, fromID);
-        }
     }
 }
