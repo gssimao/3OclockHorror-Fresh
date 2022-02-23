@@ -15,27 +15,24 @@ public class ContainerItems : GameActions
 
     private void Awake()
     {
-        //ID = getNewId();
         PuzzleOpenerGA.ContainerRequest += SendContainer;        
         TableManager.SendItem += PuzzleReward;
-        ItemSlot.SendItem += ReceiveItem;
         ContainerItems.SendItemToContainer += ContainerItemReceive;
-
+        if(bJournal)
+            ItemSlot.SendItem += ReceiveItem;
         foreach (Item item in ContainerItemList)
         {
             if(item) //null check
                 item.container = this; // Link Container with their items
         }
-        //ContainerUI.StopListening += StopListening;
     }
     private void OnDisable()
     {
         ItemSlot.SendItem -= ReceiveItem;
-        //ContainerUI.StopListening -= StopListening;
         PuzzleOpenerGA.ContainerRequest -= SendContainer;
         ContainerItems.SendItemToContainer -= ContainerItemReceive;
         TableManager.SendItem -= PuzzleReward;
-    }
+    }   
     public void SendContainer(int containerID)
     {
         if (containerID == ID)
@@ -43,24 +40,19 @@ public class ContainerItems : GameActions
     }
     public override void Action()
     {
-        ShowUiSlotItems(ContainerItemList,ID);
+        ShowUiSlotItems(ContainerItemList,ID);       
         ItemSlot.SendItem += ReceiveItem;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        ItemSlot.SendItem -= ReceiveItem;
     }
     public void RefreshUI()
     {
         ShowUiSlotItems(ContainerItemList, ID);
     }
-   /* public void StopListening()
-    {
-        ItemSlot.SendItem -= ReceiveItem;
-    }
-    public void StartListening()
-    {
-        Debug.Log("start listening");
-        ItemSlot.SendItem += ReceiveItem;
-    }*/
     public void RemoveItem(Item value)
-    {
+    {        
         for (int x = 0; x < ContainerItemList.Count; x++)
         {
             if (ContainerItemList[x] == value)
@@ -103,24 +95,18 @@ public class ContainerItems : GameActions
     public void ReceiveItem(Item v, int incomingID)
     {
         if (incomingID == ID) return;
-
-        //Debug.Log("Receiving " + incomingID + "  " + transform.name);
-
         if (!v) return; //null check and return
         
         ContainerItems tempContainer = v.container;
-        //Debug.Log(itemList.Count);
+       
         for (int i = 0; i < ContainerItemList.Count; i++)
         {
             if(ContainerItemList[i] == null) // found a slot that is null
             {
-
-                //Debug.Log("trying to get item " + v.name + " from " + v.container.transform.name);
                 v.container = this;
                 ContainerItemList[i] = v; // set that slot equal to the object
                 tempContainer.RemoveItem(ContainerItemList[i]); // get that object container and remove this item from it
                 tempContainer.RefreshUI();
-                ///tempContainer.StartListening();
                 ShowUiSlotItems(ContainerItemList,ID);                
                 break;
             }
@@ -130,13 +116,10 @@ public class ContainerItems : GameActions
     {
         if (!v) return; //null check and return       
         ContainerItems tempContainer = v.container;
-        //Debug.Log(itemList.Count);
         for (int i = 0; i < ContainerItemList.Count; i++)
         {
             if (ContainerItemList[i] == null) // found a slot that is null
             {
-
-                //Debug.Log("trying to get item " + v.name + " from " + v.container.transform.name);
                 v.container = this;
                 ContainerItemList[i] = v; // set that slot equal to the object
 

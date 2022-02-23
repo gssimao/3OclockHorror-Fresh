@@ -41,23 +41,6 @@ public class ItemSlot : MonoBehaviour
         image.enabled = false;
         localItem = null;
     }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (inventoryStatus)
-            return;
-
-        if (localItem)
-        {
-            if(localItem.container.ID == 0)
-                SendItem(localItem, 1); 
-            else
-                SendItem(localItem, 0); // send the item to the one who is listening
-                                        //localItem.container.StopListening();//clicked slot stop listening to [ ItemSlot.SendItem ] 
-                                        //ClearSlot(); // clear this slot since we finish sending the item (no longer needed)       
-        }
-
-    }
     public void Send()
     {
         if (localItem)

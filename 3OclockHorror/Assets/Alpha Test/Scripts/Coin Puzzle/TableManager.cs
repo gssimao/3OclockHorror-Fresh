@@ -8,8 +8,8 @@ public class TableManager : MonoBehaviour
 
     public int SelectPuzzle = 0;
     //public bool puzzleSelected = true;
-    [SerializeField] ItemSlot FlyingContainer;
-    [SerializeField] ContainerItems PlayerInventory;
+    /*[SerializeField] ItemSlot FlyingContainer;
+    [SerializeField] ContainerItems PlayerInventory;*/
     public static Action<int, int> SendItem = delegate { };
     
 

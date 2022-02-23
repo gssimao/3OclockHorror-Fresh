@@ -27,29 +27,7 @@ public class PuzzleOpenerGA : GameActions
     public override void Action()
     {
         StartCoroutine(nameof(RecieveContainer));
-        /*
-        if(SolvedPuzzle)
-        {
-            Puzzle.SetActive(true);
-            return;
-        }
-        ContainerRequest(1); // sending ID
-        if (containerItems.ContainsItem(NecesseryItems)) // check if the player has the items needed to open the puzzle
-        {
-            SolvedPuzzle = true;
-            removeItems();
-            Puzzle.SetActive(true);
-        }
-        else // player does NOT have the items needed send him a message/hint about this puzzle
-        {
-            SendMessageList[messageCounter].TriggerMessage(); // if there is no more hint messages the last message will be replaying.
 
-            if (SendMessageList.Count-1 > messageCounter)
-            {
-                messageCounter++;
-            }
-        }
-        */
     }
     private void ContainerCollector(ContainerItems v)
     {
