@@ -157,10 +157,10 @@ public class TableManager : MonoBehaviour
 
         //if(!puzzleSelected)
         //{
-        UnityEngine.Debug.LogError("GABE!!! change this later so its random");
-        //SelectPuzzle = Random.Range(1, 4); // this generates a random number from 1 to 3.
-        SelectPuzzle = 3;
-            //UnityEngine.Debug.Log(SelectPuzzle);
+        SelectPuzzle = UnityEngine.Random.Range(1, 4); // this generates a random number from 1 to 3.
+        //SelectPuzzle = 3; set puzzle to 3 for testing
+        //UnityEngine.Debug.LogError("GABE!!! change this later so its random");
+        //UnityEngine.Debug.Log(SelectPuzzle);
             if(SelectPuzzle == 1)
             {
                 allCoinsPos = puzzle1;
@@ -252,10 +252,6 @@ public class TableManager : MonoBehaviour
 
     public void TurnLeft()
     {
-        //FlyingContainer.SendFromPuzzle();
-        SendItem(2, 1);
-       // PlayerInventory.ReceiveItem(brokenLadder);
-
         if (!LockTableMoviment)
         {
             //LockTableMoviment = true; //to add a timer to wait for the animation from leantween to play out
@@ -278,14 +274,7 @@ public class TableManager : MonoBehaviour
             //check for the right answer
             if (checkAnswer(allCoinsPos, puzzleAnswer))
             {
-                // UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
-                //plyInv.AddItem(brokenLadder);
-
-
-                //PlayerInventory.ReceiveItem(brokenLadder);
-
-
-                //taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
+                SendItem(2, 1); // puzzle solved
 
             }
         }
@@ -317,13 +306,7 @@ public class TableManager : MonoBehaviour
             //check for the right answer
             if (checkAnswer(allCoinsPos, puzzleAnswer))
             {
-                //UnityEngine.Debug.Log("Yaaaaaaaayyyyy you win");
-                //plyInv.AddItem(brokenLadder);
-
-
-                //PlayerInventory.ReceiveItem(brokenLadder);
-
-
+                SendItem(2, 1); // puzzle solved
                 //taskManager.updateList("\n - A broken piece of a ladder, I bet I can fix this.");
             }
         }
