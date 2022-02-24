@@ -13,6 +13,8 @@ public class DoorTeleport : GameActions
     public bool RomanNumeralLocker;
     private float transitionTime = .3f;
     private Image BlackBackground;
+    public SpriteRenderer LocalRoomSprite;
+    public Sprite NewRoomSprite;
 
     public override void Action()
     {
@@ -31,6 +33,9 @@ public class DoorTeleport : GameActions
             bool unlock = CheckKey(); //returns false if player does not have the necessery items to open it.
             if (!unlock)
                 return;
+            else
+                if (NewRoomSprite != null) 
+                    LocalRoomSprite.sprite = NewRoomSprite;
         }
 
         //Debug.Log("pass the key wants to teleport");
@@ -72,6 +77,8 @@ public class DoorTeleport : GameActions
             {
                 PlayerInventory.RemoveItem(item);
                 Key.Remove(item);
+                if (Key.Count == 0)
+                    break;
             }
         }
         return pass; // returns false if player does not have the necessery items to open it.
